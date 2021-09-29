@@ -12,6 +12,9 @@ body {
 #header {
     grid-area: header;
     background: linear-gradient(90deg, rgba(6, 110, 110), rgb(29, 226, 134), rgb(31, 30, 30));
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
 }
 
 #nav {
@@ -22,3 +25,9 @@ body {
 #content {
     grid-area: content;
 }
+
+#title {
+    text-transform: uppercase;
+}
+
+#login {}

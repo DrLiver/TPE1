@@ -5,20 +5,37 @@ body {
     background-color: rgb(59, 59, 59);
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 5fr 1fr auto;
+    grid-template-rows: 125px 50px auto;
     grid-template-areas: "header" "nav" "content";
 }
 
 #header {
     grid-area: header;
     background: linear-gradient(90deg, rgba(6, 110, 110), rgb(29, 226, 134), rgb(31, 30, 30));
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
 }
 
 #nav {
+    display: flex;
     grid-area: nav;
     background-color: white;
+    text-transform: uppercase;
+    justify-content: center;
+    font-weight: bolder;
+}
+
+#nav ul {
+    list-style: none;
 }
 
 #content {
     grid-area: content;
 }
+
+#title {
+    text-transform: uppercase;
+}
+
+#form {}

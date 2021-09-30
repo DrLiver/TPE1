@@ -45,7 +45,7 @@
 
                 {foreach from=$equipo item=$item}
                     <tr >
-                        <td>{$item->nombre}</td>
+                        <td class="td-equipo">{$item->nombre}</td>
                          <td>{$item->division}</td>
                         <!--<td><a href="eliminarEntrada/{$item->entrada_id}"><button class="btn"><i class="fas fa-trash-alt"></i></button></a></td>-->
                     </tr>	

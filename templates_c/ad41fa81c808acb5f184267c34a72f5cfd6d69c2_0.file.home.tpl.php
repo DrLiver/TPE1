@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-09-30 23:00:37
+/* Smarty version 3.1.39, created on 2021-09-30 23:27:25
   from 'C:\xampp\htdocs\trabajo especial\TPE1\templates\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_61562575337d68_23465875',
+  'unifunc' => 'content_61562bbd247042_89475678',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ad41fa81c808acb5f184267c34a72f5cfd6d69c2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\trabajo especial\\TPE1\\templates\\home.tpl',
-      1 => 1633035635,
+      1 => 1633037242,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_61562575337d68_23465875 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61562bbd247042_89475678 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -74,7 +74,7 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['item']->value) {
 $_smarty_tpl->tpl_vars['item']->do_else = false;
 ?>
                     <tr >
-                        <td><?php echo $_smarty_tpl->tpl_vars['item']->value->nombre;?>
+                        <td class="td-equipo"><?php echo $_smarty_tpl->tpl_vars['item']->value->nombre;?>
 </td>
                          <td><?php echo $_smarty_tpl->tpl_vars['item']->value->division;?>
 </td>

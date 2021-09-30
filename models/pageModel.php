@@ -10,7 +10,7 @@ function __construct(){
 
 
 function traerEquipos(){
-    $sentencia = $this-> basededatos->prepare("select * from equipos");
+    $sentencia = $this-> basededatos->prepare('SELECT * FROM equipos');
     $sentencia->execute();
     $equipos = $sentencia->fetchAll(PDO::FETCH_OBJ);
     return $equipos;

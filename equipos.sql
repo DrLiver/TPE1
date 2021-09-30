@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-09-2021 a las 02:09:15
+-- Tiempo de generación: 30-09-2021 a las 05:51:07
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 8.0.9
 
@@ -93,6 +93,18 @@ INSERT INTO `equipos` (`id_equipo`, `nombre`, `descripcion`, `division`, `posici
 (30, 'Alvarado', 'El Club Atlético Alvarado es una entidad deportiva de la ciudad de Mar del Plata, en la provincia de Buenos Aires, Argentina. Se destaca en fútbol, actualmente participando en la Liga Marplatense de Fútbol y de la Primera Nacional, segunda división del fútbol argentino.', 'Primera B Nacional', 9),
 (31, 'Riestra', 'Deportivo Riestra Asociación de Fomento Barrio Colón,2​ también conocido como Club Deportivo Riestra, es un club deportivo y social de Buenos Aires, Argentina. Tiene su sede en el barrio de Nueva Pompeya, y posee además el estadio Guillermo Laza en el barrio de Villa Soldati, cuya capacidad aproximada es de 3000 espectadores.', 'Primera B Nacional', 10);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id_usuario` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Índices para tablas volcadas
 --
@@ -112,6 +124,12 @@ ALTER TABLE `equipos`
   ADD KEY `division` (`division`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id_usuario`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -126,6 +144,12 @@ ALTER TABLE `divisiones`
 --
 ALTER TABLE `equipos`
   MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas

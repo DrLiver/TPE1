@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-09-2021 a las 05:51:07
+-- Tiempo de generación: 30-09-2021 a las 19:39:59
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 8.0.9
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `equipos`
+-- Base de datos: `fichajes`
 --
 
 -- --------------------------------------------------------
@@ -30,14 +30,14 @@ SET time_zone = "+00:00";
 CREATE TABLE `divisiones` (
   `id_division` int(11) NOT NULL,
   `cantidad_equipos` int(11) NOT NULL,
-  `nombre_division` varchar(50) NOT NULL
+  `division` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `divisiones`
 --
 
-INSERT INTO `divisiones` (`id_division`, `cantidad_equipos`, `nombre_division`) VALUES
+INSERT INTO `divisiones` (`id_division`, `cantidad_equipos`, `division`) VALUES
 (2, 13, 'Primera'),
 (3, 10, 'B Metropolitana'),
 (4, 10, 'Primera B Nacional');
@@ -114,7 +114,7 @@ CREATE TABLE `usuario` (
 --
 ALTER TABLE `divisiones`
   ADD PRIMARY KEY (`id_division`),
-  ADD KEY `nombre_division` (`nombre_division`);
+  ADD KEY `nombre_division` (`division`);
 
 --
 -- Indices de la tabla `equipos`
@@ -159,7 +159,7 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `divisiones`
 --
 ALTER TABLE `divisiones`
-  ADD CONSTRAINT `divisiones_ibfk_1` FOREIGN KEY (`nombre_division`) REFERENCES `equipos` (`division`);
+  ADD CONSTRAINT `divisiones_ibfk_1` FOREIGN KEY (`division`) REFERENCES `equipos` (`division`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

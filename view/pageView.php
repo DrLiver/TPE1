@@ -19,7 +19,6 @@ class PageView{
             <input type="text" name="password" id="inputLogin">
             <input type="submit" value="Login">
         </form>');
-
         $this->smarty->display("templates/header.tpl");
         $this->smarty->display("templates/nav.tpl");
 

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="./styles/pageStyle.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{$titulo}</title>
+    <title>{$title}</title>
 </head>
 
 <body>

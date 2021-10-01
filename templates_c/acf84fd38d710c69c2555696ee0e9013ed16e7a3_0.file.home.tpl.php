@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-01 02:40:18
+/* Smarty version 3.1.39, created on 2021-10-01 20:27:04
   from 'C:\xampp\htdocs\test\TPE1\templates\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_615658f228a821_36384484',
+  'unifunc' => 'content_615752f85d5c91_76766245',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'acf84fd38d710c69c2555696ee0e9013ed16e7a3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\test\\TPE1\\templates\\home.tpl',
-      1 => 1633048640,
+      1 => 1633112734,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_615658f228a821_36384484 (Smarty_Internal_Template $_smarty_tpl) {
+function content_615752f85d5c91_76766245 (Smarty_Internal_Template $_smarty_tpl) {
 ?><h2> tabla de equipos y divisiones</h2>
     <section  id="tabla"class="tabla_section">
-
+    
         <table>
             <thead>
                 <tr>

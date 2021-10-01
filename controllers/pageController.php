@@ -3,6 +3,7 @@ require_once "models/PageModel.php";
 require_once "view/PageView.php";
 
 class PageController{
+    private $model;
     private $vista;
 
     function __construct(){

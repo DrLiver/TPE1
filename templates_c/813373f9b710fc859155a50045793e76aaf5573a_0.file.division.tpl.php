@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-01 04:46:04
-  from 'C:\xampp\htdocs\trabajo especial\TPE1\templates\home.tpl' */
+/* Smarty version 3.1.39, created on 2021-10-01 03:52:35
+  from 'C:\xampp\htdocs\trabajo especial\TPE1\templates\division.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6156766c0d2a78_70048183',
+  'unifunc' => 'content_615669e3024c96_82672235',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'ad41fa81c808acb5f184267c34a72f5cfd6d69c2' => 
+    '813373f9b710fc859155a50045793e76aaf5573a' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\trabajo especial\\TPE1\\templates\\home.tpl',
-      1 => 1633056334,
+      0 => 'C:\\xampp\\htdocs\\trabajo especial\\TPE1\\templates\\division.tpl',
+      1 => 1633053126,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6156766c0d2a78_70048183 (Smarty_Internal_Template $_smarty_tpl) {
+function content_615669e3024c96_82672235 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -47,7 +47,7 @@ function content_6156766c0d2a78_70048183 (Smarty_Internal_Template $_smarty_tpl)
 
                 <input type="submit" value="Login">
             </form>
-        </div> 
+        </div>
     </header>
     <nav id="nav">
         <ul>
@@ -57,12 +57,19 @@ function content_6156766c0d2a78_70048183 (Smarty_Internal_Template $_smarty_tpl)
 
 <h2> tabla de equipos y divisiones</h2>
     <section  id="tabla"class="tabla_section">
-    
+    <form method="POST" action="verDetalle">
+        <select>
+            <option name="Primera" value="Primera">Primera</option>
+            <option name="Primera B Nacional" value="Primera B Nacional">Primera B Nacional</option>
+            
+    </select>
+     <input type="submit" value="Guardar"> 
+    </form>
         <table>
             <thead>
                 <tr>
                     <th>nombre</th>
-                    <th>division</th>
+                    
                 </tr>
             </thead>
            <tbody class="filas">
@@ -76,8 +83,7 @@ $_smarty_tpl->tpl_vars['item']->do_else = false;
                     <tr >
                         <td class="td-equipo"><?php echo $_smarty_tpl->tpl_vars['item']->value->nombre;?>
 </td>
-                         <td><?php echo $_smarty_tpl->tpl_vars['item']->value->division;?>
-</td>
+                         
                         <!--<td><a href="eliminarEntrada/<?php echo $_smarty_tpl->tpl_vars['item']->value->entrada_id;?>
 "><button class="btn"><i class="fas fa-trash-alt"></i></button></a></td>-->
                     </tr>	

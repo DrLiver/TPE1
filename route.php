@@ -14,9 +14,10 @@ if (!empty($_GET['operacion'])) {
     $parametros = explode('/', $operacion);
 
     switch ($parametros[0]) {
-        case 'home': 
+        case "home": 
             $Controller->home();
              break;
+             
              /*
         case "agregar":
             $controller->addToDb($_REQUEST["name"], $_REQUEST["apellido"], $_REQUEST["tel"]);

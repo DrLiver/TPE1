@@ -10,8 +10,9 @@ class PageController{
         $this->vista = new PageView();
     }
 
+
     function home(){
-        $equipos= $this->model->traerEquipos();
+        $equipos =  $this->model->traerEquipos();
         $this->vista->traerHome($equipos);
     }
 

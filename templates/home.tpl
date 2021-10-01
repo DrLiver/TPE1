@@ -23,7 +23,7 @@
 
                 <input type="submit" value="Login">
             </form>
-        </div>
+        </div> 
     </header>
     <nav id="nav">
         <ul>
@@ -33,7 +33,7 @@
 
 <h2> tabla de equipos y divisiones</h2>
     <section  id="tabla"class="tabla_section">
-
+    
         <table>
             <thead>
                 <tr>

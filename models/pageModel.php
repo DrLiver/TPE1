@@ -15,4 +15,5 @@ function traerEquipos(){
     $equipos = $sentencia->fetchAll(PDO::FETCH_OBJ);
     return $equipos;
 }
+
 }

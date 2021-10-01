@@ -55,6 +55,7 @@ table {
     display: flex;
     justify-content: center;
     margin-bottom: 50px;
+   
 }
 
 th {
@@ -93,4 +94,19 @@ h2 {
     text-transform: uppercase;
     padding: 10px;
     color: aliceblue;
+}
+
+.equipoDetalle{
+    width: 95%;
+}
+
+.detalles tr td{
+    transition: all 1s;
+    background: #216421;
+    border: 2px solid black;
+    font-size: 17px;
+}
+
+.detalles tr td:hover{
+    background-color: #079c4a;
 }

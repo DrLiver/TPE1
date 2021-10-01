@@ -16,4 +16,10 @@ function traerEquipos(){
     return $equipos;
 }
 
+function traerEquipo($id){
+    $sentencia = $this->basededatos->prepare('SELECT * FROM equipos WHERE id_equipo=?');
+    $sentencia->execute(array($id));   
+    $equipo = $sentencia->fetch(PDO::FETCH_OBJ);
+    return $equipo;
+}
 }

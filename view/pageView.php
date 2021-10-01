@@ -29,5 +29,12 @@ class PageView{
         $this->smarty->display("templates/home.tpl");
     }
 
+    function verUnEquipo($equipo){
+            $this->smarty->assign('equipo',$equipo);
+            $this->smarty->assign('titulo',"Detalle de la Tarea");
+            $this->smarty->display("templates/detalleEquipo.tpl");
+        }
+
+    
 }
     

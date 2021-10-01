@@ -16,5 +16,9 @@ class PageController{
         $this->vista->traerHome($equipos);
     }
 
+    function verEquipo($id){
+        $equipo =  $this->model->traerEquipo($id);
+        $this->vista->verUnEquipo($equipo);
+    }
 
 }

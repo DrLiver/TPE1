@@ -8,7 +8,7 @@ class loginController {
         $this->model = new loginModel();
     }
 
-    function login () {
+    function login ($username, $password) {
         
     }
 }

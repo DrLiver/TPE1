@@ -18,7 +18,8 @@ class PageView{
             <label for="password">contraseña:</label>
             <input type="text" name="password" id="inputLogin">
             <input type="submit" value="Login">
-        </form>');
+        </form>
+        <p id="register">no tienes una cuenta? Registrate <a href="register">aquí</a></p>');
         $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->display("templates/header.tpl");
         $this->smarty->display("templates/nav.tpl");

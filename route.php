@@ -25,6 +25,8 @@ if (!empty($_REQUEST['operacion'])) {
         case 'login':
             $loginController->login($_REQUEST['username'], $_REQUEST['password']);
             break;
+        case 'register':
+            $loginController->showRegister();
              /*
         case "agregar":
             $controller->addToDb($_REQUEST["name"], $_REQUEST["apellido"], $_REQUEST["tel"]);

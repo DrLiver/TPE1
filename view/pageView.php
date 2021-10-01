@@ -11,15 +11,6 @@ class PageView{
 
     function showHeaderNav($title) {
         $this->smarty->assign('title',"{$title}");
-        $this->smarty->assign('loginForm', '<h4>iniciar sesión</h4>
-        <form action="login" method="post" id="form">
-            <label for="username">usuario:</label>
-            <input type="text" name="username" id="inputLogin">
-            <label for="password">contraseña:</label>
-            <input type="text" name="password" id="inputLogin">
-            <input type="submit" value="Login">
-        </form>
-        <p id="register">no tienes una cuenta? Registrate <a href="register">aquí</a></p>');
         $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->display("templates/header.tpl");
         $this->smarty->display("templates/nav.tpl");

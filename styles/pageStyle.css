@@ -42,7 +42,10 @@ body {
 
 #register {
     font-weight: bolder;
-    text-decoration: overline;
+}
+
+#register a {
+    color: red;
 }
 
 
@@ -132,4 +135,47 @@ a {
 .titulo-detalle {
     margin: 3% 0 0 21%;
     text-align: start;
+}
+
+
+/* REGISTRO */
+
+#registerDiv {
+    display: flex;
+    justify-content: center;
+}
+
+#registerDiv form {
+    border-radius: 20px;
+    margin-top: 50px;
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    text-align: center;
+    align-items: center;
+}
+
+#registerDiv form div {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    justify-content: center;
+}
+
+#registerLabels {
+    margin-right: 20px;
+}
+
+#registerLabels label {
+    margin: 5px;
+}
+
+#registerInputs input {
+    margin: 5px;
+}
+
+#registerDiv form div div {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
 }

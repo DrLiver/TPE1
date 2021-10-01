@@ -1,15 +1,17 @@
 <?php
 require_once 'controllers/PageController.php';
+require_once 'controllers/loginController.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
-if (!empty($_GET['operacion'])) {
-    $operacion = $_GET['operacion'];
+if (!empty($_REQUEST['operacion'])) {
+    $operacion = $_REQUEST['operacion'];
 } else {
     $operacion = 'home';     // acción por defecto si no envían
 }
 
     $Controller = new PageController();
+    $loginController = new loginController();
 
     $parametros = explode('/', $operacion);
 
@@ -20,7 +22,9 @@ if (!empty($_GET['operacion'])) {
         case "equipo": 
             $Controller->verEquipo($parametros[1]);
             break;     
-             
+        case 'login':
+            $loginController->login($_REQUEST['username'], $_REQUEST['password']);
+            break;
              /*
         case "agregar":
             $controller->addToDb($_REQUEST["name"], $_REQUEST["apellido"], $_REQUEST["tel"]);

@@ -10,14 +10,15 @@ function __construct(){
 
 
 function traerEquipos(){
-    $sentencia = $this-> basededatos->prepare('SELECT * FROM equipos');
+    $sentencia = $this-> basededatos->prepare('SELECT a.*,b.* FROM equipos a LEFT JOIN divisiones b ON a.id_division = b.id_division');
     $sentencia->execute();
     $equipos = $sentencia->fetchAll(PDO::FETCH_OBJ);
     return $equipos;
 }
 
+
 function traerEquipo($id){
-    $sentencia = $this->basededatos->prepare('SELECT * FROM equipos WHERE id_equipo=?');
+    $sentencia = $this->basededatos->prepare('SELECT a.*,b.* FROM equipos a LEFT JOIN divisiones b ON a.id_division = b.id_division WHERE id_equipo=?');
     $sentencia->execute(array($id));   
     $equipo = $sentencia->fetch(PDO::FETCH_OBJ);
     return $equipo;

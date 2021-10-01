@@ -1,5 +1,5 @@
 <nav id="nav">
     <ul>
-        <li>home</li>
+        <li><a href="home">home</a></li>
     </ul>
 </nav>

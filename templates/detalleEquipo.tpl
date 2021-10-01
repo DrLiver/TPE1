@@ -12,7 +12,6 @@
            <tbody>
                     <tr >
                         <td >{$equipo->nombre}</td>
-                       
                         <td >{$equipo->division}</td>
                         <td >{$equipo->posicion}</td>
                     </tr>	

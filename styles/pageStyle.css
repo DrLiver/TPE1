@@ -46,7 +46,6 @@ body {
 /* tabla*/
 
 table {
-    width: 60%;
     border: 2px solid black;
     border-collapse: collapse;
 }
@@ -88,20 +87,31 @@ tr {
 }
 
 h2 {
-    text-align: center;
-    margin: 0;
-    margin-top: 50px;
     text-transform: uppercase;
     padding: 10px;
     color: aliceblue;
+    text-align: center;
+    margin: 50px 0px 0px 0px;
+}
+a{
+    text-decoration: none;
+    color: #000;
 }
 
 .equipoDetalle{
-    width: 95%;
+    width: 50%;
+    height: 100px;
+  
+}
+
+.tabla-detalle{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
 }
 
 .detalles tr td{
-    transition: all 1s;
+    transition: all .5s;
     background: #216421;
     border: 2px solid black;
     font-size: 17px;
@@ -109,4 +119,15 @@ h2 {
 
 .detalles tr td:hover{
     background-color: #079c4a;
+}
+
+.descripcion{
+    margin: 0px 100px 0px 50px;
+    height: auto;
+    width: 20%;
+}
+
+.titulo-detalle{
+    margin: 3% 0 0 21%;
+    text-align: start;
 }

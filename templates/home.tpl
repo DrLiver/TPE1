@@ -27,7 +27,7 @@
     </header>
     <nav id="nav">
         <ul>
-            <li>home</li>
+           <a href="home"><li>home</li></a>
         </ul>
     </nav>
 

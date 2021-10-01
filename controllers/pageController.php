@@ -16,4 +16,5 @@ class PageController{
         $this->vista->traerHome($equipos);
     }
 
+
 }

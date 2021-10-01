@@ -16,7 +16,7 @@ if (!empty($_GET['operacion'])) {
     switch ($parametros[0]) {
         case "home": 
             $Controller->home();
-             break;
+             break;    
              
              /*
         case "agregar":

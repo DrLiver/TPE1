@@ -16,7 +16,7 @@
         <h1 id="title">fichajes</h1>
         <div>
             <h4>iniciar sesión</h4>
-            <form action="login" method="post" id="form">
+            <form action="login" method="POST" id="form">
                 <label for="username">usuario:</label>
                 <input type="text" name="username" id="inputLogin">
                 <label for="password">contraseña:</label>

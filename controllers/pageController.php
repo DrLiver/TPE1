@@ -11,15 +11,21 @@ class PageController{
         $this->vista = new PageView();
     }
 
-
     function home(){
         $equipos =  $this->model->traerEquipos();
-        $this->vista->traerHome($equipos);
+        $division =  $this->model->traerDivisiones();
+        $this->vista->traerHome($equipos,$division);
     }
 
     function verEquipo($id){
         $equipo =  $this->model->traerEquipo($id);
         $this->vista->verUnEquipo($equipo);
+    }
+
+    function filtrar($id_division){
+        $divisiones =  $this->model->traerDivisiones();
+        $equipos =  $this->model->traerEquipoPorDivision($id_division);
+        $this->vista->traerHome($equipos,$divisiones);
     }
 
 }

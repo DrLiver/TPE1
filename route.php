@@ -10,23 +10,28 @@ if (!empty($_REQUEST['operacion'])) {
     $operacion = 'home';     // acción por defecto si no envían
 }
 
+
     $Controller = new PageController();
-    $loginController = new loginController();
+    $LoginController = new LoginController();
 
     $parametros = explode('/', $operacion);
 
     switch ($parametros[0]) {
-        case "home": 
+        case 'home': 
             $Controller->home();
-             break;
-        case "equipo": 
+            break;
+        case 'filtrar': 
+            $Controller->filtrar($_REQUEST['division']);
+            break;
+        case 'equipo': 
             $Controller->verEquipo($parametros[1]);
             break;     
         case 'login':
-            $loginController->login($_REQUEST['username'], $_REQUEST['password']);
+            $LoginController->login($_REQUEST['username'], $_REQUEST['password']);
             break;
         case 'register':
-            $loginController->showRegister();
+            $LoginController->showRegister();
+            break;
              /*
         case "agregar":
             $controller->addToDb($_REQUEST["name"], $_REQUEST["apellido"], $_REQUEST["tel"]);

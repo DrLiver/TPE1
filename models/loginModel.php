@@ -1,6 +1,6 @@
 <?php
 
-class loginModel {
+class LoginModel {
     
     private $basededatos;
 

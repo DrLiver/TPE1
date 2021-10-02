@@ -1,6 +1,13 @@
 <h2> tabla de equipos y divisiones</h2>
     <section  id="tabla"class="tabla_section">
-    
+            <form method="POST" action="filtrar">
+                <select name="division">
+                    {foreach from=$division item=$item}
+                        <option>{$item->division}</option>
+                    {/foreach}
+                </select>
+                <input type="submit" value="FILTRAR">
+            </form>
         <table>
             <thead>
                 <tr>
@@ -18,11 +25,8 @@
                     </tr>	
                     {/foreach}
 			</tbody>
-
         </table>
-
     </section>
-        
 </body>
 
 </html>

@@ -1,18 +1,17 @@
 <?php
-require_once 'models/loginModel.php';
-require_once 'view/registerView.php';
+require_once 'models/LoginModel.php';
+require_once 'view/RegisterView.php';
 
-class loginController {
+class LoginController {
     private $model;
     private $view;
 
     function __construct() {
-        $this->model = new loginModel();
-        $this->view = new registerView();
+        $this->model = new LoginModel();
+        $this->view = new RegisterView();
     }
 
     function login ($username, $password) {
-        
     }
 
     function showRegister () {

@@ -17,18 +17,18 @@ class PageView{
 
     }
 
-    function traerHome($equipos){
+    function traerHome($equipos,$divisiones){
         $this->smarty->assign('equipo',$equipos);
+        $this->smarty->assign('division',$divisiones);
         $this->showHeaderNav("inicio");
         $this->smarty->display("templates/home.tpl");
     }
 
     function verUnEquipo($equipo){
-            $this->smarty->assign('equipo',$equipo);
-            $this->showHeaderNav("Detalle de la Tarea");
-            $this->smarty->display("templates/detalleEquipo.tpl");
-        }
+        $this->smarty->assign('equipo',$equipo);
+        $this->showHeaderNav("Detalle de la Tarea");
+        $this->smarty->display("templates/detalleEquipo.tpl");
+    }
 
-    
 }
     

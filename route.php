@@ -30,7 +30,10 @@ if (!empty($_REQUEST['operacion'])) {
             $LoginController->login($_REQUEST['username'], $_REQUEST['password']);
             break;
         case 'register':
-            $LoginController->showRegister();
+            $LoginController->showRegister(null);
+            break;
+        case 'registerError':
+            $LoginController->completeRegister($_REQUEST['registerUsername'], $_REQUEST['registerPassword']);
             break;
              /*
         case "agregar":

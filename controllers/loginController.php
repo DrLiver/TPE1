@@ -15,6 +15,9 @@ class LoginController {
     }
 
     function showRegister () {
-        $this->view->showRegister();
+        $this->view->showRegister(null);
+    }
+    function completeRegister ($username, $password) {
+        $this->model->completeRegister($username, $password, $this->view);
     }
 }

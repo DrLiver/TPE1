@@ -21,7 +21,7 @@ if (!empty($_REQUEST['operacion'])) {
             $Controller->home();
             break;
         case 'filtrar': 
-            $Controller->filtrar($_REQUEST['division']);
+            $Controller->filtrar($_REQUEST["division"]);
             break;
         case 'equipo': 
             $Controller->verEquipo($parametros[1]);

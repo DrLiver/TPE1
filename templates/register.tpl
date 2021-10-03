@@ -1,6 +1,6 @@
 <article id="registerDiv">
     <form action="completeRegister" method="post">
-        <h3>registrate</h3>
+        <h3>Registrate</h3>
         <div>
             <div id="registerLabels">
                 <label for="username">usuario:</label>

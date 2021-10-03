@@ -30,8 +30,8 @@ class PageModel {
     }
 
     function traerEquipoPorDivision($division){
-        $sentencia = $this->basededatos->prepare('SELECT a.*,b.* FROM equipos a LEFT JOIN divisiones b ON a.id_division = b.id_division WHERE division = "' . $division . '"');
-        $sentencia->execute();
+        $sentencia = $this->basededatos->prepare('SELECT a.*,b.* FROM equipos a LEFT JOIN divisiones b ON a.id_division = b.id_division WHERE division =?');
+        $sentencia->execute(array($division));
         $equipos = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $equipos;
     }

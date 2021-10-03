@@ -21,7 +21,7 @@ class LoginController {
     function completeRegister ($username, $password) {
         $alreadyRegistered = false;
         foreach ($this->model->bringUsersDB() as $user) {
-            if ($username == $user->nombre && $password !="") {
+            if ($username == $user->username && $password !="") {
                 $alreadyRegistered = true;
                 $this->showRegister('otro usuario ya tiene el mismo nombre');
             }
@@ -32,7 +32,7 @@ class LoginController {
                 $this->model->crearUsuario($username,$passwordHash);
                 header('Location:' . BASE_URL . 'registerCompleted');
             }else{
-                $this->showRegister('Falta completar campos');
+                $this->showRegister('Faltan completar campos');
             }
         }
     }

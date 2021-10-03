@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-02 00:05:25
+/* Smarty version 3.1.39, created on 2021-10-02 21:25:08
   from 'C:\xampp\htdocs\test\TPE1\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6157862584f282_76792661',
+  'unifunc' => 'content_6158b214775a96_66537602',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4bf11d87e458ce19b5a102a4f09841ab0c3d2644' => 
     array (
       0 => 'C:\\xampp\\htdocs\\test\\TPE1\\templates\\header.tpl',
-      1 => 1633125923,
+      1 => 1633202253,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6157862584f282_76792661 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6158b214775a96_66537602 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +41,7 @@ function content_6157862584f282_76792661 (Smarty_Internal_Template $_smarty_tpl)
         <h1 id="title">fichajes</h1>
         <div>
             <h4>iniciar sesión</h4>
-            <form action="login" method="post" id="form">
+            <form action="login" method="POST" id="form">
                 <label for="username">usuario:</label>
                 <input type="text" name="username" id="inputLogin">
                 <label for="password">contraseña:</label>

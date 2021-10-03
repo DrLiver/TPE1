@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-01 20:27:04
+/* Smarty version 3.1.39, created on 2021-10-02 21:25:08
   from 'C:\xampp\htdocs\test\TPE1\templates\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_615752f85d5c91_76766245',
+  'unifunc' => 'content_6158b214794080_02393076',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'acf84fd38d710c69c2555696ee0e9013ed16e7a3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\test\\TPE1\\templates\\home.tpl',
-      1 => 1633112734,
+      1 => 1633202253,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,25 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_615752f85d5c91_76766245 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6158b214794080_02393076 (Smarty_Internal_Template $_smarty_tpl) {
 ?><h2> tabla de equipos y divisiones</h2>
     <section  id="tabla"class="tabla_section">
-    
+            <form method="POST" action="filtrar">
+                <select name="division">
+                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['division']->value, 'item');
+$_smarty_tpl->tpl_vars['item']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['item']->value) {
+$_smarty_tpl->tpl_vars['item']->do_else = false;
+?>
+                        <option><?php echo $_smarty_tpl->tpl_vars['item']->value->division;?>
+</option>
+                    <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                </select>
+                <input type="submit" value="FILTRAR">
+            </form>
         <table>
             <thead>
                 <tr>
@@ -52,11 +67,8 @@ $_smarty_tpl->tpl_vars['item']->do_else = false;
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 			</tbody>
-
         </table>
-
     </section>
-        
 </body>
 
 </html><?php }

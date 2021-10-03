@@ -14,10 +14,26 @@ class LoginController {
     function login ($username, $password) {
     }
 
-    function showRegister () {
-        $this->view->showRegister(null);
+    function showRegister ($error ="") {
+        $this->view->showRegister($error);
     }
+
     function completeRegister ($username, $password) {
-        $this->model->completeRegister($username, $password, $this->view);
+        $alreadyRegistered = false;
+        foreach ($this->model->bringUsersDB() as $user) {
+            if ($username == $user->nombre && $password !="") {
+                $alreadyRegistered = true;
+                $this->showRegister('otro usuario ya tiene el mismo nombre');
+            }
+        }   
+        if ($alreadyRegistered == false) {
+            if (!empty($username)&&!empty($password)) {
+                $passwordHash = password_hash($password,PASSWORD_BCRYPT);
+                $this->model->crearUsuario($username,$passwordHash);
+                header('Location:' . BASE_URL . 'registerCompleted');
+            }else{
+                $this->showRegister('Falta completar campos');
+            }
+        }
     }
 }

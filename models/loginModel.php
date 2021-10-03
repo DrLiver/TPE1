@@ -13,24 +13,10 @@ class LoginModel {
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
-    
-    function completeRegister($username, $password, $view) {
-        $alreadyRegistered = false;
-        foreach ($this->bringUsersDB() as $user) {
-            if ($username == $user->username) {
-                $alreadyRegistered = true;
-                $view->showRegister('otro usuario ya tiene el mismo nombre');
-            }
-        }
-        if ($alreadyRegistered == false) {
-            if ($username == '' && $password == '') {
-                $view->showRegister('falta completar campos');
-            }
-            else {
-                $sentencia = $this->basededatos->prepare("INSERT INTO usuario(username, password) VALUES(?, ?)");
-                $sentencia->execute(array($username, password_hash($password, PASSWORD_BCRYPT)));
-                header('Location:' . BASE_URL . 'registerCompleted');
-            }
-        }
+
+    function crearUsuario($username,$password){
+        $sentencia = $this->basededatos->prepare("INSERT INTO usuario(nombre, password) VALUES(?, ?)");
+        $sentencia->execute([$username,$password]);
     }
+    
 }

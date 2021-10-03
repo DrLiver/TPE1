@@ -15,7 +15,7 @@ class LoginModel {
     }
 
     function crearUsuario($username,$password){
-        $sentencia = $this->basededatos->prepare("INSERT INTO usuario(nombre, password) VALUES(?, ?)");
+        $sentencia = $this->basededatos->prepare("INSERT INTO usuario(username, password) VALUES(?, ?)");
         $sentencia->execute([$username,$password]);
     }
     

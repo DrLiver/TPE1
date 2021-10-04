@@ -12,6 +12,7 @@ class LoginController {
     }
 
     function login ($username, $password) {
+        
     }
 
     function showRegister ($error ="") {
@@ -19,7 +20,6 @@ class LoginController {
     }
 
     function completeRegister ($username, $password) {
-        
         $alreadyRegistered = false;
         foreach ($this->model->bringUsersDB() as $user) {
             if ($username == $user->username && $password !="") {

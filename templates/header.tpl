@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <base href="{$BASE_URL}">
     <link rel="stylesheet" href="styles/pageStyle.css">
+    <script src="https://kit.fontawesome.com/728f81b46c.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{$title}</title>
 </head>

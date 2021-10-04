@@ -20,21 +20,37 @@ if (!empty($_REQUEST['operacion'])) {
         case 'home': 
             $Controller->home();
             break;
+        case 'user':
+            $Controller->pageUser();
+            break;
         case 'filtrar': 
             $Controller->filtrar($_REQUEST["division"]);
             break;
         case 'equipo': 
             $Controller->verEquipo($parametros[1]);
             break;     
-        case 'login':
-            $LoginController->login($_REQUEST['username'], $_REQUEST['password']);
-            break;
         case 'register':
-            $LoginController->showRegister(null);
+            $LoginController->showRegister();
             break;
         case 'registerError':
             $LoginController->completeRegister($_REQUEST['registerUsername'], $_REQUEST['registerPassword']);
             break;
+        case 'login':
+            $LoginController->login($_REQUEST['username'], $_REQUEST['password']);
+            break;
+        case 'eliminarEquipo': 
+            $Controller->eliminarEquipo($parametros[1]);
+            break;  
+        case 'eliminarDivision': 
+            $Controller->eliminarDivision($parametros[1]);
+            break; 
+        case 'agregarEquipo': 
+            $Controller->agregarEquipo();
+            break;  
+        case 'agregarDivision': 
+            $Controller->agregarDivision();
+            break;         
+           
              /*
         case "agregar":
             $controller->addToDb($_REQUEST["name"], $_REQUEST["apellido"], $_REQUEST["tel"]);

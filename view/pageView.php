@@ -17,6 +17,10 @@ class PageView{
 
     }
 
+    function userLocation(){
+        header("Location:".BASE_URL."user");
+    }
+
     function traerHome($equipos,$divisiones){
         $this->smarty->assign('equipo',$equipos);
         $this->smarty->assign('division',$divisiones);
@@ -29,6 +33,24 @@ class PageView{
         $this->showHeaderNav("Detalle de la Tarea");
         $this->smarty->display("templates/detalleEquipo.tpl");
     }
+    
+ 
 
+    function traerHomeUser($equipos,$divisiones){
+        $this->smarty->assign('equipo',$equipos);
+        $this->smarty->assign('division',$divisiones);
+        $this->showHeaderNav("Administrador");
+        $this->smarty->display("templates/userHome.tpl");
+      
+    }
+
+    function pageError($error=''){
+        $this->smarty->assign('error',$error);
+        $this->showHeaderNav("Error al eliminar una division");
+        $this->smarty->display("templates/errorDivision.tpl");
+
+    }
+
+   
 }
     

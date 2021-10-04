@@ -1,0 +1,1 @@
+<h2 class="titulo-detalle">{$error}</h2>

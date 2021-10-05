@@ -36,20 +36,15 @@ class PageView{
     
  
 
-    function traerHomeUser($equipos,$divisiones){
+    function traerHomeUser($equipos,$divisiones,$error){
         $this->smarty->assign('equipo',$equipos);
         $this->smarty->assign('division',$divisiones);
+        $this->smarty->assign('error',$error);
         $this->showHeaderNav("Administrador");
         $this->smarty->display("templates/userHome.tpl");
       
     }
 
-    function pageError($error=''){
-        $this->smarty->assign('error',$error);
-        $this->showHeaderNav("Error al eliminar una division");
-        $this->smarty->display("templates/errorDivision.tpl");
-
-    }
 
    
 }

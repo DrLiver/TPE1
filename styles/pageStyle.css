@@ -260,3 +260,6 @@ textarea{
 .fa-edit:hover{
     color:rgb(8, 224, 19);
 }
+.error{
+    color:red
+}

@@ -28,10 +28,11 @@ class PageController{
         $this->view->traerHome($equipos,$divisiones);
     }
 
-    function pageUser(){
+    function pageUser($error=''){
         $equipos =  $this->model->traerEquipos();
         $division =  $this->model->traerDivisiones();
-        $this->view->traerHomeUser($equipos,$division);
+        $this->view->traerHomeUser($equipos,$division,$error);
+       
     }
 
     function eliminarEquipo($id){
@@ -45,7 +46,7 @@ class PageController{
         foreach ($this->model->traerEquipos() as $equipos ) {
             if ($equipos->id_division == $id) {
                 $enUso = true;
-                $this->view->PageError('No podes eliminar a una division en uso');
+                $this->pageUser('No podes eliminar a una division en uso');
                 break;
             }
         }
@@ -56,14 +57,50 @@ class PageController{
     }
 
     function agregarEquipo(){
-        $division = $this->model->traerIdDivisiones($_POST['division']);
-        $id= $division->id_division;
-        $this->model->insertarEquipo($id ,$_POST['equipo'],$_POST['descripcion'],$_POST['posicion']);
-        $this->view->UserLocation();
+        if (!empty($_POST['equipo'])&&!empty($_POST['posicion'])) {
+            $equipo = $_POST['equipo'];
+            $posicion = $_POST['posicion'];
+            $enUso = false;
+            foreach ($this->model->traerEquipos() as $nombre ) {
+                if (($nombre->nombre) == ($equipo)) {
+                    $enUso = true;
+                    $this->pageUser('El equipo  que queres agregar ya esta en uso');
+                }
+            }
+            if($enUso == false ){
+                $division = $this->model->traerIdDivisiones($_POST['division']);
+                $id= $division->id_division;
+                $this->model->insertarEquipo($id ,$equipo,$_POST['descripcion'],$posicion);
+                $this->pageUser();
+            }
+
+        }else{
+            $this->pageUser('Falta completar campos ');
+        }
+      
+    
     }
 
     function agregarDivision(){
-        $this->model->insertarDivision($_POST['cantidad'],$_POST['division']);
-        $this->view->UserLocation();
+        if (!empty($_POST['division'])&&!empty($_POST['cantidad'])) {
+            $divisionNueva = $_POST['division'];
+            $cantidad = $_POST['cantidad'];
+            
+            $enUso = false;
+            foreach ($this->model->traerDivisiones() as $divisiones ) {
+                if (($divisiones->division) == ($divisionNueva)) {
+                    $enUso = true;
+                    $this->pageUser('La division que queres agregar ya esta en uso');
+                }
+            }
+            if($enUso == false ){
+                $this->model->insertarDivision($cantidad,$divisionNueva);
+                $this->pageUser();
+            }
+        }else{
+            $this->pageUser('Falta completar campos ');
+        }
+       
+        
     }
 }

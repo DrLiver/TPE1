@@ -1,4 +1,5 @@
 <h2> Administrar equipos y divisiones</h2>
+<h2 class="error"> {$error}</h2>
     <section  id="tabla"class="tabla_user">
          <table>
             <thead>

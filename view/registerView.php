@@ -12,7 +12,7 @@ class RegisterView{
         $this->pageView = new PageView();
     }
 
-    function showRegister($message = '') {
+    public function showRegister($message = '') {
         $this->smarty->assign('message', $message);
         $this->pageView->showHeaderNav("Registrarse");
         $this->smarty->display('templates/register.tpl');

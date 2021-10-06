@@ -11,37 +11,37 @@ class PageController{
         $this->view = new PageView();
     }
 
-    function home(){
+    public function home(){
         $equipos =  $this->model->traerEquipos();
         $division =  $this->model->traerDivisiones();
         $this->view->traerHome($equipos,$division);
     }
 
-    function verEquipo($id){
+    public function verEquipo($id){
         $equipo =  $this->model->traerEquipo($id);
         $this->view->verUnEquipo($equipo);
     }
 
-    function filtrar($id_division){
+    public function filtrar($id_division){
         $divisiones =  $this->model->traerDivisiones();
         $equipos =  $this->model->traerEquipoPorDivision($id_division);
         $this->view->traerHome($equipos,$divisiones);
     }
 
-    function pageUser($error=''){
+    public function pageUser($error=''){
         $equipos =  $this->model->traerEquipos();
         $division =  $this->model->traerDivisiones();
         $this->view->traerHomeUser($equipos,$division,$error);
        
     }
 
-    function eliminarEquipo($id){
+    public function eliminarEquipo($id){
         $this->model->borrarEquipoBaseDeDatos($id);
         $this->view->userLocation();
         
     }
 
-    function eliminarDivision($id){
+    public function eliminarDivision($id){
         $enUso = false;
         foreach ($this->model->traerEquipos() as $equipos ) {
             if ($equipos->id_division == $id) {
@@ -56,7 +56,7 @@ class PageController{
         }
     }
 
-    function agregarEquipo(){
+    public function agregarEquipo(){
         if (!empty($_POST['equipo'])&&!empty($_POST['posicion'])) {
             $equipo = $_POST['equipo'];
             $posicion = $_POST['posicion'];
@@ -77,11 +77,9 @@ class PageController{
         }else{
             $this->pageUser('Falta completar campos ');
         }
-      
-    
     }
 
-    function agregarDivision(){
+    public function agregarDivision(){
         if (!empty($_POST['division'])&&!empty($_POST['cantidad'])) {
             $divisionNueva = $_POST['division'];
             $cantidad = $_POST['cantidad'];
@@ -100,7 +98,5 @@ class PageController{
         }else{
             $this->pageUser('Falta completar campos ');
         }
-       
-        
     }
 }

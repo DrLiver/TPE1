@@ -1,5 +1,5 @@
 <article id="registerDiv">
-    <form action="registerError" method="post">
+    <form action="registerMesage" method="post">
         <h3>Registrate</h3>
         <div>
             <div id="registerLabels">

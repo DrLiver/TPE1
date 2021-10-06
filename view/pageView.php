@@ -9,7 +9,7 @@ class PageView{
         $this->smarty = new Smarty();
     }
 
-    function showHeaderNav($title) {
+    public function showHeaderNav($title) {
         $this->smarty->assign('title',"{$title}");
         $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->display("templates/header.tpl");
@@ -17,26 +17,24 @@ class PageView{
 
     }
 
-    function userLocation(){
+    public function userLocation(){
         header("Location:".BASE_URL."user");
     }
 
-    function traerHome($equipos,$divisiones){
+    public function traerHome($equipos,$divisiones){
         $this->smarty->assign('equipo',$equipos);
         $this->smarty->assign('division',$divisiones);
         $this->showHeaderNav("inicio");
         $this->smarty->display("templates/home.tpl");
     }
 
-    function verUnEquipo($equipo){
+    public function verUnEquipo($equipo){
         $this->smarty->assign('equipo',$equipo);
         $this->showHeaderNav("Detalle de la Tarea");
         $this->smarty->display("templates/detalleEquipo.tpl");
     }
     
- 
-
-    function traerHomeUser($equipos,$divisiones,$error){
+    public function traerHomeUser($equipos,$divisiones,$error){
         $this->smarty->assign('equipo',$equipos);
         $this->smarty->assign('division',$divisiones);
         $this->smarty->assign('error',$error);

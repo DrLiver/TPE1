@@ -32,7 +32,7 @@ if (!empty($_REQUEST['operacion'])) {
         case 'register':
             $LoginController->showRegister();
             break;
-        case 'registerError':
+        case 'registerMesage':
             $LoginController->completeRegister($_REQUEST['registerUsername'], $_REQUEST['registerPassword']);
             break;
         case 'login':
@@ -50,16 +50,7 @@ if (!empty($_REQUEST['operacion'])) {
         case 'agregarDivision': 
             $Controller->agregarDivision();
             break;         
-           
-             /*
-        case "agregar":
-            $controller->addToDb($_REQUEST["name"], $_REQUEST["apellido"], $_REQUEST["tel"]);
-            break;
-
-        case "eliminar":
-            $controller->removeToDb($parametros[1]);
-            break;
-
+ /*
         case "modificar":
             $controller->modifyToDb($parametros[1], 'CAMBIO', 'CAMBIO', '666');
             var_dump($operacion);

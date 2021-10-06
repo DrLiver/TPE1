@@ -11,30 +11,31 @@ class LoginController {
         $this->view = new RegisterView();
     }
 
-    function login ($username, $password) {
+    public function login ($username, $password) {
         
     }
 
-    function showRegister ($error ="") {
+    public function showRegister ($error ="") {
         $this->view->showRegister($error);
     }
 
-    function completeRegister ($username, $password) {
-        $alreadyRegistered = false;
-        foreach ($this->model->bringUsersDB() as $user) {
-            if ($username == $user->username && $password !="") {
-                $alreadyRegistered = true;
-                $this->showRegister('otro usuario ya tiene el mismo nombre');
+    public function completeRegister ($username, $password) {
+        if (!empty($username)&&!empty($password)) {
+            $passwordHash = password_hash($password,PASSWORD_BCRYPT);
+            $alreadyRegistered = false;
+            foreach ($this->model->bringUsersDB() as $user) {
+                if ($username == $user->username && $password !="") {
+                    $alreadyRegistered = true;
+                    $this->showRegister('Usuario en uso');
+                }
             }
-        }   
-        if ($alreadyRegistered == false) {
-            if (!empty($username)&&!empty($password)) {
-                $passwordHash = password_hash($password,PASSWORD_BCRYPT);
+            if($alreadyRegistered == false ){
                 $this->model->crearUsuario($username,$passwordHash);
-                header('Location:' . BASE_URL . 'registerCompleted');
-            }else{
-                $this->showRegister('Faltan completar campos');
+                $this->showRegister("Registro Exitoso!");
+               
             }
-        }
+        }else{
+            $this->showRegister('Faltan completar campos');
+            }
     }
 }

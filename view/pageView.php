@@ -10,9 +10,15 @@ class PageView{
     }
 
     public function showHeaderNav($title = 'Home', $loginError = '') {
+        session_start();
+        $session = '';
+        if (!empty($_SESSION)) {
+            $session = $_SESSION['username'];
+        }
         $this->smarty->assign('title',"{$title}");
         $this->smarty->assign('loginError',"{$loginError}");
         $this->smarty->assign('BASE_URL', BASE_URL);
+        $this->smarty->assign('SESSION', "{$session}");
         $this->smarty->display("templates/header.tpl");
         $this->smarty->display("templates/nav.tpl");
 

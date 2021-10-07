@@ -16,6 +16,7 @@
     <header id="header">
         <h1 id="title">fichajes</h1>
         <div>
+        {if $SESSION eq ''}
             <h4>iniciar sesión</h4>
             <form action="login" method="POST" id="form">
                 <label for="username">usuario:</label>
@@ -24,7 +25,12 @@
                 <input type="text" name="password" id="inputLogin">
                 <input type="submit" value="Login">
             </form>
-            <p id="loginError">{$loginError}</p>
-            <p id="register">no tienes una cuenta? Registrate <a href="register">aquí</a></p>
+            <p id="register"><span id="loginError">{$loginError}</span>no tienes una cuenta? Registrate <a href="register">aquí</a></p>
+        {/if}
+        {if $SESSION neq ''}
+            <form action="logout" method="POST" id="form">
+                <input type="submit" value="Logout">
+            </form>
+        {/if}
         </div>
     </header>

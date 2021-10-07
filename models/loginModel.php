@@ -19,13 +19,5 @@ class LoginModel {
         $sentencia->execute([$username,$password]);
     }
 
-    public function verifyLogin ($username, $password) {
-        $arrayUsers = $this->bringUsersDB();
-        foreach ($arrayUsers as $user) {
-            if($user->username == $username) {
-                echo 'hola';
-            }
-        }
-    }
     
 }

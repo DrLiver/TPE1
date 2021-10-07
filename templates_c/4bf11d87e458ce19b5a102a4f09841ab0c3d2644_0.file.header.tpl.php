@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-07 17:28:09
+/* Smarty version 3.1.39, created on 2021-10-08 01:39:33
   from 'C:\xampp\htdocs\test\TPE1\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_615f12098986f0_63913000',
+  'unifunc' => 'content_615f85357156d4_01536753',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4bf11d87e458ce19b5a102a4f09841ab0c3d2644' => 
     array (
       0 => 'C:\\xampp\\htdocs\\test\\TPE1\\templates\\header.tpl',
-      1 => 1633620302,
+      1 => 1633649971,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_615f12098986f0_63913000 (Smarty_Internal_Template $_smarty_tpl) {
+function content_615f85357156d4_01536753 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -43,6 +43,7 @@ function content_615f12098986f0_63913000 (Smarty_Internal_Template $_smarty_tpl)
     <header id="header">
         <h1 id="title">fichajes</h1>
         <div>
+        <?php if ($_smarty_tpl->tpl_vars['SESSION']->value == '') {?>
             <h4>iniciar sesión</h4>
             <form action="login" method="POST" id="form">
                 <label for="username">usuario:</label>
@@ -51,9 +52,14 @@ function content_615f12098986f0_63913000 (Smarty_Internal_Template $_smarty_tpl)
                 <input type="text" name="password" id="inputLogin">
                 <input type="submit" value="Login">
             </form>
-            <p id="loginError"><?php echo $_smarty_tpl->tpl_vars['loginError']->value;?>
-</p>
-            <p id="register">no tienes una cuenta? Registrate <a href="register">aquí</a></p>
+            <p id="register"><span id="loginError"><?php echo $_smarty_tpl->tpl_vars['loginError']->value;?>
+</span>no tienes una cuenta? Registrate <a href="register">aquí</a></p>
+        <?php }?>
+        <?php if ($_smarty_tpl->tpl_vars['SESSION']->value != '') {?>
+            <form action="logout" method="POST" id="form">
+                <input type="submit" value="Logout">
+            </form>
+        <?php }?>
         </div>
     </header><?php }
 }

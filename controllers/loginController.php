@@ -19,13 +19,46 @@ class LoginController {
 
     public function login ($username, $password) {
         if (!empty($username) && !empty($password)) {
-            $this->model->verifyLogin($username, $password);
+            $users = $this->model->bringUsersDB();
+            foreach ($users as $user) {
+                if($user->username == $username) {
+                    if (password_verify($password, $user->password)) {
+                        session_start();
+                        $_SESSION['username'] = $username;
+                        $_SESSION['password'] = password_hash($password,PASSWORD_BCRYPT);
+                        header("Location:".BASE_URL."home");
+                        break;
+                    }
+                    else {
+                        $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'la contraseña es incorrecta. ');
+                        break;
+                    }
+                }
+                else {
+                    $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'el usuario es incorrecto. ');
+                }
+
+            }
         }
         else {
-            $equipos =  $this->PageModel->traerEquipos();
-            $division =  $this->PageModel->traerDivisiones();
-            $this->PageView->traerHome($equipos, $division, 'faltan completar campos!!!');
+            $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'faltan completar campos. ');
         }
+    }
+
+    public function checkLogin () {
+        session_start();
+        if (!empty($_SESSION)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public function logout () {
+        session_start();
+        session_destroy();
+        header("Location:".BASE_URL."home");
     }
 
     public function showRegister ($error ="") {

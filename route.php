@@ -49,7 +49,10 @@ if (!empty($_REQUEST['operacion'])) {
             break;  
         case 'agregarDivision': 
             $Controller->agregarDivision();
-            break;         
+            break;
+        case 'logout':
+            $LoginController->logout();
+            break;
  /*
         case "modificar":
             $controller->modifyToDb($parametros[1], 'CAMBIO', 'CAMBIO', '666');

@@ -18,5 +18,14 @@ class LoginModel {
         $sentencia = $this->basededatos->prepare("INSERT INTO usuario(username, password) VALUES(?, ?)");
         $sentencia->execute([$username,$password]);
     }
+
+    public function verifyLogin ($username, $password) {
+        $arrayUsers = $this->bringUsersDB();
+        foreach ($arrayUsers as $user) {
+            if($user->username == $username) {
+                echo 'hola';
+            }
+        }
+    }
     
 }

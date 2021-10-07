@@ -24,6 +24,7 @@
                 <input type="text" name="password" id="inputLogin">
                 <input type="submit" value="Login">
             </form>
+            <p id="loginError">{$loginError}</p>
             <p id="register">no tienes una cuenta? Registrate <a href="register">aquí</a></p>
         </div>
     </header>

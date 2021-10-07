@@ -9,8 +9,9 @@ class PageView{
         $this->smarty = new Smarty();
     }
 
-    public function showHeaderNav($title) {
+    public function showHeaderNav($title = 'Home', $loginError = '') {
         $this->smarty->assign('title',"{$title}");
+        $this->smarty->assign('loginError',"{$loginError}");
         $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->display("templates/header.tpl");
         $this->smarty->display("templates/nav.tpl");
@@ -21,10 +22,10 @@ class PageView{
         header("Location:".BASE_URL."user");
     }
 
-    public function traerHome($equipos,$divisiones){
+    public function traerHome($equipos,$divisiones, $loginError = ''){
         $this->smarty->assign('equipo',$equipos);
         $this->smarty->assign('division',$divisiones);
-        $this->showHeaderNav("inicio");
+        $this->showHeaderNav("inicio", $loginError);
         $this->smarty->display("templates/home.tpl");
     }
 

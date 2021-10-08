@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "main";
+    src: url('../fonts/Animal/Silence.otf') format("opentype");
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
@@ -32,33 +37,36 @@ body {
     list-style: none;
 }
 
+#nav ul li {
+    display: inline;
+}
+
 #content {
     grid-area: content;
 }
 
 #title {
     text-transform: uppercase;
+    font-family: 'main';
 }
 
 #register {
     font-weight: bolder;
 }
 
-#register a {
+#register a,
+#loginError {
     color: red;
 }
 
 
 /* tabla*/
 
-
-
-.section-filtro{
+.section-filtro {
     margin-left: 60%;
     width: 300px;
     margin-bottom: -20px;
 }
-
 
 table {
     border: 2px solid black;
@@ -71,7 +79,6 @@ table {
     justify-content: center;
     margin-bottom: 50px;
     align-items: center;
-    
 }
 
 th {
@@ -192,74 +199,79 @@ a {
     flex-direction: column;
 }
 
+
 /* FORM USERHOME*/
-.tabla_user{
+
+.tabla_user {
     margin-top: 50px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-bottom: 50px;
     align-items: flex-start;
-    
 }
 
-.form_agregar{
+.form_agregar {
     display: flex;
-	flex-flow: column;
-	align-items: center;
-	background: rgb(11, 64, 39);
-	box-shadow:  inset 0px 0px 13px 7px rgb(0 0 0);
-	min-height: 450px;
+    flex-flow: column;
+    align-items: center;
+    background: rgb(11, 64, 39);
+    box-shadow: inset 0px 0px 13px 7px rgb(0 0 0);
+    min-height: 450px;
     max-height: 500px;
     max-width: 500px;
 }
-textarea{
+
+textarea {
     min-width: 200px;
     max-height: 500px;
     max-width: 460px;
 }
 
 .form_input {
-	border: none;
-	box-shadow: inset 0px 0px 12px 0px rgb(0 0 0);
-	margin: 20px;
-	width: 200px;
-	padding: 7px;
-	text-align: center;	
-	color: #000;
+    border: none;
+    box-shadow: inset 0px 0px 12px 0px rgb(0 0 0);
+    margin: 20px;
+    width: 200px;
+    padding: 7px;
+    text-align: center;
+    color: #000;
 }
 
-.eliminar{
+.eliminar {
     width: 150px;
 }
-.btns{
+
+.btns {
     margin: 20px;
 }
 
-.btn{
-	height: 35px;
-	background: transparent;
-	border: none;
+.btn {
+    height: 35px;
+    background: transparent;
+    border: none;
     font-size: 15px;
     margin: 7px;
 }
 
-.btn:hover{
+.btn:hover {
     font-size: 25px;
 }
 
-.fa-trash-alt,.fa-edit{
-	color:rgb(0, 0, 0);
-	transition: all .3s;
+.fa-trash-alt,
+.fa-edit {
+    color: rgb(0, 0, 0);
+    transition: all .3s;
 }
 
-.fa-trash-alt:hover{
-	color:rgb(226, 9, 9);
+.fa-trash-alt:hover {
+    color: rgb(226, 9, 9);
 }
 
-.fa-edit:hover{
-    color:rgb(8, 224, 19);
+.fa-edit:hover {
+    color: rgb(8, 224, 19);
 }
-.error{
-    color:red
+
+.error {
+    color: red
 }

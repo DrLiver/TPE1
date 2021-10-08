@@ -20,7 +20,7 @@ if (!empty($_REQUEST['operacion'])) {
         case 'home': 
             $Controller->home();
             break;
-        case 'user':
+        case 'admin':
             $Controller->pageUser();
             break;
         case 'filtrar': 

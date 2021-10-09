@@ -21,7 +21,12 @@ if (!empty($_REQUEST['operacion'])) {
             $Controller->home();
             break;
         case 'admin':
-            $Controller->pageUser();
+            if($LoginController->checkLogin()) {
+                $Controller->admin();
+            }
+            else {
+                $Controller->home();
+            }
             break;
         case 'filtrar': 
             $Controller->filtrar($_REQUEST["division"]);

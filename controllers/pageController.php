@@ -28,7 +28,7 @@ class PageController{
         $this->view->traerHome($equipos,$divisiones);
     }
 
-    public function pageUser($error=''){
+    public function admin($error=''){
         $equipos =  $this->model->traerEquipos();
         $division =  $this->model->traerDivisiones();
         $this->view->traerHomeUser($equipos,$division,$error);
@@ -46,13 +46,13 @@ class PageController{
         foreach ($this->model->traerEquipos() as $equipos ) {
             if ($equipos->id_division == $id) {
                 $enUso = true;
-                $this->pageUser('No podes eliminar a una division en uso');
+                $this->admin('No podes eliminar a una division en uso');
                 break;
             }
         }
         if($enUso == false ){
             $this->model->borrarDivisionBaseDeDatos($id);
-            $this->pageUser();
+            $this->admin();
         }
     }
 
@@ -64,18 +64,18 @@ class PageController{
             foreach ($this->model->traerEquipos() as $nombre ) {
                 if (($nombre->nombre) == ($equipo)) {
                     $enUso = true;
-                    $this->pageUser('El equipo  que queres agregar ya esta en uso');
+                    $this->admin('El equipo  que queres agregar ya esta en uso');
                 }
             }
             if($enUso == false ){
                 $division = $this->model->traerIdDivisiones($_POST['division']);
                 $id= $division->id_division;
                 $this->model->insertarEquipo($id ,$equipo,$_POST['descripcion'],$posicion);
-                $this->pageUser();
+                $this->admin();
             }
 
         }else{
-            $this->pageUser('Falta completar campos ');
+            $this->admin('Falta completar campos ');
         }
     }
 
@@ -88,15 +88,15 @@ class PageController{
             foreach ($this->model->traerDivisiones() as $divisiones ) {
                 if (($divisiones->division) == ($divisionNueva)) {
                     $enUso = true;
-                    $this->pageUser('La division que queres agregar ya esta en uso');
+                    $this->admin('La division que queres agregar ya esta en uso');
                 }
             }
             if($enUso == false ){
                 $this->model->insertarDivision($cantidad,$divisionNueva);
-                $this->pageUser();
+                $this->admin();
             }
         }else{
-            $this->pageUser('Falta completar campos ');
+            $this->admin('Falta completar campos ');
         }
     }
 }

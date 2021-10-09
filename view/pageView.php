@@ -11,7 +11,7 @@ class PageView{
 
     public function showHeaderNav($title = 'Home', $loginError = '') {
         session_start();
-        $session = '';
+        $session = null;
         if (!empty($_SESSION)) {
             $session = $_SESSION['username'];
         }

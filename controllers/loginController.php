@@ -3,7 +3,6 @@ require_once 'models/LoginModel.php';
 require_once 'view/RegisterView.php';
 require_once 'models/PageModel.php';
 require_once 'view/pageView.php';
-
 class LoginController {
     private $model;
     private $view;
@@ -23,9 +22,7 @@ class LoginController {
             foreach ($users as $user) {
                 if($user->username == $username) {
                     if (password_verify($password, $user->password)) {
-                        session_start();
-                        $_SESSION['username'] = $username;
-                        $_SESSION['password'] = password_hash($password,PASSWORD_BCRYPT);
+                        $this->startSession($username, password_hash($password,PASSWORD_BCRYPT));
                         header("Location:".BASE_URL."home");
                         break;
                     }
@@ -35,7 +32,7 @@ class LoginController {
                     }
                 }
                 else {
-                    $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'el usuario es incorrecto. ');
+                    $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'el usuario no existe. ');
                 }
 
             }
@@ -46,14 +43,31 @@ class LoginController {
     }
 
     public function checkLogin () {
-        session_start();
-        if (!empty($_SESSION)) {
+        $user = $this->callSession('username');
+        if ($user != null) {
             return true;
         }
         else {
             return false;
         }
     }
+
+    public function startSession ($username, $password) {
+        session_start();
+        $_SESSION['username'] = $username;
+        $_SESSION['password'] = $password;
+        session_write_close();
+    }
+    
+    public function callSession ($who) {
+        error_reporting(0);
+        session_start();
+        $data = $_SESSION[$who];
+        session_write_close();
+        error_reporting(1);
+        return $data;
+    }
+
 
     public function logout () {
         session_start();

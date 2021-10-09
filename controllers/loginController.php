@@ -1,6 +1,6 @@
 <?php
 require_once 'models/LoginModel.php';
-require_once 'view/RegisterView.php';
+require_once 'view/logRegView.php';
 require_once 'models/PageModel.php';
 require_once 'view/pageView.php';
 class LoginController {
@@ -19,27 +19,37 @@ class LoginController {
     public function login ($username, $password) {
         if (!empty($username) && !empty($password)) {
             $users = $this->model->bringUsersDB();
-            foreach ($users as $user) {
-                if($user->username == $username) {
-                    if (password_verify($password, $user->password)) {
-                        $this->startSession($username, password_hash($password,PASSWORD_BCRYPT));
-                        header("Location:".BASE_URL."home");
-                        break;
+            if (!empty($users)) {
+                foreach ($users as $user) {
+                    if($user->username == $username) {
+                        if (password_verify($password, $user->password)) {
+                            $this->startSession($username, password_hash($password,PASSWORD_BCRYPT));
+                            header("Location:".BASE_URL."home");
+                            break;
+                        }
+                        else {
+                            $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'la contraseña es incorrecta. ');
+                            break;
+                        }
                     }
                     else {
-                        $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'la contraseña es incorrecta. ');
-                        break;
+                        $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'el usuario no existe. ');
                     }
+    
                 }
-                else {
-                    $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'el usuario no existe. ');
-                }
-
+            }
+            else {
+                $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'no hay usuarios en la base. ');
             }
         }
         else {
             $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'faltan completar campos. ');
         }
+    }
+
+    public function showUsers() {
+        $users = $this->model->bringUsersDB();
+        $this->view->usersTable($users);
     }
 
     public function checkLogin () {

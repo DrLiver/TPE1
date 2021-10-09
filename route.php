@@ -28,6 +28,13 @@ if (!empty($_REQUEST['operacion'])) {
                 $Controller->home();
             }
             break;
+        case 'usersList':
+            if ($LoginController->checkLogin()) {
+               $LoginController->showUsers();  
+            }
+            else {
+                $Controller->home();
+            }
         case 'filtrar': 
             $Controller->filtrar($_REQUEST["division"]);
             break;

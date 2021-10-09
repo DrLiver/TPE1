@@ -18,4 +18,10 @@ class RegisterView{
         $this->smarty->display('templates/register.tpl');
     }
 
+    public function usersTable ($users) {
+        $this->smarty->assign('users', $users);
+        $this->pageView->showHeaderNav("usuarios");
+        $this->smarty->display('templates/usersList.tpl');
+    }
+
 }

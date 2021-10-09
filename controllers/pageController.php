@@ -37,7 +37,7 @@ class PageController{
 
     public function eliminarEquipo($id){
         $this->model->borrarEquipoBaseDeDatos($id);
-        $this->view->userLocation();
+        $this->view->location();
         
     }
 

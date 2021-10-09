@@ -24,8 +24,8 @@ class PageView{
 
     }
 
-    public function userLocation(){
-        header("Location:".BASE_URL."user");
+    public function location(){
+        header("Location:".BASE_URL."home");
     }
 
     public function traerHome($equipos,$divisiones, $loginError = ''){

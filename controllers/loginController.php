@@ -18,25 +18,17 @@ class LoginController {
 
     public function login ($username, $password) {
         if (!empty($username) && !empty($password)) {
-            $users = $this->model->bringUsersDB();
-            if (!empty($users)) {
-                foreach ($users as $user) {
-                    if($user->username == $username) {
+            $user = $this->model->traerUser($username);
+            if (!empty($user)) {
                         if (password_verify($password, $user->password)) {
                             $this->startSession($username, password_hash($password,PASSWORD_BCRYPT));
                             header("Location:".BASE_URL."home");
-                            break;
+                           
                         }
                         else {
                             $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'la contraseña es incorrecta. ');
-                            break;
+                           
                         }
-                    }
-                    else {
-                        $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'el usuario no existe. ');
-                    }
-    
-                }
             }
             else {
                 $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'no hay usuarios en la base. ');
@@ -54,11 +46,8 @@ class LoginController {
 
     public function checkLogin () {
         $user = $this->callSession('username');
-        if ($user != null) {
-            return true;
-        }
-        else {
-            return false;
+        if ($user == null) {
+            $this->PageView->location();
         }
     }
 
@@ -108,5 +97,83 @@ class LoginController {
         else{
             $this->showRegister('Faltan completar campos');
             }
+    }
+
+    
+    public function admin($error=''){
+        $this->checkLogin ();
+        $equipos =  $this->PageModel->traerEquipos();
+        $division =  $this->PageModel->traerDivisiones();
+        $this->PageView->traerHomeUser($equipos,$division,$error);
+       
+    }
+
+    public function eliminarEquipo($id){
+        $this->checkLogin ();
+        $this->PageModel->borrarEquipoBaseDeDatos($id);
+        $this->PageWiew->location();
+        
+    }
+
+    public function eliminarDivision($id){
+        $this->checkLogin ();
+        $enUso = false;
+        foreach ($this->PageModel->traerEquipos() as $equipos ) {
+            if ($equipos->id_division == $id) {
+                $enUso = true;
+                $this->admin('No podes eliminar a una division en uso');
+                break;
+            }
+        }
+        if($enUso == false ){
+            $this->PageModel->borrarDivisionBaseDeDatos($id);
+            $this->admin();
+        }
+    }
+
+    public function agregarEquipo(){
+        $this->checkLogin ();
+        if (!empty($_POST['equipo'])&&!empty($_POST['posicion'])) {
+            $equipo = $_POST['equipo'];
+            $posicion = $_POST['posicion'];
+            $enUso = false;
+            foreach ($this->PageModel->traerEquipos() as $nombre ) {
+                if (($nombre->nombre) == ($equipo)) {
+                    $enUso = true;
+                    $this->admin('El equipo  que queres agregar ya esta en uso');
+                }
+            }
+            if($enUso == false ){
+                $division = $this->PageModel->traerIdDivisiones($_POST['division']);
+                $id= $division->id_division;
+                $this->PageModel->insertarEquipo($id ,$equipo,$_POST['descripcion'],$posicion);
+                $this->admin();
+            }
+
+        }else{
+            $this->admin('Falta completar campos ');
+        }
+    }
+
+    public function agregarDivision(){
+        $this->checkLogin ();
+        if (!empty($_POST['division'])&&!empty($_POST['cantidad'])) {
+            $divisionNueva = $_POST['division'];
+            $cantidad = $_POST['cantidad'];
+            
+            $enUso = false;
+            foreach ($this->PageModel->traerDivisiones() as $divisiones ) {
+                if (($divisiones->division) == ($divisionNueva)) {
+                    $enUso = true;
+                    $this->admin('La division que queres agregar ya esta en uso');
+                }
+            }
+            if($enUso == false ){
+                $this->PageModel->insertarDivision($cantidad,$divisionNueva);
+                $this->admin();
+            }
+        }else{
+            $this->admin('Falta completar campos ');
+        }
     }
 }

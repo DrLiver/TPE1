@@ -19,5 +19,9 @@ class LoginModel {
         $sentencia->execute([$username,$password]);
     }
 
-    
+    public function traerUser ($username) {
+        $sentencia = $this->basededatos->prepare("SELECT * FROM usuario WHERE username=?");
+        $sentencia->execute([$username]);
+        return $sentencia->fetch(PDO::FETCH_OBJ);
+    }
 }

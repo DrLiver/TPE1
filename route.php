@@ -21,20 +21,11 @@ if (!empty($_REQUEST['operacion'])) {
             $Controller->home();
             break;
         case 'admin':
-            if($LoginController->checkLogin()) {
-                $Controller->admin();
-            }
-            else {
-                $Controller->home();
-            }
+                $LoginController->admin();
             break;
         case 'usersList':
-            if ($LoginController->checkLogin()) {
                $LoginController->showUsers();  
-            }
-            else {
-                $Controller->home();
-            }
+               break;
         case 'filtrar': 
             $Controller->filtrar($_REQUEST["division"]);
             break;
@@ -51,16 +42,16 @@ if (!empty($_REQUEST['operacion'])) {
             $LoginController->login($_REQUEST['username'], $_REQUEST['password']);
             break;
         case 'eliminarEquipo': 
-            $Controller->eliminarEquipo($parametros[1]);
+            $LoginController->eliminarEquipo($parametros[1]);
             break;  
         case 'eliminarDivision': 
-            $Controller->eliminarDivision($parametros[1]);
+            $LoginController->eliminarDivision($parametros[1]);
             break; 
         case 'agregarEquipo': 
-            $Controller->agregarEquipo();
+            $LoginController->agregarEquipo();
             break;  
         case 'agregarDivision': 
-            $Controller->agregarDivision();
+            $LoginController->agregarDivision();
             break;
         case 'logout':
             $LoginController->logout();

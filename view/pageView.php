@@ -20,16 +20,13 @@ class PageView{
         $this->smarty->assign('SESSION', $session);
         $this->smarty->display("templates/header.tpl");
         $this->smarty->display("templates/nav.tpl");
-
     }
 
     public function location(){
         header("Location:".BASE_URL."home");
     }
 
-
-
-    public function traerHome($equipos,$divisiones, $loginError = ''){
+    public function traerHome($equipos,$divisiones,$loginError = ''){
         $this->smarty->assign('equipo',$equipos);
         $this->smarty->assign('division',$divisiones);
         $this->showHeaderNav("inicio", $loginError);

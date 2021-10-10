@@ -56,12 +56,19 @@ if (!empty($_REQUEST['operacion'])) {
         case 'logout':
             $LoginController->logout();
             break;
- /*
-        case "modificar":
-            $controller->modifyToDb($parametros[1], 'CAMBIO', 'CAMBIO', '666');
-            var_dump($operacion);
+        case "modificarEquipo":
+            $LoginController->TraerParamodificar($parametros[1]);
             break;
-*/
+        case "actualizarEquipo":
+            $LoginController->actualizarEquipo($_REQUEST['id_equipo'],$_REQUEST['equipo'],$_REQUEST['descripcion'], $_REQUEST['posicion'],$_REQUEST['division']);
+            break;
+        case "modificarDivision":
+            $LoginController->TraerParamodificarDivision($parametros[1]);
+            break;
+        case "actualizarDivision":
+            $LoginController->actualizarDivision($_REQUEST['id_division'],$_REQUEST['cantidad'],$_REQUEST['division']);
+            break;
+
         default:
             echo"page not found";
             break;

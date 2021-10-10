@@ -24,4 +24,12 @@ class RegisterView{
         $this->smarty->display('templates/usersList.tpl');
     }
 
+    public function TraerParamodificar($divisiones,$equipo=''){
+        $this->smarty->assign('divisiones', $divisiones);
+        $this->smarty->assign('equipo', $equipo);
+        $this->pageView->showHeaderNav("actualizar");
+        $this->smarty->display('templates/actualizar.tpl');
+    }
+
+
 }

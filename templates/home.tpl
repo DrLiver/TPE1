@@ -23,7 +23,6 @@
                     <tr >
                         <td class="td-equipo"><a href="equipo/{$item->id_equipo}">{$item->nombre}</a></td>
                          <td>{$item->division}</td>
-                        <!--<td><a href="eliminarEntrada/{$item->entrada_id}"><button class="btn"><i class="fas fa-trash-alt"></i></button></a></td>-->
                     </tr>	
                     {/foreach}
 			</tbody>

@@ -39,7 +39,7 @@ class LoginController {
     }
 
     private function checkLogin() {
-        error_reporting(0);
+       error_reporting(0);
         session_start();
         $user = $_SESSION['username'];
         if ($user == '') {
@@ -93,7 +93,7 @@ class LoginController {
 
     public function eliminarEquipo($id){
         $this->checkLogin ();
-        $this->PageModel->borrarEquipoBaseDeDatos($id);
+        $this->model->borrarEquipoBaseDeDatos($id);
         $this->admin();
     }
 
@@ -108,7 +108,7 @@ class LoginController {
             }
         }
         if($enUso == false ){
-            $this->PageModel->borrarDivisionBaseDeDatos($id);
+            $this->model->borrarDivisionBaseDeDatos($id);
             $this->admin();
         }
     }
@@ -126,9 +126,9 @@ class LoginController {
                 }
             }
             if($enUso == false ){
-                $division = $this->PageModel->traerIdDivisiones($_POST['division']);
+                $division = $this->model->traerIdDivisiones($_POST['division']);
                 $id= $division->id_division;
-                $this->PageModel->insertarEquipo($id ,$equipo,$_POST['descripcion'],$posicion);
+                $this->model->insertarEquipo($id ,$equipo,$_POST['descripcion'],$posicion);
                 $this->admin();
             }
 
@@ -150,11 +150,39 @@ class LoginController {
                 }
             }
             if($enUso == false ){
-                $this->PageModel->insertarDivision($cantidad,$divisionNueva);
+                $this->model->insertarDivision($cantidad,$divisionNueva);
                 $this->admin();
             }
         }else{
             $this->admin('Falta completar campos ');
         }
+    }
+
+    public function TraerParamodificar($id){
+        $this->checkLogin ();
+        $equipo = $this->model-> TraerParaActualizar($id);
+        $divisiones =  $this->PageModel->traerDivisiones();
+        $this->view->TraerParamodificar($divisiones,$equipo);
+    }
+
+    public function actualizarEquipo($id,$nombre,$descripcion,$posicion,$division){
+        $this->checkLogin ();
+        $division = $this->model->traerIdDivisiones($_POST['division']);
+        $id_division= $division->id_division;
+        $this->model->actualizarEquipo($id,$nombre,$descripcion,$posicion,$id_division);
+        $this->admin();
+    }
+
+    public function TraerParamodificarDivision($id){
+        $this->checkLogin ();
+        $divisiones =  $this->model-> TraerParaActualizarDivision($id);
+        $this->view->TraerParamodificar($divisiones);
+    }
+
+    public function actualizarDivision($id,$cantidad,$division){
+        $this->checkLogin ();
+        $this->model->actualizarDivision($id,$cantidad,$division);
+        $this->admin();
+
     }
 }

@@ -36,33 +36,8 @@ class PageModel {
         return $equipos;
     }
 
-    /* funciones de adminstrador -- quizas deberia ir en UserModel ? */
+    
+    
 
-    public function borrarEquipoBaseDeDatos($id){
-        $sentencia = $this->basededatos->prepare("DELETE FROM equipos WHERE id_equipo=?");
-        $sentencia->execute(array($id)); 
-    }
-
-    public function borrarDivisionBaseDeDatos($id){
-        $sentencia = $this->basededatos->prepare("DELETE FROM divisiones WHERE id_division=?");
-        $sentencia->execute(array($id));   
-    }
-    
-    public function traerIdDivisiones($division){
-        $sentencia = $this->basededatos->prepare('SELECT * FROM divisiones WHERE division=?');
-        $sentencia->execute(array($division));
-        $divisiones = $sentencia->fetch(PDO::FETCH_OBJ);
-        return $divisiones;
-    }
-    
-    public function insertarEquipo($division,$equipo,$descripcion,$posicion){
-            $sentencia = $this->basededatos->prepare("INSERT INTO equipos( id_division, nombre, descripcion,posicion) /* nombre de la base de datos */VALUES(?,?,?,?)");
-            $sentencia->execute(array($division,$equipo,$descripcion,$posicion));   
-    
-        }
-        
-    public function insertarDivision($cantidad,$division){
-        $sentencia = $this->basededatos->prepare("INSERT INTO divisiones( division,cantidad_equipos) /* nombre de la base de datos */VALUES(?,?)");
-        $sentencia->execute(array($division,$cantidad));   
-    }
+   
 }

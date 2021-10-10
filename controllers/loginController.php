@@ -20,18 +20,17 @@ class LoginController {
         if (!empty($username) && !empty($password)) {
             $user = $this->model->traerUser($username);
             if (!empty($user)) {
-                        if (password_verify($password, $user->password)) {
-                            $this->startSession($username, password_hash($password,PASSWORD_BCRYPT));
-                            header("Location:".BASE_URL."home");
-                           
-                        }
-                        else {
-                            $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'la contraseña es incorrecta. ');
-                           
-                        }
+                if (password_verify($password, $user->password)) {
+                    session_start();
+                    $_SESSION['username'] = $username;
+                    $this->PageView->location();
+                }
+                else {
+                    $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'la contraseña es incorrecta. ');
+                }
             }
             else {
-                $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'no hay usuarios en la base. ');
+                $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'El usuario no existe en nuestra base de datos ');
             }
         }
         else {
@@ -39,39 +38,25 @@ class LoginController {
         }
     }
 
-    public function showUsers() {
-        $users = $this->model->bringUsersDB();
-        $this->view->usersTable($users);
-    }
-
-    public function checkLogin () {
-        $user = $this->callSession('username');
-        if ($user == null) {
+    private function checkLogin() {
+        error_reporting(0);
+        session_start();
+        $user = $_SESSION['username'];
+        if ($user == '') {
             $this->PageView->location();
         }
     }
 
-    public function startSession ($username, $password) {
-        session_start();
-        $_SESSION['username'] = $username;
-        $_SESSION['password'] = $password;
-        session_write_close();
+    public function showUsers() {
+        $this->checkLogin ();
+        $users = $this->model->bringUsersDB();
+        $this->view->usersTable($users);
     }
-    
-    public function callSession ($who) {
-        error_reporting(0);
-        session_start();
-        $data = $_SESSION[$who];
-        session_write_close();
-        error_reporting(1);
-        return $data;
-    }
-
 
     public function logout () {
         session_start();
         session_destroy();
-        header("Location:".BASE_URL."home");
+        $this->PageView->location();
     }
 
     public function showRegister ($error ="") {
@@ -91,12 +76,11 @@ class LoginController {
             if($alreadyRegistered == false ){
                 $this->model->crearUsuario($username,$passwordHash);
                 $this->showRegister("Registro Exitoso!");
-               
             }
         }
         else{
             $this->showRegister('Faltan completar campos');
-            }
+        }
     }
 
     
@@ -105,14 +89,12 @@ class LoginController {
         $equipos =  $this->PageModel->traerEquipos();
         $division =  $this->PageModel->traerDivisiones();
         $this->PageView->traerHomeUser($equipos,$division,$error);
-       
     }
 
     public function eliminarEquipo($id){
         $this->checkLogin ();
         $this->PageModel->borrarEquipoBaseDeDatos($id);
-        $this->PageWiew->location();
-        
+        $this->admin();
     }
 
     public function eliminarDivision($id){
@@ -160,7 +142,6 @@ class LoginController {
         if (!empty($_POST['division'])&&!empty($_POST['cantidad'])) {
             $divisionNueva = $_POST['division'];
             $cantidad = $_POST['cantidad'];
-            
             $enUso = false;
             foreach ($this->PageModel->traerDivisiones() as $divisiones ) {
                 if (($divisiones->division) == ($divisionNueva)) {

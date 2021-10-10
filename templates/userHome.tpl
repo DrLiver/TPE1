@@ -5,7 +5,7 @@
             <thead>
                 <tr>
                     <th>nombre</th>
-                    <th class="eliminar">Eliminar Y Modificar</th>
+                    <th class="eliminar">Eliminar y Modificar</th>
                 </tr>
             </thead>
            <tbody class="filas">
@@ -21,7 +21,7 @@
             <thead>
                 <tr>
                     <th>divisiones</th>
-                    <th class="eliminar">Eliminar Y Modificar</th>
+                    <th class="eliminar">Eliminar y Modificar</th>
                 </tr>
             </thead>
            <tbody class="filas">

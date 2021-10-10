@@ -1,9 +1,9 @@
 <nav id="nav">
     <ul>
-    {if ($SESSION eq '')}
+    {if ($SESSION == '')}
         <li><a href="home">home</a></li>  
     {/if}
-    {if ($SESSION neq '')}
+    {if ($SESSION != '')}
         <li><a href="home">home</a></li>
         <li><a href="admin">admin</a></li>
         <li><a href="usersList">users</a></li>      

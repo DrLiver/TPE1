@@ -61,8 +61,8 @@ class LoginModel {
     }
 
     function actualizarEquipo($id,$nombre,$descripcion,$posicion,$division){
-        $sentencia = $this->basededatos->prepare('UPDATE  equipos SET nombre=?,descripcion=?,posicion=?,id_division=?  WHERE id_equipo = "'.$id.'"' );
-        $sentencia->execute(array($nombre,$descripcion,$posicion,$division));  
+        $sentencia = $this->basededatos->prepare('UPDATE  equipos SET nombre=?,descripcion=?,posicion=?,id_division=?  WHERE id_equipo = ?' );
+        $sentencia->execute(array($nombre,$descripcion,$posicion,$division,$id));  
 
     }
 
@@ -74,7 +74,7 @@ class LoginModel {
     }
 
     public function actualizarDivision($id,$cantidad,$division){
-        $sentencia = $this->basededatos->prepare('UPDATE  divisiones SET cantidad_equipos=?, division=?  WHERE id_division = "'.$id.'"' );
-        $sentencia->execute(array($cantidad,$division));  
+        $sentencia = $this->basededatos->prepare('UPDATE  divisiones SET cantidad_equipos=?, division=?  WHERE id_division = ?' );
+        $sentencia->execute(array($cantidad,$division,$id));  
     }
 }

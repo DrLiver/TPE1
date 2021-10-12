@@ -1,12 +1,12 @@
-<h2 class="titulo-detalle"> tabla de equipos y divisiones</h2>
+<h2 class="titulo-detalle"> Tabla de equipos y divisiones</h2>
     <section  id="tabla"class="tabla-detalle detalles">
     
         <table class="equipoDetalle">
             <thead>
                 <tr>
-                    <th>nombre</th>
-                    <th>division</th>
-                    <th>posicion</th>
+                    <th>Nombre</th>
+                    <th>Division</th>
+                    <th>Posicion</th>
                 </tr>
             </thead>
            <tbody>
@@ -22,7 +22,7 @@
          <table class="descripcion">
             <thead>
                 <tr>
-                     <th>descripcion</th>
+                     <th>Descripcion</th>
                 </tr>
             </thead>
            <tbody>

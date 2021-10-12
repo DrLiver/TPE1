@@ -21,11 +21,10 @@
 {if $equipo ==''}
     <form action="actualizarDivision" method="POST" class="form_agregar form_modificar">
         <h1 class="suscribete_title">Modificar divisiones</h1>
+          
             <input class="form_input id_equipo" name="id_division" type="number" value="{$divisiones->id_division}">
-            <input class="form_input " name="division" type="text" placeholder="{$divisiones->division}">
-            
-        
-        <input class="form_input " name="cantidad" type="number" placeholder="{$divisiones->cantidad_equipos}">
+            <input class="form_input " name="division" type="text" placeholder="Division: {$divisiones->division}">
+        <input class="form_input " name="cantidad" type="number" placeholder="N° de equipops: {$divisiones->cantidad_equipos}">
         <button name="btn-agregar" type="submit" class="btns">Modificar Division</button>
     
     </form>

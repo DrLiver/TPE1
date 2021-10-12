@@ -13,8 +13,8 @@
         <table>
             <thead>
                 <tr>
-                    <th>nombre</th>
-                    <th>division</th>
+                    <th>Nombre</th>
+                    <th>Division</th>
                 </tr>
             </thead>
            <tbody class="filas">

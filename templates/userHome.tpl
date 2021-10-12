@@ -4,7 +4,7 @@
          <table>
             <thead>
                 <tr>
-                    <th>nombre</th>
+                    <th>Nombre</th>
                     <th class="eliminar">Eliminar y Modificar</th>
                 </tr>
             </thead>
@@ -21,20 +21,22 @@
          <table>
             <thead>
                 <tr>
-                    <th>divisiones</th>
+                    <th>Divisiones</th>
                     <th class="eliminar">Eliminar y Modificar</th>
                 </tr>
             </thead>
            <tbody class="filas">
+           
                 {foreach from=$division item=$divisiones}
                     <tr>
-                        <td class="td-equipo">{$divisiones->division}</a></td>                         
+                        <td class="td-equipo">{$divisiones->division}</a></td>  
                         <td><a href="eliminarDivision/{$divisiones->id_division}"><button class="btn"><i class="fas fa-trash-alt"></i></button></a>
-                            <a href="modificarDivision/{$divisiones->id_division}"><button type="button"class="btn"><i class="far fa-edit"></i></button></a></td>   
+                            <a href="modificarDivision/{$divisiones->id_division}"><button type="button"class="btn"><i class="far fa-edit"></i></button></a></td>     
                     </tr>	
                 {/foreach}
 			</tbody>
         </table>
+          
         <form action="agregarEquipo" method="POST" class="form_agregar">
 			<h1 class="suscribete_title">Agregar equipos</h1>
 			<select  class="form_input" name="division">
@@ -60,3 +62,6 @@
 </body>
 
 </html>
+
+
+        

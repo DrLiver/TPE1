@@ -3,7 +3,8 @@ require_once 'models/LoginModel.php';
 require_once 'view/logRegView.php';
 require_once 'models/PageModel.php';
 require_once 'view/pageView.php';
-class LoginController {
+
+class AdminController {
     private $model;
     private $view;
     private $PageModel;
@@ -23,7 +24,7 @@ class LoginController {
                 if (password_verify($password, $user->password)) {
                     session_start();
                     $_SESSION['username'] = $username;
-                    $this->PageView->location();
+                    $this->PageView->location("home");
                 }
                 else {
                     $this->PageView->traerHome($this->PageModel->traerEquipos(), $this->PageModel->traerDivisiones(), 'la contraseña es incorrecta. ');
@@ -43,7 +44,7 @@ class LoginController {
         session_start();
         $user = $_SESSION['username'];
         if ($user == '') {
-            $this->PageView->location();
+            $this->PageView->location("home");
         }
     }
 
@@ -56,7 +57,7 @@ class LoginController {
     public function logout () {
         session_start();
         session_destroy();
-        $this->PageView->location();
+        $this->PageView->location("home");
     }
 
     public function showRegister ($error ="") {
@@ -83,6 +84,10 @@ class LoginController {
         }
     }
 
+    public function deleteUser($userID) {
+        $this->model->borrarUser($userID);
+        $this->PageView->location("usersList");
+    }
     
     public function admin($error=''){
         $this->checkLogin ();

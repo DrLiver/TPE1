@@ -25,6 +25,11 @@ class LoginModel {
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
+    public function borrarUser ($userID) {
+        $sentencia = $this->basededatos->prepare("DELETE FROM usuario WHERE id_usuario=?");
+        $sentencia->execute(array($userID)); 
+    }
+
     public function borrarEquipoBaseDeDatos($id){
         $sentencia = $this->basededatos->prepare("DELETE FROM equipos WHERE id_equipo=?");
         $sentencia->execute(array($id)); 

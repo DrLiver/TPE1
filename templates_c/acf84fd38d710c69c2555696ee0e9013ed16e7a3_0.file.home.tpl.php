@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-09 18:15:02
+/* Smarty version 3.1.39, created on 2021-10-14 02:19:36
   from 'C:\xampp\htdocs\test\TPE1\templates\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6161c006a65732_60534247',
+  'unifunc' => 'content_616777986cff55_47284896',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'acf84fd38d710c69c2555696ee0e9013ed16e7a3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\test\\TPE1\\templates\\home.tpl',
-      1 => 1633796101,
+      1 => 1634170758,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6161c006a65732_60534247 (Smarty_Internal_Template $_smarty_tpl) {
+function content_616777986cff55_47284896 (Smarty_Internal_Template $_smarty_tpl) {
 ?><h2> tabla de equipos y divisiones</h2>
     <section  id="tabla"class="tabla_section">
         <div class="section-filtro">
@@ -44,8 +44,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         <table>
             <thead>
                 <tr>
-                    <th>nombre</th>
-                    <th>division</th>
+                    <th>Nombre</th>
+                    <th>Division</th>
                 </tr>
             </thead>
            <tbody class="filas">
@@ -62,8 +62,6 @@ $_smarty_tpl->tpl_vars['item']->do_else = false;
 </a></td>
                          <td><?php echo $_smarty_tpl->tpl_vars['item']->value->division;?>
 </td>
-                        <!--<td><a href="eliminarEntrada/<?php echo $_smarty_tpl->tpl_vars['item']->value->entrada_id;?>
-"><button class="btn"><i class="fas fa-trash-alt"></i></button></a></td>-->
                     </tr>	
                     <?php
 }

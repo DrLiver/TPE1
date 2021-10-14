@@ -22,8 +22,8 @@ class PageView{
         $this->smarty->display("templates/nav.tpl");
     }
 
-    public function location(){
-        header("Location:".BASE_URL."home");
+    public function location($where){
+        header("Location:".BASE_URL."{$where}");
     }
 
     public function traerHome($equipos,$divisiones,$loginError = ''){

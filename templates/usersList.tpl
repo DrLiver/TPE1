@@ -10,7 +10,7 @@
                 {foreach from=$users item=$user}
                     <tr>
                         <td class="td-equipo">{$user->username}</td>
-                        <td>{$user->password}</td>
+                        <td><a href="eliminarUser/{$user->id_usuario}">Eliminar</a></td>
                     </tr>
                 {/foreach}
 			</tbody>

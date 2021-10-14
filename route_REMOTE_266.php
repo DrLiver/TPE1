@@ -1,6 +1,6 @@
 <?php
 require_once 'controllers/PageController.php';
-require_once 'controllers/adminController.php';
+require_once 'controllers/loginController.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -12,7 +12,7 @@ if (!empty($_REQUEST['operacion'])) {
 
 
     $Controller = new PageController();
-    $LoginController = new AdminController();
+    $LoginController = new LoginController();
 
     $parametros = explode('/', $operacion);
 
@@ -56,21 +56,12 @@ if (!empty($_REQUEST['operacion'])) {
         case 'logout':
             $LoginController->logout();
             break;
-        case 'eliminarUser':
-            $LoginController->deleteUser($parametros[1]);
-        case "modificarEquipo":
-            $LoginController->TraerParamodificar($parametros[1]);
+ /*
+        case "modificar":
+            $controller->modifyToDb($parametros[1], 'CAMBIO', 'CAMBIO', '666');
+            var_dump($operacion);
             break;
-        case "actualizarEquipo":
-            $LoginController->actualizarEquipo($_REQUEST['id_equipo'],$_REQUEST['equipo'],$_REQUEST['descripcion'], $_REQUEST['posicion'],$_REQUEST['division']);
-            break;
-        case "modificarDivision":
-            $LoginController->TraerParamodificarDivision($parametros[1]);
-            break;
-        case "actualizarDivision":
-            $LoginController->actualizarDivision($_REQUEST['id_division'],$_REQUEST['cantidad'],$_REQUEST['division']);
-            break;
-
+*/
         default:
             echo"page not found";
             break;

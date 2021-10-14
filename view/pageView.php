@@ -29,13 +29,13 @@ class PageView{
     public function traerHome($equipos,$divisiones,$loginError = ''){
         $this->smarty->assign('equipo',$equipos);
         $this->smarty->assign('division',$divisiones);
-        $this->showHeaderNav("inicio", $loginError);
+        $this->showHeaderNav("Inicio", $loginError);
         $this->smarty->display("templates/home.tpl");
     }
 
     public function verUnEquipo($equipo){
         $this->smarty->assign('equipo',$equipo);
-        $this->showHeaderNav("Detalle de la Tarea");
+        $this->showHeaderNav("Detalle del equipo");
         $this->smarty->display("templates/detalleEquipo.tpl");
     }
     

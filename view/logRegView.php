@@ -27,7 +27,7 @@ class RegisterView{
     public function TraerParamodificar($divisiones,$equipo=''){
         $this->smarty->assign('divisiones', $divisiones);
         $this->smarty->assign('equipo', $equipo);
-        $this->pageView->showHeaderNav("actualizar");
+        $this->pageView->showHeaderNav("Modificar");
         $this->smarty->display('templates/actualizar.tpl');
     }
 

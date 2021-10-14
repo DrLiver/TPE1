@@ -14,7 +14,7 @@
 <body>
 
     <header id="header">
-        <h1 id="title">fichajes</h1>
+        <a href="home"><h1 id="title">fichajes</h1></a>
         <div>
         
         {if $SESSION == null}

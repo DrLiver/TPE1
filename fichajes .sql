@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-10-2021 a las 22:51:13
+-- Tiempo de generación: 15-10-2021 a las 01:34:45
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 8.0.9
 
@@ -38,8 +38,8 @@ CREATE TABLE `divisiones` (
 --
 
 INSERT INTO `divisiones` (`id_division`, `cantidad_equipos`, `division`) VALUES
-(1, 10, 'B Metropolitana'),
-(2, 12, 'Primera'),
+(1, 12, 'B Metropolitana'),
+(2, 10, 'Primera'),
 (3, 9, 'Primera B Nacional');
 
 -- --------------------------------------------------------
@@ -61,11 +61,7 @@ CREATE TABLE `equipos` (
 --
 
 INSERT INTO `equipos` (`id_equipo`, `nombre`, `descripcion`, `posicion`, `id_division`) VALUES
-(32, 'River Plate', 'El Club Atlético River Plate es una entidad deportiva de la ciudad de Buenos Aires, Argentina. Fue fundado el 25 de mayo de 1901 en el barrio de La Boca por la fusión de los clubes Santa Rosa y La Rosales. ... En el plano local, ostenta el récord de haber ganado 35 campeonatos de la Primera División Argentina.', 1, 2),
-(33, 'Boca Juniors', 'El Club Atlético Boca Juniors es una entidad deportiva argentina con sede en el barrio de La Boca, Buenos Aires. Fue fundado en dicho barrio el 3 de abril de 1905 por seis vecinos adolescentes hijos de italianos. El fútbol es su disciplina más destacada, aunque también compite a nivel profesional, nacional e internacionalmente.', 2, 2),
-(34, 'Racing', 'Racing Club, conocido como Racing Club de Avellaneda o simplemente Racing, es una entidad deportiva oriunda de Argentina, fundada el 25 de marzo de 1903 en la Ciudad de Avellaneda, Provincia de Buenos Aires.10​ Si bien su principal actividad deportiva es el fútbol masculino profesional, que milita en la Primera División de Argentina, también se practican otros deportes', 5, 2),
-(35, 'Independiente', 'El Club Atlético Independiente, conocido popularmente como Independiente o por su sigla CAI, es una entidad deportiva de Argentina de la ciudad de Avellaneda, situado en el sur del Gran Buenos Aires. Fue fundado el 1 de enero de 1905 por unos jóvenes empleados independistas del Club Maipú.', 4, 2),
-(36, 'Argentinos', 'La Asociación Atlética Argentinos Juniors, conocida como Argentinos Juniors o simplemente Argentinos, es una centenaria institución polideportiva fundada el 15 de agosto de 1904 en el barrio de La Paternal, Ciudad Autónoma de Buenos Aires, Argentina. Participa en la Liga Profesional de Fútbol Argentino.', 3, 2),
+(35, 'Independiente', 'El Club Atlético Independiente, conocido popularmente como Independiente o por su sigla CAI, es una entidad deportiva de Argentina de la ciudad de Avellaneda, situado en el sur del Gran Buenos Aires. Fue fundado el 1 de enero de 1905 por unos jóvenes empleados independistas del Club Maipú.', 2, 2),
 (37, 'Colon', 'El Club Atlético Colón, es un club polideportivo de la ciudad de Santa Fe, Argentina. Su primer equipo de fútbol masculino profesional participa en la Primera División de Argentina. Además posee un equipo alternativo que disputa la Liga Santafesina de Fútbol desde 1948, conformado por jugadores amateurs.', 7, 2),
 (38, 'Newells', 'El Club Atlético y Biblioteca Newell\'s Old Boys es una institución deportiva y cultural de la localidad de Laguna Larga, provincia de Córdoba, Argentina. Recibe su nombre en honor al Club Atlético Newell\'s Old Boys de la ciudad de Rosario.', 6, 2),
 (39, 'Banfield', 'El Club Atlético Banfield es una entidad deportiva con sede en la localidad de Banfield, provincia de Buenos Aires. Fue fundado el 21 de enero de 1896 por habitantes de esa ciudad, mayoritariamente de orígenes británicos. Su principal actividad es el fútbol profesional. Actualmente milita en la Liga Profesional,4​ máxima categoría del fútbol argentino.', 8, 2),
@@ -101,9 +97,19 @@ INSERT INTO `equipos` (`id_equipo`, `nombre`, `descripcion`, `posicion`, `id_div
 
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
+  `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `username`, `password`) VALUES
+(96, 'alex11', '$2y$10$vNpp0mVSus5Daw1/F6woMOz7atyCFKi5ZT8daoSKDDpBim3g3pmCW'),
+(97, 'alexa', '$2y$10$XZRcvXI/ENhq8NM2kTar3.euw.oxhOoqEJ.aYBT/WbN45A.YgSbC2'),
+(98, 'Pedro', '$2y$10$jrJwtBENWcaxqTbSl3z6mOmsIe6ch1vfJUskR9TLg2QzNNltHaVOa'),
+(99, 'alex', '$2y$10$.2ONpA9eJlWQ1g6MzYcz1.lSKtFCf6VpRQr3qzIyqw7uKXKHSkXX.');
 
 --
 -- Índices para tablas volcadas
@@ -136,19 +142,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `divisiones`
 --
 ALTER TABLE `divisiones`
-  MODIFY `id_division` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_division` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- Restricciones para tablas volcadas

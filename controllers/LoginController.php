@@ -11,6 +11,7 @@ class LoginController {
     private $divisionModel;
     private $EquipoView;
     private $authHelper;
+    private $userModel;
 
     function __construct() {
         $this->model = new LoginModel();
@@ -18,17 +19,18 @@ class LoginController {
         $this->EquipoView = new EquipoView();
         $this->equipoModel = new EquipoModel();
         $this->divisionModel = new DivisionesModel();
+        $this->userModel = new UserModel();
         $this->authHelper = new AuthHelper();
     }
 
     public function login ($username, $password) {
         if (!empty($username) && !empty($password)) {
-            $user = $this->model->traerUser($username);
+            $user = $this->userModel->traerUser($username);
             if (!empty($user)) {
                 if (password_verify($password, $user->password)) {
                     session_start();
                     $_SESSION['username'] = $username;
-                    $this->view->location("admin");
+                    $this->authHelper->location("admin");
                 }
                 else {
                     $this->EquipoView->traerHome($this->equipoModel->traerEquipos(), $this->divisionModel->traerDivisiones(), 'la contraseña es incorrecta. ');
@@ -44,16 +46,12 @@ class LoginController {
     }
 
 
-    public function showUsers() {
-        $this->authHelper->checkLoggedIn();
-        $users = $this->model->bringUsersDB();
-        $this->view->usersTable($users);
-    }
+   
 
     public function logout () {
         session_start();
         session_destroy();
-        $this->view->location("home");
+        $this->authHelper->location("home");
     }
 
     public function showRegister ($error ="") {
@@ -64,7 +62,7 @@ class LoginController {
         if (!empty($username)&&!empty($password)) {
             $passwordHash = password_hash($password,PASSWORD_BCRYPT);
             $alreadyRegistered = false;
-            foreach ($this->model->bringUsersDB() as $user) {
+            foreach ($this->userModel->bringUsersDB() as $user) {
                 if ($username == $user->username && $password !="") {
                     $alreadyRegistered = true;
                     $this->showRegister('Usuario en uso');
@@ -80,10 +78,7 @@ class LoginController {
         }
     }
 
-    public function deleteUser($userID) {
-        $this->model->borrarUser($userID);
-        $this->view->location("usersList");
-    }
+   
 
     public function admin($error='',$exito=""){
         $this->authHelper->checkLoggedIn();

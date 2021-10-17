@@ -11,11 +11,7 @@ class LoginView{
         $this->smarty = new Smarty();
         $this->authHelper = new AuthHelper();
     }
-
-    public function location($where){
-        header("Location:".BASE_URL."$where");
-    }
-
+    
     public function traerHomeUser($equipos,$divisiones,$error,$exito){
         $this->smarty->assign('SESSION', $this->authHelper->session());
         $this->smarty->assign('equipo',$equipos);
@@ -35,12 +31,7 @@ class LoginView{
         $this->smarty->display('templates/register.tpl');
     }
 
-    public function usersTable ($users) {
-        $this->smarty->assign('SESSION', $this->authHelper->session());
-        $this->smarty->assign('users', $users);
-        $this->smarty->assign('title', "Usuarios");
-        $this->smarty->display('templates/usersList.tpl');
-    }
+   
 
 }
     

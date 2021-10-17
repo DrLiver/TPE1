@@ -13,7 +13,7 @@
                     {/if}
 				{/foreach}
 			</select>
-            <input  class="form_input id_equi" name="id_equipo" type="number" value="{$equipo->id_equipo}">
+            <input  class="form_input id_equipo" name="id_equipo" type="number" value="{$equipo->id_equipo}">
 			<input class="form_input " name="equipo" type="text" placeholder="{$equipo->nombre}">
 			<textarea class="form_input " name="descripcion" type="text" placeholder="{$equipo->descripcion}"></textarea>
 			<input class="form_input " name="posicion" type="number" placeholder="{$equipo->posicion}" min="1" max=13  >

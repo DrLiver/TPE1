@@ -25,7 +25,8 @@
             return $session;
         }
 
-       
-
+        public function location($where){
+            header("Location:".BASE_URL."$where");
+        }
         
     }

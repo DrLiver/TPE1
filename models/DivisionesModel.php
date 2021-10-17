@@ -8,9 +8,7 @@ class DivisionesModel {
         $this->basededatos = new PDO('mysql:host=localhost;'.'dbname=fichajes;charse=utf8','root','');
     }
 
-
-
- public function traerDivisiones(){
+    public function traerDivisiones(){
         $sentencia = $this->basededatos->prepare('SELECT * FROM divisiones');
         $sentencia->execute();
         $divisiones = $sentencia->fetchAll(PDO::FETCH_OBJ);

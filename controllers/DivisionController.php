@@ -1,12 +1,10 @@
 <?php
 
 require_once "models/DivisionesModel.php";
-require_once "view/DivisionesView.php";
 require_once "controllers/LoginController.php";
 
 class DivisionController{
     private $model;
-    private $view;
     private $equipoView;
     private $equipoModel; 
     private $LoginView;
@@ -15,17 +13,12 @@ class DivisionController{
 
     function __construct(){
         $this->model = new DivisionesModel();
-        $this->view = new DivisionesView();
         $this->equipoView = new EquipoView;
         $this->equipoModel = new EquipoModel;
         $this->LoginView = new LoginController;
         $this->authHelper = new AuthHelper();
     }
-
-    public function traerDivisiones(){
-        $divisiones =  $this->model->traerDivisiones();
-        $this->view->traerHomeDivision($divisiones);
-    }
+   
 
     public function TraerParamodificarDivision($id){
         $this->authHelper->checkLoggedIn();

@@ -3,6 +3,7 @@
 require_once 'controllers/LoginController.php';
 require_once 'controllers/EquipoController.php';
 require_once 'controllers/DivisionController.php';
+require_once 'controllers/UserController.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -15,6 +16,7 @@ if (!empty($_REQUEST['operacion'])) {
     $EquipoController = new EquipoController(); 
     $DivisionController = new DivisionController(); 
     $LoginController = new LoginController();
+    $UserController = new UserController();
     
     $parametros = explode('/', $operacion);
 
@@ -32,10 +34,8 @@ if (!empty($_REQUEST['operacion'])) {
             $LoginController->admin();
             break;
         case 'usersList':
-            $LoginController->showUsers();  
+            $UserController->showUsers();  
             break;
-       
-         
         case 'register':
             $LoginController->showRegister();
             break;
@@ -61,7 +61,7 @@ if (!empty($_REQUEST['operacion'])) {
             $LoginController->logout();
             break;
         case 'eliminarUser':
-            $LoginController->deleteUser($parametros[1]);
+            $UserController->deleteUser($parametros[1]);
         case "modificarEquipo":
             $EquipoController->TraerParamodificarEquipo($parametros[1]);
             break;

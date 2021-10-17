@@ -32,7 +32,10 @@ class EquipoController{
         $this->view->verUnEquipo($equipo);
     }
 
-    public function filtrar($id_division){
+    public function filtrar(){
+        if (!empty($_POST['division'])){
+            $id_division = $_POST['division'];
+        }
         $divisiones =  $this->divisionModel->traerDivisiones();
         $equipos =  $this->model->traerEquipoPorDivision($id_division);
         $this->view->traerHome($equipos,$divisiones);
@@ -53,17 +56,16 @@ class EquipoController{
     }
 
     public function actualizarEquipo(){
+        $this->authHelper->checkLoggedIn();
         if (!empty($_POST['equipo'])&&!empty($_POST['posicion'])) {
             $nombre = $_POST['equipo'];
             $posicion = $_POST['posicion'];
             $descripcion = $_POST['descripcion'];
             $id = $_POST['id_equipo'];
-
-            $this->authHelper->checkLoggedIn();
             $division = $this->divisionModel->traerIdDivisiones($_POST['division']);
             $id_division= $division->id_division;
             $this->model->actualizarEquipo($id,$nombre,$descripcion,$posicion,$id_division);
-            $this->LoginView->admin('',"modificado con exito");
+            $this->LoginView->admin('',"modificado con exito el equipo");
         }else{
             $this->LoginView->admin('Falta completar campos ');
         }

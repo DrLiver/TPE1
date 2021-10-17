@@ -26,11 +26,17 @@ class DivisionController{
         $this->equipoView->TraerParamodificar($divisiones);
     }
 
-    public function actualizarDivision($id,$cantidad,$division){
+    public function actualizarDivision(){
         $this->authHelper->checkLoggedIn();
+        if (!empty($_POST['cantidad'])&&!empty($_POST['division'])) {
+            $cantidad = $_POST['cantidad'];
+            $division = $_POST['division'];
+            $id =  $_POST['id_division'];
         $this->model->actualizarDivision($id,$cantidad,$division);
-        $this->LoginView->admin();
-
+        $this->LoginView->admin('','Se modifico exitosamente la division');
+        }else{
+            $this->LoginView->admin('Falta completar campos ');
+        }
     }
 
     public function eliminarDivision($id){

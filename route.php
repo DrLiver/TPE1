@@ -7,8 +7,8 @@ require_once 'controllers/UserController.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
-if (!empty($_REQUEST['operacion'])) {
-    $operacion = $_REQUEST['operacion'];
+if (!empty($_GET['operacion'])) {
+    $operacion = $_GET['operacion'];
 } else {
     $operacion = 'home';     // acción por defecto si no envían
 }
@@ -28,7 +28,7 @@ if (!empty($_REQUEST['operacion'])) {
             $EquipoController->verEquipo($parametros[1]);
             break; 
         case 'filtrar': 
-            $EquipoController->filtrar($_REQUEST["division"]);
+            $EquipoController->filtrar();
             break;  
         case 'admin':
             $LoginController->admin();
@@ -40,10 +40,10 @@ if (!empty($_REQUEST['operacion'])) {
             $LoginController->showRegister();
             break;
         case 'registerMesage':
-            $LoginController->completeRegister($_REQUEST['registerUsername'], $_REQUEST['registerPassword']);
+            $LoginController->completeRegister();
             break;
         case 'login':
-            $LoginController->login($_REQUEST['username'], $_REQUEST['password']);
+            $LoginController->login();
             break;
         case 'eliminarEquipo': 
             $EquipoController->eliminarEquipo($parametros[1]);
@@ -72,7 +72,7 @@ if (!empty($_REQUEST['operacion'])) {
             $DivisionController->TraerParamodificarDivision($parametros[1]);
             break;
         case "actualizarDivision":
-            $DivisionController->actualizarDivision($_REQUEST['id_division'],$_REQUEST['cantidad'],$_REQUEST['division']);
+            $DivisionController->actualizarDivision();
             break;
         default:
             echo"page not found";

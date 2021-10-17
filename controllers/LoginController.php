@@ -23,8 +23,10 @@ class LoginController {
         $this->authHelper = new AuthHelper();
     }
 
-    public function login ($username, $password) {
-        if (!empty($username) && !empty($password)) {
+    public function login () {
+        if (!empty($_POST['username']) && !empty($_POST['password'])) {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
             $user = $this->userModel->traerUser($username);
             if (!empty($user)) {
                 if (password_verify($password, $user->password)) {
@@ -55,8 +57,10 @@ class LoginController {
         $this->view->showRegister($error);
     }
 
-    public function completeRegister ($username, $password) {
-        if (!empty($username)&&!empty($password)) {
+    public function completeRegister () {
+        if (!empty($_POST['registerUsername'])&&!empty( $_POST['registerPassword'])) {
+            $username = $_POST['registerUsername'];
+            $password =  $_POST['registerPassword'];
             $passwordHash = password_hash($password,PASSWORD_BCRYPT);
             $alreadyRegistered = false;
             foreach ($this->userModel->bringUsersDB() as $user) {

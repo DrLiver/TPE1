@@ -69,5 +69,4 @@ class DivisionController{
             $this->LoginView->admin('Falta completar campos ');
         }
     }
-    
 }

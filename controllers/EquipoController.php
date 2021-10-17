@@ -67,8 +67,6 @@ class EquipoController{
         }else{
             $this->LoginView->admin('Falta completar campos ');
         }
-
-       
     }
 
     public function agregarEquipo(){
@@ -94,5 +92,4 @@ class EquipoController{
             $this->LoginView->admin('Falta completar campos ');
         }
     }
-
 }

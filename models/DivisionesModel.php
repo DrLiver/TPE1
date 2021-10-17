@@ -32,8 +32,6 @@ class DivisionesModel {
         $sentencia->execute(array($division,$cantidad));   
     }
 
-    
-    
     public function TraerParaActualizarDivision($id){
         $sentencia = $this->basededatos->prepare('SELECT * FROM divisiones WHERE id_division=?');
         $sentencia->execute(array($id));

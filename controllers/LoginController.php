@@ -45,9 +45,6 @@ class LoginController {
         }
     }
 
-
-   
-
     public function logout () {
         session_start();
         session_destroy();
@@ -78,8 +75,6 @@ class LoginController {
         }
     }
 
-   
-
     public function admin($error='',$exito=""){
         $this->authHelper->checkLoggedIn();
         $equipos =  $this->equipoModel->traerEquipos();
@@ -87,20 +82,5 @@ class LoginController {
         $this->view->traerHomeUser($equipos,$division,$error,$exito);
     }
     
-    
 
-   
-
-    
-
-   
-
-   
-
-    
-
-    
-
-   
-    
 }

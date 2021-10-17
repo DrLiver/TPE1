@@ -1,6 +1,8 @@
 <?php
-require_once 'controllers/PageController.php';
-require_once 'controllers/adminController.php';
+
+require_once 'controllers/LoginController.php';
+require_once 'controllers/EquipoController.php';
+require_once 'controllers/DivisionController.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -10,28 +12,30 @@ if (!empty($_REQUEST['operacion'])) {
     $operacion = 'home';     // acción por defecto si no envían
 }
 
-
-    $Controller = new PageController();
-    $LoginController = new AdminController();
-
+    $EquipoController = new EquipoController(); 
+    $DivisionController = new DivisionController(); 
+    $LoginController = new LoginController();
+    
     $parametros = explode('/', $operacion);
 
     switch ($parametros[0]) {
         case 'home': 
-            $Controller->home();
+            $EquipoController->home();
             break;
+        case 'equipo': 
+            $EquipoController->verEquipo($parametros[1]);
+            break; 
+        case 'filtrar': 
+            $EquipoController->filtrar($_REQUEST["division"]);
+            break;  
         case 'admin':
             $LoginController->admin();
             break;
         case 'usersList':
             $LoginController->showUsers();  
             break;
-        case 'filtrar': 
-            $Controller->filtrar($_REQUEST["division"]);
-            break;
-        case 'equipo': 
-            $Controller->verEquipo($parametros[1]);
-            break;     
+       
+         
         case 'register':
             $LoginController->showRegister();
             break;
@@ -42,16 +46,16 @@ if (!empty($_REQUEST['operacion'])) {
             $LoginController->login($_REQUEST['username'], $_REQUEST['password']);
             break;
         case 'eliminarEquipo': 
-            $LoginController->eliminarEquipo($parametros[1]);
+            $EquipoController->eliminarEquipo($parametros[1]);
             break;  
         case 'eliminarDivision': 
-            $LoginController->eliminarDivision($parametros[1]);
+            $DivisionController->eliminarDivision($parametros[1]);
             break; 
         case 'agregarEquipo': 
-            $LoginController->agregarEquipo();
+            $EquipoController->agregarEquipo();
             break;  
         case 'agregarDivision': 
-            $LoginController->agregarDivision();
+            $DivisionController->agregarDivision();
             break;
         case 'logout':
             $LoginController->logout();
@@ -59,18 +63,17 @@ if (!empty($_REQUEST['operacion'])) {
         case 'eliminarUser':
             $LoginController->deleteUser($parametros[1]);
         case "modificarEquipo":
-            $LoginController->TraerParamodificar($parametros[1]);
+            $EquipoController->TraerParamodificarEquipo($parametros[1]);
             break;
         case "actualizarEquipo":
-            $LoginController->actualizarEquipo($_REQUEST['id_equipo'],$_REQUEST['equipo'],$_REQUEST['descripcion'], $_REQUEST['posicion'],$_REQUEST['division']);
+            $EquipoController->actualizarEquipo();
             break;
         case "modificarDivision":
-            $LoginController->TraerParamodificarDivision($parametros[1]);
+            $DivisionController->TraerParamodificarDivision($parametros[1]);
             break;
         case "actualizarDivision":
-            $LoginController->actualizarDivision($_REQUEST['id_division'],$_REQUEST['cantidad'],$_REQUEST['division']);
+            $DivisionController->actualizarDivision($_REQUEST['id_division'],$_REQUEST['cantidad'],$_REQUEST['division']);
             break;
-
         default:
             echo"page not found";
             break;

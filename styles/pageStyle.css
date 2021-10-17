@@ -10,6 +10,19 @@ body {
     grid-template-areas: "header" "nav" "content";
 }
 
+textarea::-webkit-scrollbar,body::-webkit-scrollbar {
+    background: rgb(10, 77, 49);
+    border-radius: 4px;
+    width: 10px;
+}
+
+textarea::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb {
+    background: rgb(20, 133, 26);
+    border-radius: 4px;
+}
+
+
+
 #header {
     grid-area: header;
     background: linear-gradient(90deg, rgba(6, 110, 110), rgb(29, 226, 134), rgb(31, 30, 30));
@@ -19,31 +32,8 @@ body {
     padding: 10px;
 }
 
-#nav {
-    display: flex;
-    grid-area: nav;
-    background-color: white;
-    text-transform: uppercase;
-    align-items: center;
-    justify-content: center;
-    font-weight: bolder;
-}
-
-#nav ul {
-    list-style: none;
-}
-
-#nav ul li {
-    display: inline;
-}
-
 #content {
     grid-area: content;
-}
-
-#title {
-    text-transform: uppercase;
-    font-family: 'main';
 }
 
 #register {
@@ -230,10 +220,12 @@ a {
     max-width: 500px;
 }
 
-textarea {
+textarea.form_input {
     min-width: 200px;
     max-height: 500px;
     max-width: 460px;
+    margin: 0;
+    
 }
 
 .form_input {
@@ -244,6 +236,7 @@ textarea {
     padding: 7px;
     text-align: center;
     color: #000;
+   
 }
 
 .eliminar {
@@ -289,4 +282,39 @@ textarea {
     margin: auto;
     margin-top: 4%;
     min-width: 500px;
+}
+
+/* nav*/
+
+.navigation{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow: hidden;
+    align-items: center;
+    background: rgb(51, 49, 49);
+   
+    margin: 0%;
+}
+
+.navigation li {
+	display: flex;
+	margin: 5px;
+	align-items: center;
+	height: 20px;
+	cursor: pointer;
+   
+}
+
+.transform {
+    color: rgb(252, 252, 248);
+	text-transform: uppercase;
+}
+a.transform:hover {
+	padding-bottom: 2px;
+	border-bottom: 3px solid green;
+}
+
+.exito{
+    color: #079c4a;
 }

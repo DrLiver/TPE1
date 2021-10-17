@@ -1,6 +1,8 @@
+{include file="templates/header.tpl"}
+{include file="templates/nav.tpl"}
 <article id="registerDiv">
     <form action="registerMesage" method="post">
-        <h4>Registrate</h4>
+        <h1>Registrate</h1>
         <div>
             <div id="registerLabels">
                 <label for="username">usuario:</label>

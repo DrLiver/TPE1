@@ -1,3 +1,5 @@
+{include file="templates/header.tpl"}
+{include file="templates/nav.tpl"}
 <h2> tabla de equipos y divisiones</h2>
     <section  id="tabla"class="tabla_section">
         <div class="section-filtro">

@@ -14,9 +14,8 @@
 <body>
 
     <header id="header">
-        <a href="home"><h1 id="title">fichajes</h1></a>
+        <a href="home"><h1 class="transform">fichajes</h1></a>
         <div>
-        
         {if $SESSION == null}
        
             <h4>iniciar sesión</h4>
@@ -37,4 +36,5 @@
             <h3>Bienvenido  {$SESSION}</h3>
         {/if}
         </div>
+         
     </header>

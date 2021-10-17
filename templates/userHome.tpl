@@ -1,5 +1,8 @@
+{include file="templates/header.tpl"}
+{include file="templates/nav.tpl"}
 <h2> Administrar equipos y divisiones</h2>
 <h2 class="error"> {$error}</h2>
+<h2 class="exito"> {$exito}</h2>
     <section  id="tabla"class="tabla_user">
          <table>
             <thead>

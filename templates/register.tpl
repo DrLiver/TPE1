@@ -15,6 +15,5 @@
         </div>
         <p class="errorMessage">{$message}</p>
         <input type="submit" value="Registrarse Ahora">
-
     </form>
 </article>

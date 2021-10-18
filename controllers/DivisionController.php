@@ -1,7 +1,8 @@
 <?php
 require_once 'view/DivisionesView.php';
 require_once "models/DivisionesModel.php";
-require_once "controllers/LoginController.php";
+require_once 'Helpers/AuthHelper.php';
+require_once 'models/EquipoModel.php';
 
 class DivisionController{
     private $model;
@@ -14,7 +15,6 @@ class DivisionController{
         $this->model = new DivisionesModel();
         $this->view = new DivisionesView;
         $this->equipoModel = new EquipoModel;
-        $this->LoginView = new LoginController;
         $this->authHelper = new AuthHelper();
     }
 

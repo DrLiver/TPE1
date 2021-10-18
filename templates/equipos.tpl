@@ -20,16 +20,14 @@
                 </tr>
             </thead>
            <tbody class="filas">
-
                 {foreach from=$equipo item=$item}
                     <tr >
                         <td class="td-equipo"><a href="equipo/{$item->id_equipo}">{$item->nombre}</a></td>
-                         <td>{$item->division}</td>
+                        <td>{$item->division}</td>
                     </tr>	
-                    {/foreach}
+                {/foreach}
 			</tbody>
         </table>
     </section>
 </body>
-
 </html>

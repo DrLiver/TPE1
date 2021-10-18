@@ -5,22 +5,19 @@
         <table>
             <thead>
                 <tr>
-                    
                     <th>Division</th>
                     <th>Cantidad de equipos</th>
                 </tr>
             </thead>
            <tbody class="filas">
-
                 {foreach from=$division item=$item}
                     <tr >
                         <td>{$item->division}</a></td>
                         <td>{$item->cantidad_equipos}</td>
                     </tr>	
-                    {/foreach}
+                {/foreach}
 			</tbody>
         </table>
     </section>
 </body>
-
 </html>

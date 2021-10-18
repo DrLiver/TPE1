@@ -6,7 +6,7 @@ class LoginView{
 
     private $smarty;
     private $authHelper;
-    
+
     function __construct(){
         $this->smarty = new Smarty();
         $this->authHelper = new AuthHelper();
@@ -19,8 +19,5 @@ class LoginView{
         $this->smarty->assign('title', "Registrarse");
         $this->smarty->display('templates/register.tpl');
     }
-
-   
-
 }
     

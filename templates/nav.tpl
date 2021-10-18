@@ -3,7 +3,6 @@
     {if ($SESSION == '')}
         <li><a href="home" class="transform">equipos</a></li>  
         <li><a href="divisiones" class="transform">divisiones</a></li>  
-        
     {/if}
     {if ($SESSION != '')}
         <li><a href="home" class="transform">home</a></li>

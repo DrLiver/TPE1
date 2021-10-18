@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles/pageStyle.css">
     <script src="https://kit.fontawesome.com/728f81b46c.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{$title}</title>
+    <title>{$title} | Fichajes.com</title>
 </head>
 
 <body>

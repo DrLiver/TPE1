@@ -17,7 +17,7 @@ class EquipoView {
         $this->smarty->assign('SESSION', $this->authHelper->session());
         $this->smarty->assign('equipo',$equipos);
         $this->smarty->assign('division',$divisiones);
-        $this->smarty->assign('title',"inicio");
+        $this->smarty->assign('title',"Inicio");
         $this->smarty->assign('loginError',$loginError);
         $this->smarty->display("templates/home.tpl");
     }
@@ -25,7 +25,7 @@ class EquipoView {
     public function verUnEquipo($equipo){
         $this->smarty->assign('equipo',$equipo);
         $this->smarty->assign('SESSION', $this->authHelper->session());
-        $this->smarty->assign('loginError');
+        $this->smarty->assign('title', "Detalle del equipo");
         $this->smarty->display("templates/detalleEquipo.tpl");
     }
 

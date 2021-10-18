@@ -21,7 +21,7 @@ class EquipoController{
         $this->authHelper = new AuthHelper();
     }
 
-    public function home(){
+    public function equipos(){
         $equipos =  $this->model->traerEquipos();
         $divisiones =  $this->divisionModel->traerDivisiones();
         $this->view->traerHome($equipos,$divisiones);
@@ -41,10 +41,17 @@ class EquipoController{
         $this->view->traerHome($equipos,$divisiones);
     }
 
+    public function adminEquipo($error='',$exito=""){
+        $this->authHelper->checkLoggedIn();
+        $equipos =  $this->model->traerEquipos();
+        $divisiones =  $this->divisionModel->traerDivisiones();
+        $this->view->adminEquipo($equipos,$divisiones,$error,$exito);
+    }
+
     public function eliminarEquipo($id){
         $this->authHelper->checkLoggedIn();
         $this->model->borrarEquipoBaseDeDatos($id);
-        $this->LoginView->admin('','equipo eliminado');
+        $this->adminEquipo('','equipo eliminado');
     }
 
     public function TraerParamodificarEquipo($id){
@@ -65,9 +72,9 @@ class EquipoController{
             $division = $this->divisionModel->traerIdDivisiones($_POST['division']);
             $id_division= $division->id_division;
             $this->model->actualizarEquipo($id,$nombre,$descripcion,$posicion,$id_division);
-            $this->LoginView->admin('',"modificado con exito el equipo");
+            $this->adminEquipo('',"modificado con exito el equipo");
         }else{
-            $this->LoginView->admin('Falta completar campos ');
+            $this->adminEquipo('Falta completar campos ');
         }
     }
 
@@ -80,18 +87,18 @@ class EquipoController{
             foreach ($this->model->traerEquipos() as $nombre ) {
                 if (($nombre->nombre) == ($equipo)) {
                     $enUso = true;
-                    $this->LoginView->admin('El equipo  que queres agregar ya esta en uso');
+                    $this->adminEquipo('El equipo  que queres agregar ya esta en uso');
                 }
             }
             if($enUso == false ){
                 $division = $this->divisionModel->traerIdDivisiones($_POST['division']);
                 $id= $division->id_division;
                 $this->model->insertarEquipo($id ,$equipo,$_POST['descripcion'],$posicion);
-                $this->LoginView->admin('','Agregado con exíto');
+                $this->adminEquipo('','Agregado con exíto');
             }
 
         }else{
-            $this->LoginView->admin('Falta completar campos ');
+            $this->adminEquipo('Falta completar campos ');
         }
     }
 }

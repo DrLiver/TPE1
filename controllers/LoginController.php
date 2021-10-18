@@ -32,7 +32,7 @@ class LoginController {
                 if (password_verify($password, $user->password)) {
                     session_start();
                     $_SESSION['username'] = $username;
-                    $this->authHelper->location("admin");
+                    $this->authHelper->location("adminEquipo");
                 }
                 else {
                     $this->EquipoView->traerHome($this->equipoModel->traerEquipos(), $this->divisionModel->traerDivisiones(), 'La contraseña es incorrecta. ');
@@ -50,7 +50,7 @@ class LoginController {
     public function logout () {
         session_start();
         session_destroy();
-        $this->authHelper->location("home");
+        $this->authHelper->location("equipos");
     }
 
     public function showRegister ($error ="") {
@@ -79,12 +79,7 @@ class LoginController {
         }
     }
 
-    public function admin($error='',$exito=""){
-        $this->authHelper->checkLoggedIn();
-        $equipos =  $this->equipoModel->traerEquipos();
-        $division =  $this->divisionModel->traerDivisiones();
-        $this->view->traerHomeUser($equipos,$division,$error,$exito);
-    }
+   
     
 
 }

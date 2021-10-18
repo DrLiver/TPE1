@@ -12,16 +12,7 @@ class LoginView{
         $this->authHelper = new AuthHelper();
     }
     
-    public function traerHomeUser($equipos,$divisiones,$error,$exito){
-        $this->smarty->assign('SESSION', $this->authHelper->session());
-        $this->smarty->assign('equipo',$equipos);
-        $this->smarty->assign('division',$divisiones);
-        $this->smarty->assign('error',$error);
-        $this->smarty->assign('exito',$exito);
-        $this->smarty->assign('title',"Administrador");
-        $this->smarty->display("templates/userHome.tpl");
-      
-    }
+    
 
     public function showRegister($message = '') {
         $this->smarty->assign('SESSION', $this->authHelper->session());

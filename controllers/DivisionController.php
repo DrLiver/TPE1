@@ -1,29 +1,38 @@
 <?php
-
+require_once 'view/DivisionesView.php';
 require_once "models/DivisionesModel.php";
 require_once "controllers/LoginController.php";
 
 class DivisionController{
     private $model;
-    private $equipoView;
+    private $view;
     private $equipoModel; 
-    private $LoginView;
     private $authHelper;
   
 
     function __construct(){
         $this->model = new DivisionesModel();
-        $this->equipoView = new EquipoView;
+        $this->view = new DivisionesView;
         $this->equipoModel = new EquipoModel;
         $this->LoginView = new LoginController;
         $this->authHelper = new AuthHelper();
     }
-   
 
+    public function divisiones(){
+        $divisiones =  $this->model->traerDivisiones();
+        $this->view->traerDivisiones($divisiones);
+    }
+   
     public function TraerParamodificarDivision($id){
         $this->authHelper->checkLoggedIn();
         $divisiones =  $this->model-> TraerParaActualizarDivision($id);
-        $this->equipoView->TraerParamodificar($divisiones);
+        $this->view->TraerParamodificarDivision($divisiones);
+    }
+
+    public function adminDivisiones($error='',$exito=""){
+        $this->authHelper->checkLoggedIn();
+        $divisiones =  $this->model->traerDivisiones();
+        $this->view->adminDivisiones($divisiones,$error,$exito);
     }
 
     public function actualizarDivision(){
@@ -33,9 +42,9 @@ class DivisionController{
             $division = $_POST['division'];
             $id =  $_POST['id_division'];
         $this->model->actualizarDivision($id,$cantidad,$division);
-        $this->LoginView->admin('','Se modifico exitosamente la division');
+        $this->adminDivisiones('','Se modifico exitosamente la division');
         }else{
-            $this->LoginView->admin('Falta completar campos ');
+            $this->adminDivisiones('Falta completar campos ');
         }
     }
 
@@ -45,13 +54,13 @@ class DivisionController{
         foreach ($this->equipoModel->traerEquipos() as $equipos ) {
             if ($equipos->id_division == $id) {
                 $enUso = true;
-                $this->LoginView->admin('No podes eliminar a una division en uso');
+                $this->adminDivisiones('No podes eliminar a una division en uso');
                 break;
             }
         }
         if($enUso == false ){
             $this->model->borrarDivisionBaseDeDatos($id);
-            $this->LoginView->admin('','division eliminada');
+            $this->adminDivisiones('','division eliminada');
         }
     }
 
@@ -64,15 +73,15 @@ class DivisionController{
             foreach ($this->model->traerDivisiones() as $divisiones ) {
                 if (($divisiones->division) == ($divisionNueva)) {
                     $enUso = true;
-                    $this->LoginView->admin('La division que queres agregar ya esta en uso');
+                    $this->adminDivisiones('La division que queres agregar ya esta en uso');
                 }
             }
             if($enUso == false ){
                 $this->model->insertarDivision($cantidad,$divisionNueva);
-                $this->LoginView->admin('','Agregado con exíto');
+                $this->adminDivisiones('','Agregado con exíto');
             }
         }else{
-            $this->LoginView->admin('Falta completar campos ');
+            $this->adminDivisiones('Falta completar campos ');
         }
     }
 }

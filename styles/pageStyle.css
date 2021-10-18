@@ -215,10 +215,10 @@ a {
 
 .tabla_user {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 50px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
     align-items: flex-start;
+    flex-direction: row;
 }
 
 .form_agregar {

@@ -44,7 +44,7 @@ class EquipoController{
     public function eliminarEquipo($id){
         $this->authHelper->checkLoggedIn();
         $this->model->borrarEquipoBaseDeDatos($id);
-        $this->LoginView->admin();
+        $this->LoginView->admin('','equipo eliminado');
     }
 
     public function TraerParamodificarEquipo($id){
@@ -87,7 +87,7 @@ class EquipoController{
                 $division = $this->divisionModel->traerIdDivisiones($_POST['division']);
                 $id= $division->id_division;
                 $this->model->insertarEquipo($id ,$equipo,$_POST['descripcion'],$posicion);
-                $this->LoginView->admin();
+                $this->LoginView->admin('','Agregado con exíto');
             }
 
         }else{

@@ -51,7 +51,7 @@ class DivisionController{
         }
         if($enUso == false ){
             $this->model->borrarDivisionBaseDeDatos($id);
-            $this->LoginView->admin();
+            $this->LoginView->admin('','division eliminada');
         }
     }
 
@@ -69,7 +69,7 @@ class DivisionController{
             }
             if($enUso == false ){
                 $this->model->insertarDivision($cantidad,$divisionNueva);
-                $this->LoginView->admin();
+                $this->LoginView->admin('','Agregado con exíto');
             }
         }else{
             $this->LoginView->admin('Falta completar campos ');

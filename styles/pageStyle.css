@@ -38,6 +38,7 @@ textarea::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb {
 
 #register {
     font-weight: bolder;
+    margin: auto;
 }
 
 #register a,
@@ -106,24 +107,25 @@ h2,h3{
     color: aliceblue;
     text-align: center;
 }
+h4{
+    text-transform: uppercase;
+    color: #000;
+    margin: 0px;
+    margin-top: 5px;
+}
 .bienvenido{
-    margin-bottom: -70px;
-    box-shadow: 0px -19px 20px 4px rgb(0 203 107);
-    width: 230px;
-
+    height: 63px;
+    margin-bottom: -65px;
+    width: auto;
+    border-left: 5px solid red;
+    border-right: 3px solid #f5eded;
+    box-shadow: inset 0px -20px 20px 0px rgb(0 0 0);
+    transition: all 1s;
+}
+.bienvenido:hover{
+    background-color: #000;
 }
     
-.logout{
-    border: none;
-    transition: .5s;
-    font-size: 17px;
-    font-weight: 700;
-}
-.logout:hover{
-  color: #b10710;
-  background-color: #06af52;
-}
-
 #form{
     display: flex;
     justify-content: flex-end;
@@ -240,7 +242,7 @@ textarea.form_input {
     
 }
 
-.form_input {
+.form_input,.form_login {
     border: none;
     box-shadow: inset 0px 0px 12px 0px rgb(0 0 0);
     margin: 20px;
@@ -250,10 +252,39 @@ textarea.form_input {
     color: #000;
    
 }
+.form_login{
+    margin: 0px 10px 0px 0px;
+    border-bottom: 3px solid rgb(0, 0, 0);
+    background: rgb(238, 238, 238);
+    box-shadow: none;
+}
+.form_login::placeholder{
+    color: #000;
+    font-size: 15px;
+}
 
 .eliminar {
     width: 150px;
 }
+
+.login-submit,.logout {
+    border: 2px solid rgb(0, 0, 0);
+    background: transparent;
+    color: rgb(255, 255, 255);
+    height: 30px;
+    width: 70px;
+    transition: .1s background ease-in;
+}
+.form_login:focus{
+    background: rgb(161, 155, 155);
+    color: white;
+    border: none;
+}
+.login-submit:hover,.logout:hover {
+    background: rgb(0, 0, 0);
+    color: rgb(0, 253, 156);
+}
+  
 
 .btns {
     margin: 20px;

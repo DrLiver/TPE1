@@ -10,14 +10,12 @@ class EquipoController{
     private $model;
     private $view;
     private $divisionModel;
-    private $LoginView;
     private $authHelper;
 
     function __construct(){
         $this->model = new EquipoModel();
         $this->view = new EquipoView();
         $this->divisionModel= new DivisionesModel;
-        $this->LoginView = new LoginController;
         $this->authHelper = new AuthHelper();
     }
 

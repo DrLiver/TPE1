@@ -15,29 +15,34 @@
 
     <header id="header">
         <a href="home"><h1 class="transform">fichajes</h1></a>
-        <div>
+        <div>   
         {if $SESSION == null}
-       
+        
             <h4>iniciar sesión</h4>
-            <form action="login" method="POST" id="form">
-                <label for="username">usuario:</label>
-                <input type="text" name="username" id="inputLogin">
-                <label for="password">contraseña:</label>
-                <input type="text" name="password" id="inputLogin">
-                <input type="submit" value="Login">
-            </form>
-            <p id="register"><span id="loginError">{$loginError}</span>no tienes una cuenta? Registrate <a href="register">aquí</a></p>
+            <form action="login" method="POST">
+                <input class="form_login"type="text" name="username" placeholder="Usuario" >
+                <input class="form_login" type="text" name="password" placeholder="Contraseña">
+                <button class="btns login-submit" type="submit">Login</button>
+               
+           </form>
+             <p id="register"><span id="loginError">{$loginError}</span>no tienes una cuenta? Registrate <a href="register">aquí</a></p>
+              
+             
         {/if}
         {if $SESSION != null}
-       
+        <div>
             <form action="logout" method="POST" id="form">
                 <input class="logout"type="submit" value="Logout">
             </form>
-             <h3 >Bienvenido  {$SESSION}</h3>
+            
             <div class="bienvenido">
-            </div>
+            <h3 >Bienvenido  {$SESSION}</h3>
+          
+             
             
         {/if}
         </div>
          
     </header>
+
+      

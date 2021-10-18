@@ -22,6 +22,7 @@ class UserController {
     }
 
     public function deleteUser($userID) {
+        $this->authHelper->checkLoggedIn();
         $this->model->borrarUser($userID);
         $this->authHelper->location("usersList");
     }

@@ -27,7 +27,7 @@ class LoginController {
         if (!empty($_POST['username']) && !empty($_POST['password'])) {
             $username = $_POST['username'];
             $password = $_POST['password'];
-            $user = $this->userModel->traerUser($username);
+            $user = $this->model->traerUser($username);
             if (!empty($user)) {
                 if (password_verify($password, $user->password)) {
                     session_start();

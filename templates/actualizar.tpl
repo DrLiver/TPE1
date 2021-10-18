@@ -13,7 +13,7 @@
                     {/if}
 				{/foreach}
 			</select>
-            <input  class="form_input id_equipo" name="id_equipo" type="number" value="{$equipo->id_equipo}">
+            <input  class="id_equipo" name="id_equipo" type="number" value="{$equipo->id_equipo}">
 			<input class="form_input " name="equipo" type="text" placeholder="{$equipo->nombre}">
 			<textarea class="form_input " name="descripcion" type="text" placeholder="{$equipo->descripcion}"></textarea>
 			<input class="form_input " name="posicion" type="number" placeholder="{$equipo->posicion}" min="1" max=13  >
@@ -26,7 +26,7 @@
     <form action="actualizarDivision" method="POST" class="form_agregar form_modificar">
         <h1 class="suscribete_title">Modificar divisiones</h1>
           
-            <input class="form_input id_equipo" name="id_division" type="number" value="{$divisiones->id_division}">
+            <input class="id_equipo" name="id_division" type="number" value="{$divisiones->id_division}">
             <input class="form_input " name="division" type="text" placeholder="Division: {$divisiones->division}">
         <input class="form_input " name="cantidad" type="number" placeholder="N° de equipops: {$divisiones->cantidad_equipos}">
         <button name="btn-agregar" type="submit" class="btns">Modificar Division</button>

@@ -6,7 +6,7 @@
 			<h1 class="suscribete_title">Agregar equipos</h1>
 			<select  class="form_input" name="division">
          
-               <option >{$contador->division}</option>
+               <option >{$id->division}</option>
 				{foreach from=$divisiones item=$item}
                     {if $item->id_division != $equipo->id_division}
                         <option >{$item->division}</option>

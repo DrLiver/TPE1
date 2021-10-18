@@ -13,41 +13,39 @@ class EquipoView {
         $this->authHelper = new AuthHelper();
     }
 
-    public function traerHome($equipos,$divisiones,$loginError = ''){
+    public function session($title){
         $this->smarty->assign('SESSION', $this->authHelper->session());
+        $this->smarty->assign('title',$title);
+    }
+
+    public function traerHome($equipos,$divisiones,$loginError = ''){
+        $this->session('Inicio');
         $this->smarty->assign('equipo',$equipos);
         $this->smarty->assign('division',$divisiones);
-        $this->smarty->assign('title',"Inicio");
         $this->smarty->assign('loginError',$loginError);
         $this->smarty->display("templates/equipos.tpl");
     }
 
     public function verUnEquipo($equipo){
+        $this->session('Detalle del equipo');
         $this->smarty->assign('equipo',$equipo);
-        $this->smarty->assign('SESSION', $this->authHelper->session());
-        $this->smarty->assign('title', "Detalle del equipo");
         $this->smarty->display("templates/detalleEquipo.tpl");
     }
 
     public function TraerParamodificar($divisiones,$equipo,$id_division=""){
-        $this->smarty->assign('SESSION', $this->authHelper->session());
+        $this->session('Modificar Equipo');
         $this->smarty->assign('divisiones', $divisiones);
-        $this->smarty->assign('contador', $id_division);
+        $this->smarty->assign('id', $id_division);
         $this->smarty->assign('equipo', $equipo);
-        $this->smarty->assign('title', "Modificar Equipo");
         $this->smarty->display('templates/actualizar.tpl');
     }
 
     public function adminEquipo($equipos,$divisiones,$error,$exito){
-        $this->smarty->assign('SESSION', $this->authHelper->session());
+        $this->session('Administrador Equipos');
         $this->smarty->assign('equipo',$equipos);
         $this->smarty->assign('division',$divisiones);
         $this->smarty->assign('error',$error);
         $this->smarty->assign('exito',$exito);
-        $this->smarty->assign('title',"Administrador Equipos");
         $this->smarty->display("templates/adminEquipos.tpl");
-      
     }
-
-
 }

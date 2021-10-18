@@ -13,30 +13,32 @@ class DivisionesView {
         $this->authHelper = new AuthHelper();
     }
 
-    public function traerDivisiones($divisiones,$loginError = ''){
+    public function session($title){
         $this->smarty->assign('SESSION', $this->authHelper->session());
+        $this->smarty->assign('title',$title);
+    }
+
+    public function traerDivisiones($divisiones,$loginError = ''){
+        $this->session('Divisiones');
         $this->smarty->assign('division',$divisiones);
-        $this->smarty->assign('title',"Divisiones");
         $this->smarty->assign('loginError',$loginError);
         $this->smarty->display("templates/divisiones.tpl");
     }
 
-
     public function adminDivisiones($divisiones,$error,$exito){
-        $this->smarty->assign('SESSION', $this->authHelper->session());
+        $this->session('Administrador Divisiones');
         $this->smarty->assign('division',$divisiones);
         $this->smarty->assign('error',$error);
         $this->smarty->assign('exito',$exito);
-        $this->smarty->assign('title',"Administrador Divisiones");
         $this->smarty->display("templates/adminDivisiones.tpl");
       
     }
 
-    public function TraerParamodificarDivision($divisiones,$id_division=""){
-        $this->smarty->assign('SESSION', $this->authHelper->session());
+    public function TraerParamodificarDivision($divisiones,$equipos="",$id_division=""){
+        $this->session('Modificar Division');
+        $this->smarty->assign('equipo',$equipos);
         $this->smarty->assign('divisiones', $divisiones);
         $this->smarty->assign('contador', $id_division);
-        $this->smarty->assign('title', "Modificar Division");
         $this->smarty->display('templates/actualizar.tpl');
     }
 

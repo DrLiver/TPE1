@@ -31,9 +31,12 @@
         {if $SESSION != null}
        
             <form action="logout" method="POST" id="form">
-                <input type="submit" value="Logout">
+                <input class="logout"type="submit" value="Logout">
             </form>
-            <h3>Bienvenido  {$SESSION}</h3>
+             <h3 >Bienvenido  {$SESSION}</h3>
+            <div class="bienvenido">
+            </div>
+            
         {/if}
         </div>
          

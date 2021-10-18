@@ -35,15 +35,15 @@ class LoginController {
                     $this->authHelper->location("admin");
                 }
                 else {
-                    $this->EquipoView->traerHome($this->equipoModel->traerEquipos(), $this->divisionModel->traerDivisiones(), 'la contraseña es incorrecta. ');
+                    $this->EquipoView->traerHome($this->equipoModel->traerEquipos(), $this->divisionModel->traerDivisiones(), 'La contraseña es incorrecta. ');
                 }
             }
             else {
-                $this->EquipoView->traerHome($this->equipoModel->traerEquipos(), $this->divisionModel->traerDivisiones(), 'El usuario no existe en nuestra base de datos ');
+                $this->EquipoView->traerHome($this->equipoModel->traerEquipos(), $this->divisionModel->traerDivisiones(), 'El usuario no existe. ');
             }
         }
         else {
-            $this->EquipoView->traerHome($this->equipoModel->traerEquipos(), $this->divisionModel->traerDivisiones(), 'faltan completar campos. ');
+            $this->EquipoView->traerHome($this->equipoModel->traerEquipos(), $this->divisionModel->traerDivisiones(), 'Faltan completar campos. ');
         }
     }
 

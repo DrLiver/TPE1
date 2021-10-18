@@ -10,7 +10,7 @@ define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] 
 if (!empty($_GET['operacion'])) {
     $operacion = $_GET['operacion'];
 } else {
-    $operacion = 'equipos';     // acción por defecto si no envían
+    $operacion = 'home';     // acción por defecto si no envían
 }
 
     $EquipoController = new EquipoController(); 
@@ -21,7 +21,7 @@ if (!empty($_GET['operacion'])) {
     $parametros = explode('/', $operacion);
 
     switch ($parametros[0]) {
-        case 'equipos': 
+        case 'home': 
             $EquipoController->equipos();
             break;
         case 'divisiones': 

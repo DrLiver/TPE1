@@ -50,7 +50,7 @@ class LoginController {
     public function logout () {
         session_start();
         session_destroy();
-        $this->authHelper->location("equipos");
+        $this->authHelper->location("home");
     }
 
     public function showRegister ($error ="") {

@@ -9,7 +9,6 @@
                     <th>Nombre</th>
                     <th>Division</th>
                     <th>Posicion</th>
-                    <th>Equipos participantes</th>
                 </tr>
             </thead>
            <tbody>
@@ -17,7 +16,6 @@
                         <td >{$equipo->nombre}</td>
                         <td >{$equipo->division}</td>
                         <td >{$equipo->posicion}</td>
-                        <td >{$equipo->cantidad_equipos}</td>
                     </tr>	
                    
 			</tbody>

@@ -327,6 +327,7 @@ textarea.form_input {
     min-width: 500px;
 }
 
+
 /* nav*/
 
 .navigation{
@@ -351,12 +352,18 @@ textarea.form_input {
 .transform {
     color: rgb(252, 252, 248);
 	text-transform: uppercase;
+    transition: all .2s;
 }
 a.transform:hover {
-	padding-bottom: 2px;
-	border-bottom: 3px solid green;
+	padding-bottom: 3px;
+	border-bottom: 3px solid rgb(1, 172, 1);
 }
 
 .exito{
     color: #079c4a;
+}
+
+
+.destacado{
+    background:  rgb(0, 255, 55);
 }

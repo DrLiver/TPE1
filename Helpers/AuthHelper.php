@@ -5,20 +5,22 @@ class AuthHelper{
     function __construct(){
     }
 
-    function checkLoggedIn(){
+    public function islogin(){
         if(!isset($_SESSION)){ 
-            session_start(); 
-            if(!isset($_SESSION["username"])){
-                header("Location: ".BASE_URL."equipos");
-                die();
-            }
+            session_start();
+        }
+    }
+
+    public function checkLoggedIn(){
+        $this->islogin();
+        if(!isset($_SESSION["username"])){
+            header("Location: ".BASE_URL."equipos");
+            die();
         }
     }
 
     public function session() {
-        if(!isset($_SESSION)){ 
-            session_start();
-        }
+        $this->islogin();
         $session = null;
         if (!empty($_SESSION)) {
             $session = $_SESSION['username'];

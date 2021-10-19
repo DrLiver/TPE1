@@ -4,7 +4,7 @@ require_once "models/EquipoModel.php";
 require_once "view/EquipoView.php";
 require_once "models/DivisionesModel.php";
 require_once "Helpers/AuthHelper.php";
-require_once "controllers/LoginController.php";
+
 
 class EquipoController{
     private $model;

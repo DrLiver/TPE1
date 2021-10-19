@@ -18,7 +18,7 @@
         <tbody class="filas">  
             {foreach from=$division item=$divisiones}
                 <tr>
-                    <td class="td-equipo">{$divisiones->division}</a></td>  
+                    <td>{$divisiones->division}</a></td>  
                     <td><a href="eliminarDivision/{$divisiones->id_division}"><button class="btn"><i class="fas fa-trash-alt"></i></button></a>
                         <a href="modificarDivision/{$divisiones->id_division}"><button type="button"class="btn"><i class="far fa-edit"></i></button></a></td>     
                 </tr>	
@@ -29,7 +29,7 @@
                 <h1 class="suscribete_title">Agregar divisiones</h1>
                 <input class="form_input " name="division" type="text" placeholder="Division">
                 <input class="form_input " name="cantidad" type="number" placeholder="Cantidad de equipos">
-                <button name="btn-agregar" type="submit" class="btns">Agregar Division</button>
+                <button name="btn-agregar " type="submit" class="btns">Agregar Division</button>
         </form>
     </section>        
 </body>

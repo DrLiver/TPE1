@@ -17,7 +17,7 @@
             <tbody class="filas">
                 {foreach from=$equipo item=$item}
                     <tr >
-                        <td><a href="equipo/{$item->id_equipo}">{$item->nombre}</a></td>
+                        <td class="td-equipo"><a href="equipo/{$item->id_equipo}">{$item->nombre}</a></td>
                         <td><a href="eliminarEquipo/{$item->id_equipo}"><button class="btn"><i class="fas fa-trash-alt"></i></button></a>
                             <a href="modificarEquipo/{$item->id_equipo}"><button type="button"class="btn"><i class="far fa-edit"></i></button></a></td>
                     </tr>	

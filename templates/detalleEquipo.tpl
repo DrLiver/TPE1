@@ -11,7 +11,7 @@
                 </tr>
             </thead>
            <tbody>
-                <tr >
+                <tr class="td-equipo">
                     <td >{$equipo->nombre}</td>
                     <td >{$equipo->division}</td>
                     <td >{$equipo->posicion}</td>

@@ -53,8 +53,8 @@ class LoginController {
         $this->authHelper->location("home");
     }
 
-    public function showRegister ($error ="") {
-        $this->view->showRegister($error);
+    public function showRegister ($error="",$exito="") {
+        $this->view->showRegister($error,$exito);
     }
 
     public function completeRegister () {
@@ -71,7 +71,7 @@ class LoginController {
             }
             if($alreadyRegistered == false ){
                 $this->model->crearUsuario($username,$passwordHash);
-                $this->showRegister("Registro Exitoso!");
+                $this->showRegister('',"Registro Exitoso!");
             }
         }
         else{

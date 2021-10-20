@@ -5,7 +5,6 @@ require_once "view/EquipoView.php";
 require_once "models/DivisionesModel.php";
 require_once "Helpers/AuthHelper.php";
 
-
 class EquipoController{
     private $model;
     private $view;
@@ -94,7 +93,6 @@ class EquipoController{
                 $this->model->insertarEquipo($id ,$equipo,$_POST['descripcion'],$posicion);
                 $this->adminEquipo('','Agregado con exíto');
             }
-
         }else{
             $this->adminEquipo('Falta completar campos ');
         }

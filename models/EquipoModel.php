@@ -9,7 +9,6 @@ class EquipoModel {
         $this->basededatos = new PDO('mysql:host=localhost;'.'dbname=fichajes;charse=utf8','root','');
     }
 
-
     public function traerEquipos(){
         $sentencia = $this->basededatos->prepare('SELECT a.*,b.* FROM equipos a INNER JOIN divisiones b ON a.id_division = b.id_division');
         $sentencia->execute();
@@ -46,13 +45,10 @@ class EquipoModel {
         $sentencia = $this->basededatos->prepare('SELECT * FROM equipos WHERE id_equipo=?');
         $sentencia->execute(array($id));
         return  $sentencia->fetch(PDO::FETCH_OBJ);
-        
     }
 
     function actualizarEquipo($id,$nombre,$descripcion,$posicion,$division){
         $sentencia = $this->basededatos->prepare('UPDATE  equipos SET nombre=?,descripcion=?,posicion=?,id_division=?  WHERE id_equipo = ?' );
         $sentencia->execute(array($nombre,$descripcion,$posicion,$division,$id));  
-
     }
-
 }    

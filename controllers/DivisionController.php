@@ -9,7 +9,6 @@ class DivisionController{
     private $view;
     private $equipoModel; 
     private $authHelper;
-  
 
     function __construct(){
         $this->model = new DivisionesModel();

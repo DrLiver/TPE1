@@ -4,16 +4,16 @@
     <form action="registerMesage" method="post">
         <h1>Registrate</h1>
         <div>
-            <div id="registerLabels">
-                <label for="username">usuario:</label>
-                <label for="password">contraseña:</label>
-            </div>
             <div id="registerInputs">
-                <input type="text" name="registerUsername" id="username">
-                <input type="text" name="registerPassword" id="password">
+                <input type="text" class="form_register" name="registerUsername" id="username" placeholder="Usuario">
+                <input type="text"  class="form_register" name="registerPassword" id="password" placeholder="Contraseña">
             </div>
         </div>
-        <p class="errorMessage">{$message}</p>
-        <input type="submit" value="Registrarse Ahora">
+{if {$error}!=""}
+    <p class="error">{$error}</p>
+    {else }
+        <p class="exito">{$exito}</p>
+{/if}
+    <input type="submit" value="Registrarse Ahora">
     </form>
 </article>

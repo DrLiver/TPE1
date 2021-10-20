@@ -41,5 +41,4 @@ class DivisionesView {
         $this->smarty->assign('contador', $id_division);
         $this->smarty->display('templates/actualizar.tpl');
     }
-
 }

@@ -12,10 +12,11 @@ class LoginView{
         $this->authHelper = new AuthHelper();
     }
 
-    public function showRegister($message = '') {
+    public function showRegister($error,$exito) {
         $this->smarty->assign('SESSION', $this->authHelper->session());
         $this->smarty->assign('loginError');
-        $this->smarty->assign('message', $message);
+        $this->smarty->assign('error',$error);
+        $this->smarty->assign('exito',$exito);
         $this->smarty->assign('title', "Registrarse");
         $this->smarty->display('templates/register.tpl');
     }

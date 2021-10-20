@@ -36,7 +36,6 @@ class DivisionesModel {
         $sentencia = $this->basededatos->prepare('SELECT * FROM divisiones WHERE id_division=?');
         $sentencia->execute(array($id));
         return  $sentencia->fetch(PDO::FETCH_OBJ);
-
     }
 
     public function actualizarDivision($id,$cantidad,$division){

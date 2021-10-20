@@ -18,5 +18,4 @@ class UserView{
         $this->smarty->assign('title', "Usuarios");
         $this->smarty->display('templates/usersList.tpl');
     }
-
 }

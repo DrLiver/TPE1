@@ -14,7 +14,7 @@ class AuthHelper{
     public function checkLoggedIn(){
         $this->islogin();
         if(!isset($_SESSION["username"])){
-            header("Location: ".BASE_URL."equipos");
+            header("Location: ".BASE_URL."home");
             die();
         }
     }

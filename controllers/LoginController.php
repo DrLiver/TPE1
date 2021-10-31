@@ -32,7 +32,12 @@ class LoginController {
                 if (password_verify($password, $user->password)) {
                     session_start();
                     $_SESSION['username'] = $username;
-                    $this->authHelper->location("adminEquipo");
+                    if ($username == 'admin') {
+                        $this->authHelper->location("adminEquipo");
+                    }
+                    if ($username != 'admin') {
+                        $this->authHelper->location("home");
+                    }
                 }
                 else {
                     $this->EquipoView->traerHome($this->equipoModel->traerEquipos(), $this->divisionModel->traerDivisiones(), 'La contraseña es incorrecta. ');

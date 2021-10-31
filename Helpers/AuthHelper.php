@@ -13,7 +13,11 @@ class AuthHelper{
 
     public function checkLoggedIn(){
         $this->islogin();
-        if(!isset($_SESSION["username"])){
+        if(!isset($_SESSION["username"])) {
+            header("Location: ".BASE_URL."home");
+            die();
+        }
+        if(isset($_SESSION["username"]) && $_SESSION["username"] != "admin") {
             header("Location: ".BASE_URL."home");
             die();
         }

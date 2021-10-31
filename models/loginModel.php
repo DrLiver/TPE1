@@ -9,12 +9,12 @@ class LoginModel {
     }
 
     public function crearUsuario($username,$password){
-        $sentencia = $this->basededatos->prepare("INSERT INTO usuario(username, password) VALUES(?, ?)");
+        $sentencia = $this->basededatos->prepare("INSERT INTO usuarios(username, password) VALUES(?, ?)");
         $sentencia->execute([$username,$password]);
     }
 
     public function traerUser ($username) {
-        $sentencia = $this->basededatos->prepare("SELECT * FROM usuario WHERE username=?");
+        $sentencia = $this->basededatos->prepare("SELECT * FROM usuarios WHERE username=?");
         $sentencia->execute([$username]);
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }

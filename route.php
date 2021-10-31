@@ -40,7 +40,7 @@ if (!empty($_GET['operacion'])) {
             $EquipoController->adminEquipo();
             break;
         case 'usersList':
-            $UserController->showUsers();  
+            $UserController->showUsersAPI();
             break;
         case 'register':
             $LoginController->showRegister();

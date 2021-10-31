@@ -21,6 +21,12 @@ class UserController {
         $this->view->usersTable($users);
     }
 
+    public function showUsersAPI() {
+        $this->authHelper->checkLoggedIn();
+        $this->view->usersTable();
+        $this->view->JSFooterUsers();
+    }
+
     public function deleteUser($userID) {
         $this->authHelper->checkLoggedIn();
         $this->model->borrarUser($userID);

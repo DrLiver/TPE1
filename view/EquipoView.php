@@ -20,6 +20,7 @@ class EquipoView {
 
     public function traerHome($equipos,$divisiones,$loginError = ''){
         $this->session('Inicio');
+        $this->smarty->assign('admin', $this->authHelper->isAdmin());
         $this->smarty->assign('equipo',$equipos);
         $this->smarty->assign('division',$divisiones);
         $this->smarty->assign('loginError',$loginError);
@@ -28,6 +29,7 @@ class EquipoView {
 
     public function verUnEquipo($equipo){
         $this->session('Detalle del equipo');
+        $this->smarty->assign('admin', $this->authHelper->isAdmin());
         $this->smarty->assign('equipo',$equipo);
         $this->smarty->assign('loginError');
         $this->smarty->display("templates/detalleEquipo.tpl");
@@ -35,6 +37,7 @@ class EquipoView {
 
     public function TraerParamodificar($divisiones,$equipo,$id_division=""){
         $this->session('Modificar Equipo');
+        $this->smarty->assign('admin', $this->authHelper->isAdmin());
         $this->smarty->assign('divisiones', $divisiones);
         $this->smarty->assign('id', $id_division);
         $this->smarty->assign('equipo', $equipo);
@@ -43,6 +46,7 @@ class EquipoView {
 
     public function adminEquipo($equipos,$divisiones,$error,$exito){
         $this->session('Administrador Equipos');
+        $this->smarty->assign('admin', $this->authHelper->isAdmin());
         $this->smarty->assign('equipo',$equipos);
         $this->smarty->assign('division',$divisiones);
         $this->smarty->assign('error',$error);

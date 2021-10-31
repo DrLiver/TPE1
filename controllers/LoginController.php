@@ -32,10 +32,11 @@ class LoginController {
                 if (password_verify($password, $user->password)) {
                     session_start();
                     $_SESSION['username'] = $username;
-                    if ($username == 'admin') {
+                    $_SESSION['admin'] = $user->privilege_level;
+                    if ($_SESSION['admin'] == 1) {
                         $this->authHelper->location("adminEquipo");
                     }
-                    if ($username != 'admin') {
+                    if ($_SESSION['admin'] == 0) {
                         $this->authHelper->location("home");
                     }
                 }

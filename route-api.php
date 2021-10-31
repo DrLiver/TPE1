@@ -10,6 +10,6 @@
     $router->addRoute('users/:ID', 'DELETE', 'ApiUsersController', 'deleteUser');
     $router->addRoute('users/:ID', 'GET', 'ApiUsersController', 'getUser');
     $router->addRoute('users/:ID', 'PUT', 'ApiUsersController', 'doAdmin');
-    $router->addRoute('users/:ID', 'PUT', 'ApiUsersController', 'quitAdmin');
+    $router->addRoute('users/:ID', 'UPDATE', 'ApiUsersController', 'quitAdmin');
 
     $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);

@@ -14,6 +14,7 @@ class LoginView{
 
     public function showRegister($error,$exito) {
         $this->smarty->assign('SESSION', $this->authHelper->session());
+        $this->smarty->assign('admin', $this->authHelper->isAdmin());
         $this->smarty->assign('loginError');
         $this->smarty->assign('error',$error);
         $this->smarty->assign('exito',$exito);

@@ -1,6 +1,5 @@
 "use strict"
 
-console.log("esto funciona :)");
 
 const URL = "http://localhost/trabajos/PRUEBAS/api/users";
 mostrarUsuarios(URL);
@@ -32,10 +31,12 @@ function escribirListas(user) {
     tr.appendChild(td2);
     td1.innerHTML = user.username;
     if (user.username != "admin") {
+
         td2.innerHTML = '<button id="deleteUser' + user.id_usuario + '"> eliminar </button>';
         document.getElementById("deleteUser" + user.id_usuario).addEventListener("click", function() {
             eliminarUsuario(user.id_usuario);
         });
+
         if (user.privilege_level != 1) {
             td2.innerHTML += '<button id="doAdmin' + user.id_usuario + '"> hacerlo admin </button>';
             document.getElementById("doAdmin" + user.id_usuario).addEventListener("click", function() {
@@ -47,6 +48,8 @@ function escribirListas(user) {
                 quitarAdmin(user.id_usuario);
             });
         }
+    } else {
+        td2.innerHTML = "i'm the master, you can't modify me";
     }
 }
 
@@ -54,7 +57,7 @@ async function eliminarUsuario(id) {
     try {
         let respuesta = await fetch(URL + "/" + id, {
             'method': "DELETE"
-        })
+        });
         if (respuesta.status == 200) {
             console.log("usuario eliminado");
             document.getElementById("APIusers").innerHTML = "";
@@ -102,6 +105,8 @@ async function quitarAdmin(id) {
         console.log("no se pudo contactar con el servidor local");
         console.log(error);
     }
+}
 
-
+function prueba() {
+    console.log("prueba");
 }

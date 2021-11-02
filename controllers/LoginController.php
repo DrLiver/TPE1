@@ -23,22 +23,27 @@ class LoginController {
         $this->authHelper = new AuthHelper();
     }
 
-    public function login () {
+    public function showLogin($username,$user=null) {
+            session_start();
+            $_SESSION['username'] = $username;
+            $_SESSION['admin'] = $user->privilege_level;
+            if ($_SESSION['admin'] == 1) {
+                $this->authHelper->location("home");
+            }
+            if ($_SESSION['admin'] == 0) {
+                $this->authHelper->location("home");
+            }
+        }
+    
+
+    public function login ($username="", $password="") {
         if (!empty($_POST['username']) && !empty($_POST['password'])) {
             $username = $_POST['username'];
             $password = $_POST['password'];
             $user = $this->model->traerUser($username);
             if (!empty($user)) {
                 if (password_verify($password, $user->password)) {
-                    session_start();
-                    $_SESSION['username'] = $username;
-                    $_SESSION['admin'] = $user->privilege_level;
-                    if ($_SESSION['admin'] == 1) {
-                        $this->authHelper->location("adminEquipo");
-                    }
-                    if ($_SESSION['admin'] == 0) {
-                        $this->authHelper->location("home");
-                    }
+                    $this->showLogin($username,$user);
                 }
                 else {
                     $this->EquipoView->traerHome($this->equipoModel->traerEquipos(), $this->divisionModel->traerDivisiones(), 'La contraseña es incorrecta. ');
@@ -77,7 +82,7 @@ class LoginController {
             }
             if($alreadyRegistered == false ){
                 $this->model->crearUsuario($username,$passwordHash);
-                $this->showRegister('',"Registro Exitoso!");
+                $this->showLogin($username);
             }
         }
         else{

@@ -1,7 +1,7 @@
 "use strict"
 
 
-const URL = "http://localhost/trabajos/PRUEBAS/api/users";
+const URL = "api/users";
 mostrarUsuarios(URL);
 
 async function mostrarUsuarios() {
@@ -22,30 +22,37 @@ async function mostrarUsuarios() {
 }
 
 function escribirListas(user) {
-    let tabla = document.getElementById("APIusers");
+    let tbody = document.getElementById("APIusers");
+   
     let tr = document.createElement("tr");
     let td1 = document.createElement("td");
     let td2 = document.createElement("td");
-    tabla.appendChild(tr);
+    let button1 = document.createElement("button");
+    let button2 = document.createElement("button");
+    tbody.appendChild(tr);
     tr.appendChild(td1);
     tr.appendChild(td2);
+    td2.appendChild(button1);
+    td2.appendChild(button2);
     td1.innerHTML = user.username;
     if (user.username != "admin") {
 
-        td2.innerHTML = '<button id="deleteUser' + user.id_usuario + '"> eliminar </button>';
-        document.getElementById("deleteUser" + user.id_usuario).addEventListener("click", function() {
-            eliminarUsuario(user.id_usuario);
+        button1.id = user.id_usuario;
+        button1.innerHTML = "Eliminar";
+        button1.addEventListener("click", function () {
+            eliminarUsuario(button1.id);
         });
-
         if (user.privilege_level != 1) {
-            td2.innerHTML += '<button id="doAdmin' + user.id_usuario + '"> hacerlo admin </button>';
-            document.getElementById("doAdmin" + user.id_usuario).addEventListener("click", function() {
-                volverAdmin(user.id_usuario);
-            });
-        } else {
-            td2.innerHTML += '<button id="quitAdmin' + user.id_usuario + '"> quitarle admin </button>';
-            document.getElementById("quitAdmin" + user.id_usuario).addEventListener("click", function() {
-                quitarAdmin(user.id_usuario);
+        button2.id = user.id_usuario;
+        button2.innerHTML = "Hacer admin";
+        button2.addEventListener("click", function () {
+            volverAdmin(button2.id);
+        });
+        }else{
+            button2.id = user.id_usuario;
+            button2.innerHTML = "Quitar admin";
+            button2.addEventListener("click", function () {
+                quitarAdmin(button2.id);
             });
         }
     } else {

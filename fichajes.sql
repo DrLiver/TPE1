@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-10-2021 a las 01:34:45
+-- Tiempo de generación: 05-11-2021 a las 00:34:26
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 8.0.9
 
@@ -20,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `fichajes`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id_comentario` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_equipo` int(11) NOT NULL,
+  `comentario` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -69,7 +82,6 @@ INSERT INTO `equipos` (`id_equipo`, `nombre`, `descripcion`, `posicion`, `id_div
 (41, 'Velez', 'El Club Atlético Vélez Sarsfield es una entidad deportiva de Argentina con sede en el barrio de Liniers, Buenos Aires. Fue fundado el 1 de enero de 1910 y su principal actividad es el fútbol, cuyo primer equipo participa en la Liga Profesional. Es uno de los clubes más laureados y representativos del fútbol argentino; habiéndose consagrado campeón de la Primera División en 10 oportunidades.', 11, 2),
 (42, 'Rosario Central', 'Rosario Central es uno de los clubes más laureados del fútbol argentino: registra 34 títulos oficiales de los cuales 23 los consiguió en la era amateur y 11 en la era profesional. A su vez, 23 de ellos son a nivel regional mientras que ha conseguido 10 conquistas a nivel nacional, y ha ganado un título internacional oficial organizado por la CONMEBOL. Este logro, lo convierte en el único equipo de', 10, 2),
 (43, 'Talleres (C)', 'El Club Atlético Talleres (Córdoba) es una institución deportiva con sede en la ciudad de Córdoba, Argentina. Su principal actividad es el fútbol masculino y también se practican el hockey, vóley, balonmano, patín artístico, karate, futsal y básquet en la institución. Fue fundado el 12 de octubre de 1913 y participa en la Primera División de Argentina.', 12, 2),
-(44, 'Colegiales', 'El Club Atlético Colegiales es un club de fútbol argentino, radicado en el barrio de Munro, partido de Vicente López, ubicado en la provincia de Buenos Aires. Fue fundado el 1 de abril de 1908 bajo el nombre Libertarios Unidos, nombre que actualmente lleva su estadio, donde juega sus partidos como local.', 1, 1),
 (45, 'Los Andes', 'El Club Atlético Los Andes es un club de fútbol argentino fundado en Lomas de Zamora, Buenos Aires el 1 de enero de 1917.4​ Actualmente juega en la Primera B Metropolitana, tercera división del fútbol argentino. Hace de local en el Estadio Eduardo Gallardón. Es uno de los clubes de la zona Sur que ha pasado por la Primera División en la que disputó partidos con grandes como Independiente.', 3, 1),
 (46, 'Fenix', 'El Club Atlético Fénix es un club de fútbol argentino, cuya sede social se encuentra en la ciudad de Buenos Aires, fundado el 26 de abril de 1948. Actualmente juega en la Primera B Metropolitana.', 2, 1),
 (47, 'Comunicaciones', 'El Club Comunicaciones es una institución deportiva del barrio de Agronomía, ciudad de Buenos Aires, Argentina, fundado el 15 de marzo de 1931. Actualmente disputa la Primera B Metropolitana, tercera división del fútbol argentino.', 4, 1),
@@ -87,33 +99,44 @@ INSERT INTO `equipos` (`id_equipo`, `nombre`, `descripcion`, `posicion`, `id_div
 (59, 'Agropecuario', 'El Club Agropecuario Argentino, simplificado como Agropecuario, es un club de fútbol ubicado en la ciudad de Carlos Casares, ubicada en el interior de la Provincia de Buenos Aires, Argentina. Es uno de los más jóvenes del fútbol argentino, ya que fue fundado el 23 de agosto de 2011 por el empresario Bernardo Grobocopatel, que es el presidente del club.', 6, 3),
 (60, 'Atlanta', 'El Club Atlético Atlanta es una institución social, cultural y deportiva argentina, radicada en el barrio de Villa Crespo, Buenos Aires. Fue fundado el 12 de octubre de 1904 y actualmente juega en la Primera Nacional, segunda categoría del fútbol argentino. Comenzó su participación futbolística en 1906.', 7, 3),
 (61, 'Alvarado', 'El Club Atlético Alvarado es una entidad deportiva de la ciudad de Mar del Plata, en la provincia de Buenos Aires, Argentina. Se destaca en fútbol, actualmente participando en la Liga Marplatense de Fútbol y de la Primera Nacional, segunda división del fútbol argentino.', 8, 3),
-(62, 'Riestra', 'Deportivo Riestra Asociación de Fomento Barrio Colón,2​ también conocido como Club Deportivo Riestra, es un club deportivo y social de Buenos Aires, Argentina. Tiene su sede en el barrio de Nueva Pompeya, y posee además el estadio Guillermo Laza en el barrio de Villa Soldati, cuya capacidad aproximada es de 3000 espectadores.', 9, 3);
+(62, 'Riestra', 'Deportivo Riestra Asociación de Fomento Barrio Colón,2​ también conocido como Club Deportivo Riestra, es un club deportivo y social de Buenos Aires, Argentina. Tiene su sede en el barrio de Nueva Pompeya, y posee además el estadio Guillermo Laza en el barrio de Villa Soldati, cuya capacidad aproximada es de 3000 espectadores.', 9, 3),
+(104, 'River Plate', 'El Club Atlético River Plate, más conocido simplemente como River Plate, es una entidad polideportiva con sede en Buenos Aires, Argentina.10​ Fue fundado el 25 de mayo de 1901 en el barrio de La Boca, tras la fusión de los clubes Santa Rosa y La Rosales, y su nombre proviene de la antigua denominación que se le daba en el inglés británico al Río de la Plata.', 1, 2),
+(127, 'Santos', '', 2, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuario` (
+CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `privilege_level` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `usuario`
+-- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `username`, `password`) VALUES
-(96, 'alex11', '$2y$10$vNpp0mVSus5Daw1/F6woMOz7atyCFKi5ZT8daoSKDDpBim3g3pmCW'),
-(97, 'alexa', '$2y$10$XZRcvXI/ENhq8NM2kTar3.euw.oxhOoqEJ.aYBT/WbN45A.YgSbC2'),
-(98, 'Pedro', '$2y$10$jrJwtBENWcaxqTbSl3z6mOmsIe6ch1vfJUskR9TLg2QzNNltHaVOa'),
-(99, 'alex', '$2y$10$.2ONpA9eJlWQ1g6MzYcz1.lSKtFCf6VpRQr3qzIyqw7uKXKHSkXX.');
+INSERT INTO `usuarios` (`id_usuario`, `username`, `password`, `privilege_level`) VALUES
+(121, 'admin', '$2y$10$HpnCgrneg46r.txDJlj3pelOtVvvUeSL/GIXQ8cq8wixe6IVSDTia', 1),
+(151, 'alex', '$2y$10$o/y8dXC8CgPBYIe8frFZCuFMMIe40L8QVbQsI4YzPZ61e9Ug1uuXK', 1),
+(153, 'juan', '$2y$10$//CAjWL2fAsrZ4r.fFGSAutiWCqqgYv0tgXTmNJi2X1xyAFbVwA2C', 1),
+(154, 'alex1', '$2y$10$KUejatyUTdS07Vh.ZtDUl.S0mBXZunkc7DxNnsnEBLGLWin2PBHN.', 1);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id_comentario`),
+  ADD KEY `id_usuario` (`id_usuario`,`id_equipo`),
+  ADD KEY `id_equipo` (`id_equipo`);
 
 --
 -- Indices de la tabla `divisiones`
@@ -129,9 +152,9 @@ ALTER TABLE `equipos`
   ADD KEY `id_division` (`id_division`);
 
 --
--- Indices de la tabla `usuario`
+-- Indices de la tabla `usuarios`
 --
-ALTER TABLE `usuario`
+ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
@@ -139,26 +162,39 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=262;
+
+--
 -- AUTO_INCREMENT de la tabla `divisiones`
 --
 ALTER TABLE `divisiones`
-  MODIFY `id_division` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id_division` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
--- AUTO_INCREMENT de la tabla `usuario`
+-- AUTO_INCREMENT de la tabla `usuarios`
 --
-ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
+  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`id_equipo`) REFERENCES `equipos` (`id_equipo`);
 
 --
 -- Filtros para la tabla `equipos`

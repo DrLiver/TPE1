@@ -9,9 +9,7 @@
             </tr>
         </thead>
         <tbody class="filas" id="APIusers">
-          
-             
-         
+    
         </tbody>
     </table>
 </section>

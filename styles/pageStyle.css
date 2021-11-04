@@ -142,7 +142,6 @@ a {
 }
 
 .tabla-detalle {
-    display: flex;
     justify-content: space-evenly;
     margin-bottom: 50px;
 }
@@ -159,9 +158,10 @@ a {
 }
 
 .descripcion {
-    margin: 0px 100px 0px 50px;
-    height: auto;
-    width: 20%;
+    margin-left: 70%;
+    margin-top: -195px;
+    margin-right: 100px;
+
 }
 
 .titulo-detalle {
@@ -306,6 +306,10 @@ textarea.form_input {
     font-size: 25px;
 }
 
+.fa-trash-verde:hover{
+    color: rgb(10, 128, 83);
+}
+
 .fa-trash-alt,
 .fa-edit {
     color: rgb(0, 0, 0);
@@ -375,4 +379,72 @@ a.transform:hover {
 
 .destacado{
     background:  rgb(0, 255, 55);
+}
+
+.comentarios-detalle{
+   background: rgb(85, 81, 81);
+   color: #ffffff;
+}
+.comentarios{
+    margin: auto;
+    width: 50%;
+}
+.input_coment{
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-bottom: 3px solid rgb(231, 227, 227);
+    background: rgb(85, 81, 81);
+    color: #ffffff;
+  
+    margin-bottom: 5px;
+}
+.input_coment::placeholder{
+    color: #ffffff;
+}
+
+.btn_coment{
+    position: absolute;
+    float: right;
+    margin: 100px;
+    margin-left: 45%;
+    margin-top: 20px;
+  
+}
+
+h4{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 15px;
+    padding: 5px 0px 0px 5px;
+  
+  
+}
+.p_coment{ 
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    margin: 5px 5px 15px 5px;
+    padding: 10px;
+
+}
+.puntaje{
+    margin-left: 40%;
+  
+
+}
+.btn-puntaje{
+    background: transparent;
+    color: rgb(126, 120, 120);
+    border: none;
+    font-size: 15px;
+    margin: 5px;
+    padding: 5px;
+    cursor: pointer;
+    height: 30px;
+    margin: 0px;
+}
+
+.fa-star:hover{
+    color: rgb(146, 212, 21);
+   
 }

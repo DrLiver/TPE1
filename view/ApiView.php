@@ -2,7 +2,7 @@
 
     class APIView {
 
-        public function respuesta($dataBase, $status) {
+        public function response($dataBase, $status) {
 
             header("Content-Type: application/json");
             header("HTTP/1.1 " . $status . " " . $this->requestStatus($status));

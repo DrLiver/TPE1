@@ -27,10 +27,12 @@ class EquipoView {
         $this->smarty->display("templates/equipos.tpl");
     }
 
-    public function verUnEquipo($equipo){
+    public function verUnEquipo($equipo,$comentarios,$usuario="",){
         $this->session('Detalle del equipo');
         $this->smarty->assign('admin', $this->authHelper->isAdmin());
         $this->smarty->assign('equipo',$equipo);
+        $this->smarty->assign('comentarios',$comentarios);
+        $this->smarty->assign('usuario',$usuario);
         $this->smarty->assign('loginError');
         $this->smarty->display("templates/detalleEquipo.tpl");
     }

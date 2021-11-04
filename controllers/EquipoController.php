@@ -3,18 +3,25 @@
 require_once "models/EquipoModel.php";
 require_once "view/EquipoView.php";
 require_once "models/DivisionesModel.php";
+require_once "models/ComentariosModel.php";
+require_once "models/UserModel.php";
 require_once "Helpers/AuthHelper.php";
 
 class EquipoController{
     private $model;
     private $view;
     private $divisionModel;
+    private $comentariosModel;
+    private $userModel;
     private $authHelper;
+    
 
     function __construct(){
         $this->model = new EquipoModel();
         $this->view = new EquipoView();
         $this->divisionModel= new DivisionesModel;
+        $this->comentariosModel= new ComentariosModel;
+        $this->userModel= new UserModel;
         $this->authHelper = new AuthHelper();
     }
 
@@ -26,7 +33,14 @@ class EquipoController{
 
     public function verEquipo($id){
         $equipo =  $this->model->traerEquipo($id);
-        $this->view->verUnEquipo($equipo);
+        $comentarios =  $this->comentariosModel->  traeruserComent($id);
+        $this->authHelper->islogin();
+        if($_SESSION != null){
+            $usuario = $this->userModel->bringUserByNameDB($_SESSION['username']);
+            $this->view->verUnEquipo($equipo,$comentarios,$usuario);
+        }else{
+            $this->view->verUnEquipo($equipo,$comentarios);
+        }
     }
 
     public function filtrar(){

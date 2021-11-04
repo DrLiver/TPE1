@@ -1,6 +1,7 @@
 <?php
     require_once "libraries/Router.php";
     require_once "controllers/ApiUsersController.php";
+    require_once "controllers/ApiComentController.php";
 
     $router = new Router();
 
@@ -8,8 +9,12 @@
 
     $router->addRoute('users', 'GET', 'ApiUsersController', 'getUser');
     $router->addRoute('users/:ID', 'DELETE', 'ApiUsersController', 'deleteUser');
-    $router->addRoute('users/:ID', 'GET', 'ApiUsersController', 'getUser');
     $router->addRoute('users/:ID', 'PUT', 'ApiUsersController', 'doAdmin');
     $router->addRoute('users/:ID', 'UPDATE', 'ApiUsersController', 'quitAdmin');
+    $router->addRoute('comentarios', 'GET', 'ApiComentController', 'getComents');
+    $router->addRoute('comentarios/:ID', 'GET', 'ApiComentController', 'getComents');
+    $router->addRoute('comentarios/', 'POST', 'ApiComentController', 'addComent');
+
+   
 
     $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);

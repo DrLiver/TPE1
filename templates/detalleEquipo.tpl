@@ -56,7 +56,7 @@
                 </section>     
         <div>
 
-        {if {$SESSION != null}}
+         {if ($SESSION != '') && ($admin == 1)}
             {include "vue/adminComents.tpl"}
             {else}
             {include "vue/coments.tpl"}

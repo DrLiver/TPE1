@@ -52,11 +52,5 @@ class EquipoModel {
         $sentencia->execute(array($nombre,$descripcion,$posicion,$division,$id));  
     }
 
-   
-
-    public function insertPuntaje($id,$puntos){
-        $sentencia = $this->basededatos->prepare('UPDATE  equipos SET puntaje=?  WHERE id_equipo = ?' );
-        $sentencia->execute(array($puntos,$id));  
-    }
 
 }    

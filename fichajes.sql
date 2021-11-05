@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-11-2021 a las 00:34:26
+-- Tiempo de generación: 05-11-2021 a las 20:47:35
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 8.0.9
 
@@ -29,10 +29,22 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `comentarios` (
   `id_comentario` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
   `id_equipo` int(11) NOT NULL,
   `comentario` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id_comentario`, `username`, `id_equipo`, `comentario`) VALUES
+(492, 'alex', 45, '123'),
+(493, 'admin', 45, 'holii'),
+(494, 'alex', 48, 'jajaja'),
+(495, 'admin', 48, 'jejej'),
+(496, 'admin', 48, 'dwedwqd'),
+(497, 'alex', 48, 'jejej');
 
 -- --------------------------------------------------------
 
@@ -123,8 +135,7 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id_usuario`, `username`, `password`, `privilege_level`) VALUES
 (121, 'admin', '$2y$10$HpnCgrneg46r.txDJlj3pelOtVvvUeSL/GIXQ8cq8wixe6IVSDTia', 1),
 (151, 'alex', '$2y$10$o/y8dXC8CgPBYIe8frFZCuFMMIe40L8QVbQsI4YzPZ61e9Ug1uuXK', 1),
-(153, 'juan', '$2y$10$//CAjWL2fAsrZ4r.fFGSAutiWCqqgYv0tgXTmNJi2X1xyAFbVwA2C', 1),
-(154, 'alex1', '$2y$10$KUejatyUTdS07Vh.ZtDUl.S0mBXZunkc7DxNnsnEBLGLWin2PBHN.', 1);
+(153, 'juan', '$2y$10$//CAjWL2fAsrZ4r.fFGSAutiWCqqgYv0tgXTmNJi2X1xyAFbVwA2C', 1);
 
 --
 -- Índices para tablas volcadas
@@ -135,7 +146,7 @@ INSERT INTO `usuarios` (`id_usuario`, `username`, `password`, `privilege_level`)
 --
 ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`id_comentario`),
-  ADD KEY `id_usuario` (`id_usuario`,`id_equipo`),
+  ADD KEY `id_usuario` (`username`,`id_equipo`),
   ADD KEY `id_equipo` (`id_equipo`);
 
 --
@@ -155,7 +166,8 @@ ALTER TABLE `equipos`
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id_usuario`);
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -165,7 +177,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=262;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=498;
 
 --
 -- AUTO_INCREMENT de la tabla `divisiones`
@@ -193,8 +205,8 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
-  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`id_equipo`) REFERENCES `equipos` (`id_equipo`);
+  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`id_equipo`) REFERENCES `equipos` (`id_equipo`),
+  ADD CONSTRAINT `comentarios_ibfk_3` FOREIGN KEY (`username`) REFERENCES `usuarios` (`username`);
 
 --
 -- Filtros para la tabla `equipos`

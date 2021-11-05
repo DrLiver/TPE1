@@ -22,15 +22,20 @@ class ComentariosModel {
 
 
     public function traeruserComent($id){
-        $sentencia = $this->basededatos->prepare('SELECT a.*,b.* FROM comentarios  a INNER JOIN usuarios b ON a.id_usuario = b.id_usuario  WHERE id_equipo=? ORDER BY id_comentario DESC ');
+        $sentencia = $this->basededatos->prepare('SELECT * FROM comentarios  WHERE id_equipo=? ORDER BY id_comentario DESC ');
         $sentencia->execute(array($id));
         $equipos = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $equipos;
     }
 
-    public function insertComent($id_usuario,$id_equipo,$comentario){
-        $sentencia = $this->basededatos->prepare('INSERT INTO comentarios(id_usuario,id_equipo,comentario) VALUES(?,?,?)');
-        $sentencia->execute([$id_usuario,$id_equipo,$comentario]);
+    public function insertComent($username,$id_equipo,$comentario){
+        $sentencia = $this->basededatos->prepare('INSERT INTO comentarios(username,id_equipo,comentario) VALUES(?,?,?)');
+        $sentencia->execute([$username,$id_equipo,$comentario]);
+    }
+
+    public function deleteComent($id){
+        $sentencia = $this->basededatos->prepare('DELETE FROM comentarios WHERE id_comentario = ?');
+        $sentencia->execute(array($id));
     }
 
 }

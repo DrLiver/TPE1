@@ -33,7 +33,7 @@ class EquipoController{
 
     public function verEquipo($id){
         $equipo =  $this->model->traerEquipo($id);
-        $comentarios =  $this->comentariosModel->  traeruserComent($id);
+        $comentarios =  $this->comentariosModel->traeruserComent($id);
         $this->authHelper->islogin();
         if($_SESSION != null){
             $usuario = $this->userModel->bringUserByNameDB($_SESSION['username']);

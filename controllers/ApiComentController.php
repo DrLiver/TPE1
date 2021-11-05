@@ -15,7 +15,7 @@
         public function getComents($operacion = []) {
             if (empty($operacion)) {
                 $users = $this->model->getComentarios();
-                $this->view->response($users, 200);
+                $this->view->response($users, 200); 
             }
             else {
                 $id = $operacion[":ID"];
@@ -30,22 +30,34 @@
         }
 
 
-        public function addComent($params = []) {   
+        public function addComent() {   
             $coments = $this->getBody(); // la obtengo del body
             // inserta la tarea
-            $comentId = $this->model->insertComent($coments->id_usuario,$coments->id_equipo,$coments->comentario);
+            $comentId = $this->model->insertComent($coments->username,$coments->id_equipo,$coments->comentario);
             // obtengo la recien creada
-            $comentarioNueva = $this->model->getComentario($comentId);
-            if ($comentarioNueva)
-                $this->view->response($comentarioNueva, 200);
-            else
+            $comentarioNuevo = $this->model->getComentario($comentId);
+            if ($comentarioNuevo != []) {
+                $this->view->response($comentarioNuevo, 200);
+            }
+            else{
                 $this->view->response("Error al insertar tarea", 500);
+            }
         }
+
+
+
+        public function deleteComents ($operacion = null) {
+            $id = $operacion[":ID"];
+            $this->model->deleteComent($id);
+            $this->view->response("usuario $id borrado con exito", 200);
+        }
+
 
         public function getBody () {
             $bodyString =file_get_contents("php://input");
             return json_decode($bodyString);
         }
     
-
+       
     }
+

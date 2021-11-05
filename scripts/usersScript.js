@@ -21,26 +21,9 @@ async function mostrarUsuarios() {
     }
 }
 
-async function taerUsers(){
-    try{
-        let respuesta = await fetch(URL + "/" + id, {
-            method: "GET"
-        })
-        if(respuesta.status == 200){
-            let usuario = await respuesta.json();
-            console.log(usuario);
-        }else{
-            console.log("no se pudo contactar con el servidor local");
-        }
-    }catch(error){
-        console.log("no se pudo contactar con el servidor local");
-        console.log(error);
-    }
-}
 
 function escribirListas(user) {
     let tbody = document.getElementById("APIusers");
-   
     let tr = document.createElement("tr");
     let td1 = document.createElement("td");
     let td2 = document.createElement("td");

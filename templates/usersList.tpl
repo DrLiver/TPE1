@@ -8,8 +8,10 @@
                 <th>acción</th>
             </tr>
         </thead>
-        <tbody class="filas" id="APIusers">
-    
-        </tbody>
-    </table>
+        {include file="vue/adminUser.tpl"}
 </section>
+
+ 
+   
+  
+

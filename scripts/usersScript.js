@@ -1,68 +1,55 @@
 "use strict"
 
 
-const URL = "api/users";
-mostrarUsuarios(URL);
+const url = "api/users";
 
-async function mostrarUsuarios() {
-    try {
-        let respuesta = await fetch(URL);
-
-        if (respuesta.status == 200) {
-            let usuarios = respuesta.json();
-            for (let usuario of usuarios) {
-                escribirListas(usuario);
-            }
+let app = new Vue({
+    el: "#user",
+    data: {
+        users: [],
+    },
+    methods: {
+      eliminar: function(id){
+        id = id.currentTarget.id;
+        eliminarUsuario(id);
+        console.log(id);
+      },
+        admin: function(id){
+            id = id.currentTarget.id;
+            volverAdmin(id);
+            console.log(id);
+        },
+        quitarAdmin: function(id){
+            id = id.currentTarget.id;
+            quitarAdmin(id);
+            console.log(id);
         }
-    } catch (error) {
-        console.log("no se pudo contactar con el servidor local");
-        console.log(error);
     }
+});
+       
+function mostrarUsuarios() {
+    fetch(url)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            app.users = data;
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 }
+mostrarUsuarios();
 
 
-function escribirListas(user) {
-    let tbody = document.getElementById("APIusers");
-    let tr = document.createElement("tr");
-    let td1 = document.createElement("td");
-    let td2 = document.createElement("td");
-    let button1 = document.createElement("button");
-    let button2 = document.createElement("button");
-    tbody.appendChild(tr);
-    tr.appendChild(td1);
-    tr.appendChild(td2);
-    td2.appendChild(button1);
-    td2.appendChild(button2);
-    td1.innerHTML = user.username;
-    if (user.username != "admin") {
-        button1.id = user.id_usuario;
-        button1.className="  fas fa-trash-alt";
-        button1.addEventListener("click", ()=> { eliminarUsuario(button1.id); });
-        if (user.privilege_level != 1) {
-            button2.id = user.id_usuario;
-            button2.innerHTML = "Admin";
-            button2.className=" fas fa-user-cog  fas fa-trash-verde";
-            button2.addEventListener("click", ()=> { volverAdmin(button2.id); });
-        }else{
-            button2.id = user.id_usuario;
-            button2.innerHTML = "quitar admin";
-            button2.className=" fas fa-user-cog  fas fa-trash-alt";
-            button2.addEventListener("click",  ()=> {quitarAdmin(button2.id); });
-        }
-    }else {
-        td2.innerHTML = "i'm the master, you can't modify me";
-    }
-}
 
 async function eliminarUsuario(id) {
-  
     try {
-        let respuesta = await fetch(URL + "/" + id, {
+        let respuesta = await fetch(url + "/" + id, {
             'method': "DELETE"
         });
         if (respuesta.status == 200) {
             console.log("usuario eliminado");
-            document.getElementById("APIusers").innerHTML = "";
             mostrarUsuarios();
         } else {
             console.log("no se pudo eliminar el usuario");
@@ -74,15 +61,12 @@ async function eliminarUsuario(id) {
 }
 
 async function volverAdmin(id) {
-   
-
     try {
-        let respuesta = await fetch(URL + "/" + id, {
+        let respuesta = await fetch(url + "/" + id, {
             method: "PUT",
         })
         if (respuesta.status == 200) {
             console.log("usuario admin");
-            document.getElementById("APIusers").innerHTML = "";
             mostrarUsuarios();
         } else {
             console.log("no se pudo hacer admin el usuario");
@@ -94,14 +78,12 @@ async function volverAdmin(id) {
 }
 
 async function quitarAdmin(id) {
-   
     try {
-        let respuesta = await fetch(URL + "/" + id, {
+        let respuesta = await fetch(url + "/" + id, {
             method: "UPDATE",
         })
         if (respuesta.status == 200) {
             console.log("usuario admin");
-            document.getElementById("APIusers").innerHTML = "";
             mostrarUsuarios();
         } else {
             console.log("no se pudo hacer admin el usuario");

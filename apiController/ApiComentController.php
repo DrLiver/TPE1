@@ -28,13 +28,15 @@
         // inserta la tarea
         $comentId = $this->comentariomodel->insertComent($coments->username,$coments->id_equipo,$coments->comentario);
         // obtengo la recien creada
+       
         $comentarioNuevo = $this->comentariomodel->getComentario($comentId);
-        if ($comentarioNuevo != []) {
+        echo($comentarioNuevo);
+        if (!$comentarioNuevo) {
             $this->view->response($comentarioNuevo, 200);
-        }
-        else{
-            $this->view->response("Error al insertar tarea", 500);
-        }
+        }else{
+            $this->view->response("no se pudo crear el comentario", 500);
+           
+            }
     }
 
     public function deleteComents ($operacion = null) {

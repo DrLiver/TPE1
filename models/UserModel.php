@@ -8,8 +8,8 @@ class UserModel {
         $this->basededatos = new PDO('mysql:host=localhost;'.'dbname=fichajes;charse=utf8','root','');
     }
 
-    public function bringUsersDB () {
-        $sentencia = $this->basededatos->prepare("SELECT * FROM usuarios");
+    public function bringUsersDB() {
+        $sentencia = $this->basededatos->prepare('SELECT * FROM usuarios');
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }

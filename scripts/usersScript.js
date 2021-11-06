@@ -9,8 +9,7 @@ async function mostrarUsuarios() {
         let respuesta = await fetch(URL);
 
         if (respuesta.status == 200) {
-            let usuarios = await respuesta.json();
-            console.log(JSON);
+            let usuarios = respuesta.json();
             for (let usuario of usuarios) {
                 escribirListas(usuario);
             }

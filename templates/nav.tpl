@@ -11,7 +11,8 @@
         <li><a href="usersList" class="transform">users</a></li>      
     {/if}
     {if ($SESSION != '') && ($admin != 1)}
-        <li><a href="home" class="transform">home</a></li>    
+        <li><a href="home" class="transform">home</a></li>
+         <li><a href="divisiones" class="transform">divisiones</a></li>    
     {/if}
     </ul>
 </nav>

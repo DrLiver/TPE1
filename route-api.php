@@ -1,7 +1,7 @@
 <?php
     require_once "libraries/Router.php";
-    require_once "controllers/ApiUsersController.php";
-    require_once "controllers/ApiComentController.php";
+    require_once "apiController/ApiUsersController.php";
+    require_once "apiController/ApiComentController.php";
 
     $router = new Router();
 

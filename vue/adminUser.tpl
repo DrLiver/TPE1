@@ -6,7 +6,7 @@
                <td v-if= "user.username != 'admin'">
                     <button class="btn fas fa-trash-alt" v-bind:id="user.id_usuario" v-on:click="eliminar"></button>
                
-                    <button v-if="user.privilege_level==1   " class="fas fa-user-cog" v-bind:id="user.id_usuario" v-on:click="quitarAdmin">soy admin</button>
+                    <button v-if="user.privilege_level==1   " class="fas fa-user-cog fas fa-trash-alt" v-bind:id="user.id_usuario" v-on:click="quitarAdmin">soy admin</button>
                     <button v-else="user.privilege_level" class="fas fa-user-cog  fas fa-trash-verde"  v-bind:id="user.id_usuario" v-on:click="admin">no soy admin</button>
                 </td>
                 <td v-else="user.username == 'admin'">

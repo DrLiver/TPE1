@@ -26,7 +26,7 @@
     public function addComent() {   
         $coments = $this->getBody(); // la obtengo del body
         // inserta la tarea
-        $comentId = $this->comentariomodel->insertComent($coments->username,$coments->id_equipo,$coments->comentario);
+        $comentId = $this->comentariomodel->insertComent($coments->username,$coments->id_equipo,$coments->comentario,$coments->puntaje);
         // obtengo la recien creada
        
         $comentarioNuevo = $this->comentariomodel->getComentario($comentId);

@@ -67,7 +67,7 @@ if (!empty($_GET['operacion'])) {
             $LoginController->logout();
             break;
         case 'eliminarUser':
-            $UserController->deleteUser($parametros[1]);
+           // $UserController->deleteUser($parametros[1]);
         case "modificarEquipo":
             $EquipoController->TraerParamodificarEquipo($parametros[1]);
             break;

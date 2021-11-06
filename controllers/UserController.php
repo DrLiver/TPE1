@@ -14,24 +14,23 @@ class UserController {
         $this->view = new UserView();
         $this->authHelper = new AuthHelper();
     }
-
-    public function showUsers() {
-        $this->authHelper->checkLoggedIn();
+/*
+    public function showUsers() {                VER SI DEJAMOS ESTO O NO YA QUE NO SE USA, LO PASAMOS
+        $this->authHelper->checkLoggedIn();      TODO A API REST
         $users = $this->model->bringUsersDB();
         $this->view->usersTable($users);
     }
-
+*/
     public function showUsersAPI() {
         $this->authHelper->checkLoggedIn();
         $this->view->usersTable();
-        $this->view->JSFooterUsers();
     }
-
+/*
     public function deleteUser($userID) {
         $this->authHelper->checkLoggedIn();
         $this->model->borrarUser($userID);
         $this->authHelper->location("usersList");
     }
-
+    */
   
 }

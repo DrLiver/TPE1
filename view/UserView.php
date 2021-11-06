@@ -12,15 +12,11 @@ class UserView{
         $this->authHelper = new AuthHelper();
     }
 
-    public function usersTable ($users = null) {
+    public function usersTable () {
         $this->smarty->assign('SESSION', $this->authHelper->session());
         $this->smarty->assign('admin', $this->authHelper->isAdmin());
-        $this->smarty->assign('users', $users);
         $this->smarty->assign('title', "Usuarios");
         $this->smarty->display('templates/usersList.tpl');
     }
 
-    public function JSFooterUsers () {
-        $this->smarty->display('templates/JSFooterUsers.tpl');
-    }
 }

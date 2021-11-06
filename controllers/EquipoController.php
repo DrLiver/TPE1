@@ -33,13 +33,12 @@ class EquipoController{
 
     public function verEquipo($id){
         $equipo =  $this->model->traerEquipo($id);
-        $comentarios =  $this->comentariosModel->traeruserComent($id);
         $this->authHelper->islogin();
         if($_SESSION != null){
             $usuario = $this->userModel->bringUserByNameDB($_SESSION['username']);
-            $this->view->verUnEquipo($equipo,$comentarios,$usuario);
+            $this->view->verUnEquipo($equipo,$usuario);
         }else{
-            $this->view->verUnEquipo($equipo,$comentarios);
+            $this->view->verUnEquipo($equipo);
         }
     }
 

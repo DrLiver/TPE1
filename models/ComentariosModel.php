@@ -28,9 +28,9 @@ class ComentariosModel {
         return $equipos;
     }
 
-    public function insertComent($username,$id_equipo,$comentario){
-        $sentencia = $this->basededatos->prepare('INSERT INTO comentarios(username,id_equipo,comentario) VALUES(?,?,?)');
-        $sentencia->execute([$username,$id_equipo,$comentario]);
+    public function insertComent($username,$id_equipo,$comentario,$puntaje){
+        $sentencia = $this->basededatos->prepare('INSERT INTO comentarios(username,id_equipo,comentario,puntaje) VALUES(?,?,?,?)');
+        $sentencia->execute([$username,$id_equipo,$comentario,$puntaje]);
     }
 
     public function deleteComent($id){

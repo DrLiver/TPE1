@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-11-2021 a las 20:47:35
+-- Tiempo de generación: 07-11-2021 a las 00:44:04
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 8.0.9
 
@@ -31,20 +31,20 @@ CREATE TABLE `comentarios` (
   `id_comentario` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `id_equipo` int(11) NOT NULL,
-  `comentario` varchar(1000) NOT NULL
+  `comentario` varchar(1000) NOT NULL,
+  `puntaje` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `comentarios`
 --
 
-INSERT INTO `comentarios` (`id_comentario`, `username`, `id_equipo`, `comentario`) VALUES
-(492, 'alex', 45, '123'),
-(493, 'admin', 45, 'holii'),
-(494, 'alex', 48, 'jajaja'),
-(495, 'admin', 48, 'jejej'),
-(496, 'admin', 48, 'dwedwqd'),
-(497, 'alex', 48, 'jejej');
+INSERT INTO `comentarios` (`id_comentario`, `username`, `id_equipo`, `comentario`, `puntaje`) VALUES
+(790, 'admin', 37, '1', 5),
+(791, 'admin', 37, '1', 5),
+(835, 'admin', 35, 'hola soy admin', 1),
+(836, 'admin', 35, 'hola soy admin', 5),
+(837, 'admin', 35, 'hola soy admin', 3);
 
 -- --------------------------------------------------------
 
@@ -112,8 +112,7 @@ INSERT INTO `equipos` (`id_equipo`, `nombre`, `descripcion`, `posicion`, `id_div
 (60, 'Atlanta', 'El Club Atlético Atlanta es una institución social, cultural y deportiva argentina, radicada en el barrio de Villa Crespo, Buenos Aires. Fue fundado el 12 de octubre de 1904 y actualmente juega en la Primera Nacional, segunda categoría del fútbol argentino. Comenzó su participación futbolística en 1906.', 7, 3),
 (61, 'Alvarado', 'El Club Atlético Alvarado es una entidad deportiva de la ciudad de Mar del Plata, en la provincia de Buenos Aires, Argentina. Se destaca en fútbol, actualmente participando en la Liga Marplatense de Fútbol y de la Primera Nacional, segunda división del fútbol argentino.', 8, 3),
 (62, 'Riestra', 'Deportivo Riestra Asociación de Fomento Barrio Colón,2​ también conocido como Club Deportivo Riestra, es un club deportivo y social de Buenos Aires, Argentina. Tiene su sede en el barrio de Nueva Pompeya, y posee además el estadio Guillermo Laza en el barrio de Villa Soldati, cuya capacidad aproximada es de 3000 espectadores.', 9, 3),
-(104, 'River Plate', 'El Club Atlético River Plate, más conocido simplemente como River Plate, es una entidad polideportiva con sede en Buenos Aires, Argentina.10​ Fue fundado el 25 de mayo de 1901 en el barrio de La Boca, tras la fusión de los clubes Santa Rosa y La Rosales, y su nombre proviene de la antigua denominación que se le daba en el inglés británico al Río de la Plata.', 1, 2),
-(127, 'Santos', '', 2, 1);
+(104, 'River Plate', 'El Club Atlético River Plate, más conocido simplemente como River Plate, es una entidad polideportiva con sede en Buenos Aires, Argentina.10​ Fue fundado el 25 de mayo de 1901 en el barrio de La Boca, tras la fusión de los clubes Santa Rosa y La Rosales, y su nombre proviene de la antigua denominación que se le daba en el inglés británico al Río de la Plata.', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -134,8 +133,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id_usuario`, `username`, `password`, `privilege_level`) VALUES
 (121, 'admin', '$2y$10$HpnCgrneg46r.txDJlj3pelOtVvvUeSL/GIXQ8cq8wixe6IVSDTia', 1),
-(151, 'alex', '$2y$10$o/y8dXC8CgPBYIe8frFZCuFMMIe40L8QVbQsI4YzPZ61e9Ug1uuXK', 1),
-(153, 'juan', '$2y$10$//CAjWL2fAsrZ4r.fFGSAutiWCqqgYv0tgXTmNJi2X1xyAFbVwA2C', 1);
+(163, 'alex', '$2y$10$65Dz4smeAznHrfID1L0KSewfa1Wj.6a6ZkZ4CTPo0Vkwk1hyuN6JO', 0);
 
 --
 -- Índices para tablas volcadas
@@ -177,25 +175,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=498;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=838;
 
 --
 -- AUTO_INCREMENT de la tabla `divisiones`
 --
 ALTER TABLE `divisiones`
-  MODIFY `id_division` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `id_division` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
+  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
 
 --
 -- Restricciones para tablas volcadas
@@ -206,7 +204,7 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `comentarios`
   ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`id_equipo`) REFERENCES `equipos` (`id_equipo`),
-  ADD CONSTRAINT `comentarios_ibfk_3` FOREIGN KEY (`username`) REFERENCES `usuarios` (`username`);
+  ADD CONSTRAINT `comentarios_ibfk_3` FOREIGN KEY (`username`) REFERENCES `usuarios` (`username`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `equipos`

@@ -3,7 +3,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-    background: rgb(19, 18, 18);
+    background:  #1e1e1e;
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 125px 40px auto;
@@ -77,7 +77,7 @@ th {
     color: rgb(255, 255, 255);
     font-size: 25px;
     height: 50px;
-    box-shadow: 20px 0px 20px 20px rgb(19 18 18);
+    box-shadow: 20px 0px 20px 20px#1e1e1e;
     width: 300px;
 }
 
@@ -98,7 +98,7 @@ td {
 
 tr {
     background: #079c4a;
-    box-shadow: 20px 0px 20px 3px rgb(19 18 18);
+    box-shadow: 3px 12px 20px 7px rgb(19 18 18);
 }
 
 h2,h3{
@@ -139,6 +139,7 @@ a {
 .equipoDetalle {
     width: 50%;
     height: 100px;
+    margin-left: 5%;
 }
 
 .tabla-detalle {
@@ -382,8 +383,11 @@ a.transform:hover {
 }
 
 .comentarios-detalle{
-   background: rgb(85, 81, 81);
-   color: #ffffff;
+    width: 100%;
+    background: #181818;
+    color: #ffffff;
+    border: 2px solid rgb(0, 0, 0);
+    margin-bottom: 5px;
 }
 .comentarios{
     margin: auto;
@@ -396,8 +400,9 @@ a.transform:hover {
     border-bottom: 3px solid rgb(231, 227, 227);
     background: rgb(85, 81, 81);
     color: #ffffff;
-  
     margin-bottom: 5px;
+    padding: 0%;
+    border: 2px solid rgb(0, 0, 0);
 }
 .input_coment::placeholder{
     color: #ffffff;
@@ -417,23 +422,25 @@ h4{
     font-weight: bold;
     font-size: 15px;
     padding: 5px 0px 0px 5px;
-  
-  
+}
+.h4-puntaje{
+   margin-left: 75%;
 }
 .p_coment{ 
-    color: rgb(0, 0, 0);
+    color: #b2b2b2;
     font-weight: bold;
-    margin: 5px 5px 15px 5px;
+    margin-left: 30px;
+  
    
-
 }
 .btn_eliminar{
-   
-        position: absolute;
-        margin-left: 45%;
-        margin-top: -50px;
-       
-    
+    position: absolute;
+    margin-left: 45%;
+    margin-top: -50px;
     }
+.btn_eliminar i{
+    color:  #b2b2b2;
+}
+
 
 

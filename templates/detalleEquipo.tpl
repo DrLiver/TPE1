@@ -34,33 +34,38 @@
                 </tr>	
 			</tbody>
         </table>
-    
-           
-        
-
 
         <div class="comentarios">
             <h2>Comentarios</h2>
                 <section >            
                     {if $SESSION != null}
                         <form class="form_comentarios" method="post" >
-                        <button type="submit" class="btn_coment enviar"value="insertarComentario">Enviar</button>
+                            <button type="submit" class="btn_coment enviar"value="insertarComentario">Enviar</button>
+                            
                             <input type="text" id="comentario" class="input_coment"  placeholder="Comentario" >
+                           
                             <input type="text" id="username" value="{$usuario->username}" hidden >  
                             <input type="number" id="id_equipo"  value="{$equipo->id_equipo}" hidden >  
+                            <label class="p_coment">Puntaje</label>
+                            <select id="puntuacion"  >
+                            
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
                         </form>
                         {else}
                             <button class="enviar" hidden></button>
                             <input type="number" id="id_equipo"  value="{$equipo->id_equipo}" hidden >  
-                    {/if}        
+                        {/if}        
                 </section>     
         <div>
 
-         {if ($SESSION != '') && ($admin == 1)}
+      
             {include "vue/adminComents.tpl"}
-            {else}
-            {include "vue/coments.tpl"}
-        {/if}
+         
                    
     
       

@@ -10,11 +10,13 @@ let btn = document.querySelector(".enviar").addEventListener("click", agregar);
     let comentario = document.querySelector("#comentario").value;
     let username = document.querySelector("#username").value;
     let equipo_id = document.querySelector("#id_equipo").value;
+    let puntaje = document.querySelector("#puntuacion").value;
    
     let nuevoComentario = {
         comentario: comentario,
         username: username,
         id_equipo: equipo_id,
+        puntaje: puntaje
     }
     if ( comentario != "") {
         fetch(url, {
@@ -24,29 +26,25 @@ let btn = document.querySelector(".enviar").addEventListener("click", agregar);
         })
         .then(resp => resp.json())
             .then(data => {
-            console.log(data);
-            mostrarComentarios();
+            console.log(data);    
+            mostrarComentarios();    //actualizar la lista de comentarios
         })
-            .catch(error => console.log(error));
+        .catch(error => console.log(error));
         }
-        else{
-            console.log("no se puede agregar un comentario vacio");
-        }
-          
+    else{
+        console.log("no se puede agregar un comentario vacio");
+    }
 }
 
    
 async function borrar(id) {
-   
     try {
         let resp = await fetch(url+"/"+id, {
             "method": "DELETE",
         });
         if (resp.ok) {
             mostrarComentarios();
-           console.log("comentario eliminado");
-        } else {
-          
+            console.log("comentario eliminado");
         }
     }
     catch (error) {
@@ -58,6 +56,7 @@ let app = new Vue({
     el: "#comentarios-detalle",
     data: {
         comentarios: [],
+        puntaje: 0.0,
     },
     methods: {
         Evento: function (id) {
@@ -65,6 +64,7 @@ let app = new Vue({
             borrar(id);
          }
     }, 
+    
 });
 
 async function mostrarComentarios() {
@@ -74,9 +74,11 @@ async function mostrarComentarios() {
         if(respuesta.ok){
             let comentarios = await respuesta.json();
             app.comentarios = comentarios;
+            app.puntaje= puntosTotales();
         }
         else{
             app.comentarios = [];
+            app.puntaje= 0.0;
         }
     }
     catch(error){
@@ -84,4 +86,16 @@ async function mostrarComentarios() {
     }
 }
 mostrarComentarios();
+
+function puntosTotales(){
+    let puntos = 0.0;
+    for (let i = 0; i < app.comentarios.length; i++) {
+        puntos += Number(app.comentarios[i].puntaje);
+    }
+    return puntos;
+}
+
+
+
+
  

@@ -11,6 +11,15 @@
         {include file="vue/adminUser.tpl"}
 </section>
 
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="./scripts/usersScript.js"></script>
+
+</body>
+</html>
+
+
+
+
  
    
   

@@ -402,6 +402,8 @@ a.transform:hover {
     color: #ffffff;
     border: 2px solid rgb(0, 0, 0);
     margin-bottom: 5px;
+    word-wrap: break-word;
+    
 }
 .comentarios{
     margin: auto;
@@ -431,16 +433,27 @@ a.transform:hover {
     background: #181818;
 }
 
+.hora{
+    font-size: 12px;
+    color: #756c6c;
+}
 
 
 
 .btn_coment{
-  
-    position: absolute;
-    float: right;
-    margin: 100px;
-    margin-left: 45%;
-    margin-top: 20px;
+    background: rgb(146, 24, 24);
+    color: rgb(255, 255, 255);
+    margin-left: 85%;
+    border: none;
+    padding: 2px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.btn_coment:hover{
+    background: rgb(255, 0, 0);
+    box-shadow: 0px 0px 5px 1px rgb(0, 0, 0);
 }
 
 
@@ -456,7 +469,7 @@ h4{
    width: 100px;
 }
 .p_coment{ 
-  
+    width: 84%;
     color: #b2b2b2;
     font-weight: bold;
     margin-left: 30px;
@@ -511,7 +524,8 @@ h4{
     margin-top: -25px;
    
 }
-  
+
+
 
  
  

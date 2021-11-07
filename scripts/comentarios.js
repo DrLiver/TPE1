@@ -11,12 +11,14 @@ let btn = document.querySelector(".enviar").addEventListener("click", agregar);
     let username = document.querySelector("#username").value;
     let equipo_id = document.querySelector("#id_equipo").value;
     let puntaje = document.querySelector("#puntuacion").value;
+    let hoy = new Date();
    
     let nuevoComentario = {
         comentario: comentario,
         username: username,
         id_equipo: equipo_id,
-        puntaje: puntaje
+        puntaje: puntaje,
+        fecha: hoy.getHours() + ":" + hoy.getMinutes() + ":" + hoy.getSeconds(),
     }
     if ( comentario != "") {
         fetch(url, {

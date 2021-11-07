@@ -38,12 +38,12 @@
         <section >            
         {if $SESSION != null}
             <form class="form_comentarios" method="post" >
-                <button type="submit" class="btn_coment enviar"value="insertarComentario">Enviar</button>   
+               
                 <input type="text" id="comentario" class="input_coment"  placeholder="Comentario" >   
                 <input type="text" id="username" value="{$usuario->username}" hidden >  
                 <input type="number" id="id_equipo"  value="{$equipo->id_equipo}" hidden >  
+                <button type="submit" class="btn_coment enviar"value="insertarComentario">Enviar comentario</button>   
                 <label class="p_coment">Puntaje 1 • 5</label>
-                
                 <div  class= "div-puntaje">
                     <input id="puntuacion" type="range"   min="1" max="5" step="1" value="5" >
                     <div>

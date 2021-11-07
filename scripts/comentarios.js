@@ -1,7 +1,7 @@
 "use strict"
 const url = 'api/comentarios';
 
-let comentarios = document.querySelector(".comentarios-detalle");
+
 
 let btn = document.querySelector(".enviar").addEventListener("click", agregar);
 
@@ -26,7 +26,8 @@ let btn = document.querySelector(".enviar").addEventListener("click", agregar);
         })
         .then(resp => resp.json())
             .then(data => {
-            console.log(data);    
+            console.log(data);
+            document.querySelector("#comentario").value = "";
             mostrarComentarios();    //actualizar la lista de comentarios
         })
         .catch(error => console.log(error));
@@ -62,7 +63,7 @@ let app = new Vue({
         Evento: function (id) {
             id = id.currentTarget.id;
             borrar(id);
-         }
+        }
     }, 
     
 });
@@ -98,4 +99,3 @@ function puntosTotales(){
 
 
 
- 

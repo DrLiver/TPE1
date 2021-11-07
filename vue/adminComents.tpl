@@ -2,7 +2,7 @@
 {literal}  
   
     <section id="comentarios-detalle">
-    <h4 class="h4-puntaje">puntaje del equipo | {{puntaje}}</h4>
+    <h4 class="h4-puntaje"> <i class="far fa-star"></i>| {{puntaje}}</h4>
         <div v-for="comentario in comentarios">
             <div class="comentarios-detalle">
                 <h4>{{comentario.username}} • | <i class="far fa-star" title="puntaje"></i> {{comentario.puntaje}}</h4>
@@ -20,7 +20,7 @@
         {literal}  
          
     <section id="comentarios-detalle">
-    <h4 class="h4-puntaje">puntaje del equipo | {{puntaje}}</h4>
+    <h4 class="h4-puntaje"> <i class="far fa-star"></i>| {{puntaje}}</h4>
         <div v-for="comentario in comentarios">
             <div class="comentarios-detalle">
                 <h4>{{comentario.username}} • |  <i class="far fa-star" title="puntaje"></i> {{comentario.puntaje}}</h4>

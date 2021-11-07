@@ -18,60 +18,53 @@
                 </tr>	   
 			</tbody>
         </table>
-     
-
     </section>  
-    
-         <table class="descripcion">
-            <thead>
-                <tr>
-                     <th>Descripcion</th>
-                </tr>
-            </thead>
-           <tbody>
-                <tr >
-                    <td >{$equipo->descripcion}</td>
-                </tr>	
-			</tbody>
-        </table>
 
-        <div class="comentarios">
-            <h2>Comentarios</h2>
-                <section >            
-                    {if $SESSION != null}
-                        <form class="form_comentarios" method="post" >
-                            <button type="submit" class="btn_coment enviar"value="insertarComentario">Enviar</button>
-                            
-                            <input type="text" id="comentario" class="input_coment"  placeholder="Comentario" >
-                           
-                            <input type="text" id="username" value="{$usuario->username}" hidden >  
-                            <input type="number" id="id_equipo"  value="{$equipo->id_equipo}" hidden >  
-                            <label class="p_coment">Puntaje</label>
-                            <select id="puntuacion"  >
-                            
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </form>
-                        {else}
-                            <button class="enviar" hidden></button>
-                            <input type="number" id="id_equipo"  value="{$equipo->id_equipo}" hidden >  
-                        {/if}        
-                </section>     
-        <div>
+    <table class="descripcion">
+        <thead>
+            <tr>
+                    <th>Descripcion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr >
+                <td >{$equipo->descripcion}</td>
+            </tr>	
+        </tbody>
+    </table>
+      
+    <div class="comentarios">
+        <h2>Comentarios</h2>
+        <section >            
+        {if $SESSION != null}
+            <form class="form_comentarios" method="post" >
+                <button type="submit" class="btn_coment enviar"value="insertarComentario">Enviar</button>   
+                <input type="text" id="comentario" class="input_coment"  placeholder="Comentario" >   
+                <input type="text" id="username" value="{$usuario->username}" hidden >  
+                <input type="number" id="id_equipo"  value="{$equipo->id_equipo}" hidden >  
+                <label class="p_coment">Puntaje 1 • 5</label>
+                
+                <div  class= "div-puntaje">
+                    <input id="puntuacion" type="range"   min="1" max="5" step="1" value="5" >
+                    <div>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>         
+            </form>
+        {else}
+            <button class="enviar" hidden></button>
+            <input type="number" id="id_equipo"  value="{$equipo->id_equipo}" hidden >  
+        {/if}        
+        </section>    
+        {include "vue/adminComents.tpl"} 
+    <div>
+   
 
-      
-            {include "vue/adminComents.tpl"}
-         
-                   
-    
-      
-        
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="scripts/comentarios.js"></script>
-     
+    <script src="scripts/comentarios.js"></script> 
 </body>
 </html>

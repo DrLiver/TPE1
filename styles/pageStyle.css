@@ -183,7 +183,7 @@ a {
     margin-top: 50px;
     width: 500px;
     height: 300px;
-    background-color: rgb(255, 255, 255);
+    background-color:#999999;
     text-align: center;
     align-items: center;
 }
@@ -211,6 +211,20 @@ a {
     margin: 10px;
     display: flex;
     flex-direction: column;
+}
+
+.btn_register{
+    background-color: #4CAF50; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    transition: all 0.5s;
+}
+
+.btn_register:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24);
 }
 
 
@@ -393,29 +407,42 @@ a.transform:hover {
     margin: auto;
     width: 50%;
 }
-.input_coment{
+.form_comentarios{
     width: 100%;
-    height: 50px;
-    border: none;
-    border-bottom: 3px solid rgb(231, 227, 227);
     background: rgb(85, 81, 81);
-    color: #ffffff;
-    margin-bottom: 5px;
-    padding: 0%;
     border: 2px solid rgb(0, 0, 0);
 }
+.input_coment{
+    width: 99%;
+    height: 50px;
+    border: none;
+    background: rgb(85, 81, 81);
+    margin-bottom: 5px;
+    transition: all .4s;
+    font-size: 17px;
+    color: #b2b2b2;
+}
 .input_coment::placeholder{
+    font-size: 15px;
     color: #ffffff;
+   
+}
+.input_coment:focus{
+    background: #181818;
 }
 
+
+
+
 .btn_coment{
+  
     position: absolute;
     float: right;
     margin: 100px;
     margin-left: 45%;
     margin-top: 20px;
-  
 }
+
 
 h4{
     color: rgb(255, 255, 255);
@@ -424,9 +451,12 @@ h4{
     padding: 5px 0px 0px 5px;
 }
 .h4-puntaje{
-   margin-left: 75%;
+   margin-left: 88%;
+   margin-bottom: 5px;
+   width: 100px;
 }
 .p_coment{ 
+  
     color: #b2b2b2;
     font-weight: bold;
     margin-left: 30px;
@@ -441,6 +471,58 @@ h4{
 .btn_eliminar i{
     color:  #b2b2b2;
 }
+
+.div-puntaje{
+    margin: 10px;
+}
+
+#puntuacion{ 
+  
+    position: absolute;
+    width: 140px;
+    -webkit-appearance: none;
+    background: transparent;
+    margin-left: 8px;
+   
+}
+
+#puntuacion::-webkit-slider-runnable-track {
+    cursor: pointer;
+    background: transparent;
+}
+
+#puntuacion::-webkit-slider-thumb {
+    height: 6px;
+    width: 6px;
+    border-radius: 0px;
+    background: #bbff00;
+    cursor: pointer;
+    border-radius: 50px;
+    -webkit-appearance: none;
+    margin-top: 4px;
+    box-shadow: 0px 0px 10px 9px  #bbff00;
+   
+}
+
+.fa-star{
+ 
+    color: rgb(251, 255, 0);
+    margin-right: 12px;
+    margin-top: -25px;
+   
+}
+  
+
+ 
+ 
+  
+
+
+ 
+ 
+ 
+  
+ 
 
 
 

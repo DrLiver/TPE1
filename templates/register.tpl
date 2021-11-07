@@ -14,6 +14,6 @@
     {else }
         <p class="exito">{$exito}</p>
 {/if}
-    <input type="submit" value="Registrarse Ahora">
+    <button class="btn_register" type="submit" >Registrarse Ahora</button>
     </form>
 </article>

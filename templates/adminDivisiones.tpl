@@ -28,7 +28,7 @@
         <form action="agregarDivision" method="POST" class="form_agregar">
                 <h1 class="suscribete_title">Agregar divisiones</h1>
                 <input class="form_input " name="division" type="text" placeholder="Division">
-                <input class="form_input " name="cantidad" type="number" placeholder="Cantidad de equipos">
+                <input class="form_input " name="cantidad" type="number" min="1" placeholder="Cantidad de equipos">
                 <button name="btn-agregar " type="submit" class="btns">Agregar Division</button>
         </form>
     </section>        

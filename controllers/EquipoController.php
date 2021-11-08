@@ -11,7 +11,6 @@ class EquipoController{
     private $model;
     private $view;
     private $divisionModel;
-    private $comentariosModel;
     private $userModel;
     private $authHelper;
     
@@ -20,17 +19,16 @@ class EquipoController{
         $this->model = new EquipoModel();
         $this->view = new EquipoView();
         $this->divisionModel= new DivisionesModel;
-        $this->comentariosModel= new ComentariosModel;
         $this->userModel= new UserModel;
         $this->authHelper = new AuthHelper();
     }
-
+    // trae equipos y divisiones, se muestra en la vista
     public function equipos(){
         $equipos =  $this->model->traerEquipos();
         $divisiones =  $this->divisionModel->traerDivisiones();
         $this->view->traerHome($equipos,$divisiones);
     }
-
+    // trae un equipo especifico segun su id, si el usuario esta logueado se pasa tambien el usuario
     public function verEquipo($id){
         $equipo =  $this->model->traerEquipo($id);
         $this->authHelper->islogin();
@@ -41,7 +39,7 @@ class EquipoController{
             $this->view->verUnEquipo($equipo);
         }
     }
-
+    // trae todos los equipos de una division especifica
     public function filtrar(){
         if (!empty($_POST['division'])){
             $id_division = $_POST['division'];
@@ -50,20 +48,20 @@ class EquipoController{
         $equipos =  $this->model->traerEquipoPorDivision($id_division);
         $this->view->traerHome($equipos,$divisiones);
     }
-
+    // adminstracion de equipos y mensajes de los mismos segun corresponda
     public function adminEquipo($error='',$exito=""){
         $this->authHelper->checkLoggedIn();
         $equipos =  $this->model->traerEquipos();
         $divisiones =  $this->divisionModel->traerDivisiones();
         $this->view->adminEquipo($equipos,$divisiones,$error,$exito);
     }
-
+    // elimina un equipo segun su id
     public function eliminarEquipo($id){
         $this->authHelper->checkLoggedIn();
         $this->model->borrarEquipoBaseDeDatos($id);
         $this->adminEquipo('','equipo eliminado');
     }
-
+    // trae la id del equipo a editar
     public function TraerParamodificarEquipo($id){
         $this->authHelper->checkLoggedIn();
         $equipo = $this->model-> TraerParaActualizar($id);
@@ -71,7 +69,7 @@ class EquipoController{
         $divisiones =  $this->divisionModel->traerDivisiones();
         $this->view->TraerParamodificar($divisiones,$equipo,$id_division);
     }
-
+    // actualiza un equipo
     public function actualizarEquipo(){
         $this->authHelper->checkLoggedIn();
         if (!empty($_POST['equipo'])&&!empty($_POST['posicion'])) {
@@ -87,7 +85,7 @@ class EquipoController{
             $this->adminEquipo('Falta completar campos ');
         }
     }
-
+    // agrega un equipo
     public function agregarEquipo(){
         $this->authHelper->checkLoggedIn();
         if (!empty($_POST['equipo'])&&!empty($_POST['posicion'])) {

@@ -16,7 +16,7 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Division</th>
+                    <th>División</th>
                 </tr>
             </thead>
            <tbody class="filas">
@@ -28,10 +28,6 @@
                 {/foreach}
 			</tbody>
         </table>
-       
     </section>
-
-
-
 </body>
 </html>

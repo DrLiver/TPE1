@@ -22,25 +22,14 @@ class LoginController {
         $this->userModel = new UserModel();
         $this->authHelper = new AuthHelper();
     }
-
-    public function showLogin($username,$user=null) {
-            session_start();
-            $_SESSION['username'] = $username;
-            $_SESSION['admin'] = $user->privilege_level;
-            if ($_SESSION['admin'] == 1) {
-                $this->authHelper->location("home");
-            }
-            if ($_SESSION['admin'] == 0) {
-                $this->authHelper->location("home");
-            }
-        }
-    
-
+    // 
+  
+    // se loguea el usuario y se guarda en la sesion y el nombre del usuario 
     public function login ($username="", $password="") {
         if (!empty($_POST['username']) && !empty($_POST['password'])) {
             $username = $_POST['username'];
             $password = $_POST['password'];
-            $user = $this->model->traerUser($username);
+            $user = $this->userModel->bringUserByNameDB($username);
             if (!empty($user)) {
                 if (password_verify($password, $user->password)) {
                     $this->showLogin($username,$user);
@@ -57,17 +46,29 @@ class LoginController {
             $this->EquipoView->traerHome($this->equipoModel->traerEquipos(), $this->divisionModel->traerDivisiones(), 'Faltan completar campos. ');
         }
     }
-
+    // se inicia sesion y se verifica si el usuario es administrador o no, si es administrador se redirige a la pagina de administración
+    public function showLogin($username,$user=null) {
+        session_start();
+        $_SESSION['username'] = $username;
+        $_SESSION['admin'] = $user->privilege_level;
+        if ($_SESSION['admin'] == 1) {
+            $this->authHelper->location("home");
+        }
+        if ($_SESSION['admin'] == 0) {
+            $this->authHelper->location("home");
+        }
+    }
+    // se cierra la sesion y se redirige a la pagina de inicio
     public function logout () {
         session_start();
         session_destroy();
         $this->authHelper->location("home");
     }
-
+    // si hay algun error al registrar el usuario se muestra el error
     public function showRegister ($error="",$exito="") {
         $this->view->showRegister($error,$exito);
     }
-
+    // se registra el usuario sin permiso de adminstrador y se redirige a la pagina de de usuario normal
     public function completeRegister () {
         if (!empty($_POST['registerUsername'])&&!empty( $_POST['registerPassword'])) {
             $username = $_POST['registerUsername'];
@@ -89,8 +90,4 @@ class LoginController {
             $this->showRegister('Faltan completar campos');
         }
     }
-
-   
-    
-
 }

@@ -22,7 +22,7 @@
                 <input class="form_login" type="password" name="password" placeholder="Contraseña">
                 <button class="btns login-submit" type="submit">Login</button>
            </form>
-            <p id="register"><span id="loginError">{$loginError}</span>no tienes una cuenta? Registrate <a href="register">aquí</a></p>
+            <p id="register"><span id="loginError">{$loginError}</span>no tienes una cuenta? Regístrate <a href="register">aquí</a></p>
         <div>   
         {/if}
         {if $SESSION != null}

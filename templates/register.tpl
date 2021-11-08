@@ -2,7 +2,7 @@
 {include file="templates/nav.tpl"}
 <article id="registerDiv">
     <form action="registerMesage" method="post">
-        <h1>Registrate</h1>
+        <h1>Regístrate</h1>
         <div>
             <div id="registerInputs">
                 <input type="text" class="form_register" name="registerUsername" id="username" placeholder="Usuario">

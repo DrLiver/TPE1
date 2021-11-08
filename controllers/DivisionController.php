@@ -16,24 +16,24 @@ class DivisionController{
         $this->equipoModel = new EquipoModel;
         $this->authHelper = new AuthHelper();
     }
-
+    // obtiene todas las divisiones
     public function divisiones(){
         $divisiones =  $this->model->traerDivisiones();
         $this->view->traerDivisiones($divisiones);
     }
-   
+    // obtiene una division por id
     public function TraerParamodificarDivision($id){
         $this->authHelper->checkLoggedIn();
-        $divisiones =  $this->model-> TraerParaActualizarDivision($id);
-        $this->view->TraerParamodificarDivision($divisiones);
+        $division =  $this->model-> TraerParaActualizarDivision($id);
+        $this->view->TraerParamodificarDivision($division);
     }
-
+    // adminstra la modificacion de una division
     public function adminDivisiones($error='',$exito=""){
         $this->authHelper->checkLoggedIn();
         $divisiones =  $this->model->traerDivisiones();
         $this->view->adminDivisiones($divisiones,$error,$exito);
     }
-
+    // actualiza una division
     public function actualizarDivision(){
         $this->authHelper->checkLoggedIn();
         if (!empty($_POST['cantidad'])&&!empty($_POST['division'])) {
@@ -46,7 +46,7 @@ class DivisionController{
             $this->adminDivisiones('Falta completar campos ');
         }
     }
-
+    // elimina una division
     public function eliminarDivision($id){
         $this->authHelper->checkLoggedIn();
         $enUso = false;
@@ -62,7 +62,7 @@ class DivisionController{
             $this->adminDivisiones('','division eliminada');
         }
     }
-
+    // crea una division
     public function agregarDivision(){
         $this->authHelper->checkLoggedIn();
         if (!empty($_POST['division'])&&!empty($_POST['cantidad'])) {

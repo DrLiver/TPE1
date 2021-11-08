@@ -6,8 +6,8 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Division</th>
-                    <th>Posicion</th>
+                    <th>División</th>
+                    <th>Posición</th>
                 </tr>
             </thead>
            <tbody>
@@ -23,12 +23,12 @@
     <table class="descripcion">
         <thead>
             <tr>
-                    <th>Descripcion</th>
+                    <th>Descripción</th>
             </tr>
         </thead>
         <tbody>
             <tr >
-                <td >{$equipo->descripcion}</td>
+                <td class="td_descripcion" >{$equipo->descripcion}</td>
             </tr>	
         </tbody>
     </table>

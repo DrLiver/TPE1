@@ -35,7 +35,7 @@ class EquipoView {
         $this->smarty->display("templates/detalleEquipo.tpl");
     }
 
-    public function TraerParamodificar($divisiones,$equipo,$id_division=""){
+    public function TraerParamodificar($divisiones,$equipo,$id_division){
         $this->session('Modificar Equipo');
         $this->smarty->assign('divisiones', $divisiones);
         $this->smarty->assign('id', $id_division);

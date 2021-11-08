@@ -77,7 +77,7 @@ th {
     color: rgb(255, 255, 255);
     font-size: 25px;
     height: 50px;
-    box-shadow: 20px 0px 20px 20px#1e1e1e;
+    box-shadow: 4px -10px 20px 3px #1e1e1e;
     width: 300px;
 }
 
@@ -85,6 +85,12 @@ td {
     font-size: 20px;
     height: 55px;
     text-align: center;
+   
+}
+
+.td_descripcion{
+    padding: 15px;
+    text-align: start;
 }
 
 .td-equipo a {
@@ -151,7 +157,7 @@ a {
     transition: all .5s;
     background: #216421;
     border: 2px solid black;
-    font-size: 17px;
+    font-size: 20px;
 }
 
 .detalles tr td:hover {
@@ -415,7 +421,7 @@ a.transform:hover {
     border: 2px solid rgb(0, 0, 0);
 }
 .input_coment{
-    width: 99%;
+    width: 99.5%;
     height: 50px;
     border: none;
     background: rgb(85, 81, 81);
@@ -427,6 +433,7 @@ a.transform:hover {
 .input_coment::placeholder{
     font-size: 15px;
     color: #ffffff;
+    padding: 10px;
    
 }
 .input_coment:focus{

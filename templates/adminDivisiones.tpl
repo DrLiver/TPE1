@@ -29,7 +29,7 @@
                 <h1 class="suscribete_title">Agregar divisiones</h1>
                 <input class="form_input " name="division" type="text" placeholder="Division">
                 <input class="form_input " name="cantidad" type="number" min="1" placeholder="Cantidad de equipos">
-                <button name="btn-agregar " type="submit" class="btns">Agregar Division</button>
+                <button name="btn-agregar " type="submit" class="btns">Agregar División</button>
         </form>
     </section>        
 </body>

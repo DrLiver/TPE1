@@ -9,7 +9,6 @@
             echo json_encode($dataBase);
         }
 
-
          private function requestStatus($code) {
 
             $status = array(

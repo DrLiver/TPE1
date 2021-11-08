@@ -25,6 +25,6 @@
             <input class="id_equipo" name="id_division" type="number" value="{$divisiones->id_division}">
             <input class="form_input " name="division" type="text" placeholder="Division: {$divisiones->division}">
         <input class="form_input " name="cantidad" type="number" placeholder="N° de equipops: {$divisiones->cantidad_equipos}">
-        <button name="btn-agregar" type="submit" class="btns">Modificar Division</button>
+        <button name="btn-agregar" type="submit" class="btns">Modificar División</button>
     </form>
 {/if}

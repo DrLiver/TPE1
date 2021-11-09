@@ -10,7 +10,7 @@ class EquipoModel {
     }
     // trae todos los equipos
     public function traerEquipos(){
-        $sentencia = $this->basededatos->prepare('SELECT a.*,b.* FROM equipos a INNER JOIN divisiones b ON a.id_division = b.id_division OFFSET');
+        $sentencia = $this->basededatos->prepare('SELECT a.*,b.* FROM equipos a INNER JOIN divisiones b ON a.id_division = b.id_division');
         $sentencia->execute();
         $equipos = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $equipos;

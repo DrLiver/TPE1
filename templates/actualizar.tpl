@@ -14,7 +14,7 @@
         <input  class="id_equipo" name="id_equipo" type="number" value="{$equipo->id_equipo}">
         <input class="form_input " name="equipo" type="text" placeholder="{$equipo->nombre}">
         <textarea class="form_input " name="descripcion" type="text" placeholder="{$equipo->descripcion}"></textarea>
-        <input class="form_input " name="posicion" type="number" placeholder="{$equipo->posicion}" min="1" max=13  >
+        <input class="form_input " name="posicion" type="number" placeholder="{$equipo->posicion}" min="1">
         <button name="btn-agregar" type="submit" class="btns">Agregar Equipo</button>
 	</form>
 {/if}

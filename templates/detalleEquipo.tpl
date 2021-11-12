@@ -18,8 +18,8 @@
                 </tr>	   
 			</tbody>
         </table>
-    </section>  
-
+   
+    {if $equipo->descripcion != ""}
     <table class="descripcion">
         <thead>
             <tr>
@@ -32,13 +32,14 @@
             </tr>	
         </tbody>
     </table>
-      
+    
+    {/if}
+     </section>  
     <div class="comentarios">
         <h2>Comentarios</h2>
         <section >            
         {if $SESSION != null}
             <form class="form_comentarios" method="post" >
-               
                 <input type="text" id="comentario" class="input_coment"  placeholder="Comentario" >   
                 <input type="text" id="username" value="{$usuario->username}" hidden >  
                 <input type="number" id="id_equipo"  value="{$equipo->id_equipo}" hidden >  

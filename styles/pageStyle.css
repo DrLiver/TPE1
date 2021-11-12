@@ -91,6 +91,7 @@ td {
 .td_descripcion{
     padding: 15px;
     text-align: start;
+    width: 500px;
 }
 
 .td-equipo a {
@@ -145,12 +146,12 @@ a {
 .equipoDetalle {
     width: 50%;
     height: 100px;
-    margin-left: 5%;
 }
 
 .tabla-detalle {
+    display: flex;
     justify-content: space-evenly;
-    margin-bottom: 50px;
+  
 }
 
 .detalles tr td {
@@ -164,17 +165,9 @@ a {
     background-color: #079c4a;
 }
 
-.descripcion {
-    margin-left: 70%;
-    margin-top: -195px;
-    margin-right: 100px;
 
-}
 
-.titulo-detalle {
-    margin: 3% 0 0 21%;
-    text-align: start;
-}
+
 
 
 /* REGISTRO */
@@ -192,6 +185,7 @@ a {
     background-color:#999999;
     text-align: center;
     align-items: center;
+   
 }
 
 #registerDiv form div {

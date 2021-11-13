@@ -9,7 +9,7 @@ let app = new Vue({
         users: [],
     },
     methods: {
-      eliminar: function(id){
+        eliminar: function(id){
         id = id.currentTarget.id;
         eliminarUsuario(id);
         console.log(id);

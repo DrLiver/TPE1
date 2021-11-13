@@ -11,6 +11,7 @@
     <title>{$title} | Fichajes.com</title>
 </head>
 <body>
+   
     <header id="header">
         <a href="home"><h1 class="transform">fichajes</h1></a>
         
@@ -34,6 +35,8 @@
             <h3 >Bienvenido  {$SESSION}</h3>
         </div>
         {/if}
+        
     </header>
+    
 
       

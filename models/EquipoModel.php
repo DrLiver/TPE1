@@ -47,10 +47,8 @@ class EquipoModel {
         return  $sentencia->fetch(PDO::FETCH_OBJ);
     }
     // actualiza un equipo
-    function actualizarEquipo($id,$nombre,$descripcion,$posicion,$division){
+    public function actualizarEquipo($id,$nombre,$descripcion,$posicion,$division){
         $sentencia = $this->basededatos->prepare('UPDATE  equipos SET nombre=?,descripcion=?,posicion=?,id_division=?  WHERE id_equipo = ?' );
         $sentencia->execute(array($nombre,$descripcion,$posicion,$division,$id));  
     }
-
-
 }    

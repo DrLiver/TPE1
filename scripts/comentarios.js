@@ -2,10 +2,10 @@
 const url = 'api/comentarios';
 
 
+// funcion para agregar un comentario al hacer click en el boton de enviar
+let btn = document.querySelector(".enviar").addEventListener("click", addComments);
 
-let btn = document.querySelector(".enviar").addEventListener("click", agregar);
-
- function agregar(e) {
+ function addComments(e) {
     e.preventDefault();
     let comentario = document.querySelector("#comentario").value;
     let username = document.querySelector("#username").value;
@@ -30,7 +30,7 @@ let btn = document.querySelector(".enviar").addEventListener("click", agregar);
             .then(data => {
             console.log(data);
             document.querySelector("#comentario").value = "";
-            mostrarComentarios();    //actualizar la lista de comentarios
+            showComments();    //actualizar la lista de comentarios
         })
         .catch(error => console.log(error));
         }
@@ -38,15 +38,14 @@ let btn = document.querySelector(".enviar").addEventListener("click", agregar);
         console.log("no se puede agregar un comentario vacio");
     }
 }
-
-   
-async function borrar(id) {
+//funcion para borrar un comentario
+async function deleteComments(id) {
     try {
         let resp = await fetch(url+"/"+id, {
             "method": "DELETE",
         });
         if (resp.ok) {
-            mostrarComentarios();
+            showComments();
             console.log("comentario eliminado");
         }
     }
@@ -54,43 +53,45 @@ async function borrar(id) {
         console.log("error" + error);
     }
 }
-
+//
 let app = new Vue({
     el: "#comentarios-detalle",
     data: {
         comentarios: [],
-        puntaje: 0.0,
+        puntos: 0.0,
     },
     methods: {
         Evento: function (id) {
             id = id.currentTarget.id;
-            borrar(id);
+            deleteComments(id);
         }
     }, 
     
 });
 
-async function mostrarComentarios() {
+//funcion que asigna el puntaje total a la variable puntos y los comentarios a la variable comentarios de la clase Vue
+async function showComments() {
     try{
         let id = document.querySelector("#id_equipo").value;
         let respuesta = await fetch(url+"/"+id);
         if(respuesta.ok){
             let comentarios = await respuesta.json();
             app.comentarios = comentarios;
-            app.puntaje= puntosTotales();
+            app.puntos= totalPoints();
         }
         else{
             app.comentarios = [];
-            app.puntaje= 0.0;
+            app.puntos= 0.0;
         }
     }
     catch(error){
         console.log("error" + error);
     }
 }
-mostrarComentarios();
+showComments();
 
-function puntosTotales(){
+//funcion para calcular el puntaje total de los comentarios, por cada comentario se suma su puntaje
+function totalPoints(){
     let puntos = 0.0;
     for (let i = 0; i < app.comentarios.length; i++) {
         puntos += Number(app.comentarios[i].puntaje);

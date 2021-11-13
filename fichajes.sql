@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2021 a las 00:44:04
+-- Tiempo de generación: 13-11-2021 a las 19:57:59
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 8.0.9
 
@@ -32,19 +32,17 @@ CREATE TABLE `comentarios` (
   `username` varchar(100) NOT NULL,
   `id_equipo` int(11) NOT NULL,
   `comentario` varchar(1000) NOT NULL,
-  `puntaje` int(11) NOT NULL
+  `puntaje` int(11) NOT NULL,
+  `fecha` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `comentarios`
 --
 
-INSERT INTO `comentarios` (`id_comentario`, `username`, `id_equipo`, `comentario`, `puntaje`) VALUES
-(790, 'admin', 37, '1', 5),
-(791, 'admin', 37, '1', 5),
-(835, 'admin', 35, 'hola soy admin', 1),
-(836, 'admin', 35, 'hola soy admin', 5),
-(837, 'admin', 35, 'hola soy admin', 3);
+INSERT INTO `comentarios` (`id_comentario`, `username`, `id_equipo`, `comentario`, `puntaje`, `fecha`) VALUES
+(8, 'admin', 59, 'hola', 5, '08:52:19'),
+(9, 'admin', 59, 'qwe', 5, '08:53:49');
 
 -- --------------------------------------------------------
 
@@ -112,7 +110,8 @@ INSERT INTO `equipos` (`id_equipo`, `nombre`, `descripcion`, `posicion`, `id_div
 (60, 'Atlanta', 'El Club Atlético Atlanta es una institución social, cultural y deportiva argentina, radicada en el barrio de Villa Crespo, Buenos Aires. Fue fundado el 12 de octubre de 1904 y actualmente juega en la Primera Nacional, segunda categoría del fútbol argentino. Comenzó su participación futbolística en 1906.', 7, 3),
 (61, 'Alvarado', 'El Club Atlético Alvarado es una entidad deportiva de la ciudad de Mar del Plata, en la provincia de Buenos Aires, Argentina. Se destaca en fútbol, actualmente participando en la Liga Marplatense de Fútbol y de la Primera Nacional, segunda división del fútbol argentino.', 8, 3),
 (62, 'Riestra', 'Deportivo Riestra Asociación de Fomento Barrio Colón,2​ también conocido como Club Deportivo Riestra, es un club deportivo y social de Buenos Aires, Argentina. Tiene su sede en el barrio de Nueva Pompeya, y posee además el estadio Guillermo Laza en el barrio de Villa Soldati, cuya capacidad aproximada es de 3000 espectadores.', 9, 3),
-(104, 'River Plate', 'El Club Atlético River Plate, más conocido simplemente como River Plate, es una entidad polideportiva con sede en Buenos Aires, Argentina.10​ Fue fundado el 25 de mayo de 1901 en el barrio de La Boca, tras la fusión de los clubes Santa Rosa y La Rosales, y su nombre proviene de la antigua denominación que se le daba en el inglés británico al Río de la Plata.', 1, 2);
+(133, 'River Plate', 'un equipo de segunda ahre jajaj', 1, 2),
+(134, 'Santos', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -132,8 +131,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `username`, `password`, `privilege_level`) VALUES
-(121, 'admin', '$2y$10$HpnCgrneg46r.txDJlj3pelOtVvvUeSL/GIXQ8cq8wixe6IVSDTia', 1),
-(163, 'alex', '$2y$10$65Dz4smeAznHrfID1L0KSewfa1Wj.6a6ZkZ4CTPo0Vkwk1hyuN6JO', 0);
+(121, 'admin', '$2y$10$HpnCgrneg46r.txDJlj3pelOtVvvUeSL/GIXQ8cq8wixe6IVSDTia', 1);
 
 --
 -- Índices para tablas volcadas
@@ -175,25 +173,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=838;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT de la tabla `divisiones`
 --
 ALTER TABLE `divisiones`
-  MODIFY `id_division` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `id_division` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
 
 --
 -- Restricciones para tablas volcadas

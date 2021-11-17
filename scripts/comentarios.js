@@ -70,16 +70,17 @@ let app = new Vue({
 });
 
 //funcion que asigna el puntaje total a la variable puntos y los comentarios a la variable comentarios de la clase Vue
-
-async function showComments() {
-    try {
+async function showComments(inicio = 0, limite = 5) {
+    try{
         let id = document.querySelector("#id_equipo").value;
-        let resp = await fetch(url + "/" + id);
-        if (resp.ok) {
-            let comentarios = await resp.json();
-            app.comentarios = comentarios;
-            app.puntos = totalPoints();
-        }else{
+        let respuesta = await fetch(url+"/"+id);
+        if(respuesta.ok){
+            let comentarios = await respuesta.json();
+            app.comentarios = comentarios.slice(inicio,limite);
+            app.puntos= totalPoints();
+            paginacion(comentarios.length);
+        }
+        else{
             app.comentarios = [];
             app.puntos= 0.0;
         }
@@ -100,6 +101,23 @@ function totalPoints(){
     return puntos;
 }
 
+async function paginacion(cantComentarios) {
+    let contenedor = document.getElementById("btn-toolbar");
+    contenedor.innerHTML = "";
+    let cantPaginas = Math.ceil(cantComentarios / 5);
+    for (let i = 0; i < cantPaginas; i++) {
+        let btn = document.createElement("button");
+        btn.setAttribute("class", "btn btn-primary");
+        btn.setAttribute("id", "page" + i);
+        btn.setAttribute("type", "button");
+        btn.innerHTML = i + 1;
+        contenedor.appendChild(btn);
+        document.getElementById("page" + i).addEventListener("click", function(e) {
+            showComments(i*5, (i+1)*5);
+        })
+    }
+
+}
 
 
 

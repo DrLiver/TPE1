@@ -117,6 +117,9 @@ class EquipoController{
             //$divisiones muestra las divisiones disponibles para el filtro pero no se usa en la busqueda avanzada
             $divisiones =  $this->divisionModel->traerDivisiones();
             $this->view->traerHome($busqueda,$divisiones);
+        }else{
+            $this->equipos();
         }
+        
     }
 }

@@ -24,5 +24,7 @@
             </section>    
         {/literal}
 {/if}
-
+    <div id="btn-toolbar">
+        
+    </div>
  

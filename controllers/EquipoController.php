@@ -108,4 +108,15 @@ class EquipoController{
             $this->adminEquipo('Falta completar campos ');
         }
     }
+
+    public function busquedaAvanzada(){
+        if (!empty($_POST['loquebusco'])) {
+            $loquebusco = $_POST['loquebusco'];
+            $busqueda =  $this->model->busquedaAvanzada($loquebusco);
+
+            //$divisiones muestra las divisiones disponibles para el filtro pero no se usa en la busqueda avanzada
+            $divisiones =  $this->divisionModel->traerDivisiones();
+            $this->view->traerHome($busqueda,$divisiones);
+        }
+    }
 }

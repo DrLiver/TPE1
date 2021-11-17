@@ -51,4 +51,11 @@ class EquipoModel {
         $sentencia = $this->basededatos->prepare('UPDATE  equipos SET nombre=?,descripcion=?,posicion=?,id_division=?  WHERE id_equipo = ?' );
         $sentencia->execute(array($nombre,$descripcion,$posicion,$division,$id));  
     }
+
+    public function busquedaAvanzada($loquebusco){
+        $sentencia = $this->basededatos->prepare('SELECT * FROM equipos a INNER JOIN divisiones b ON a.id_division = b.id_division WHERE a.nombre LIKE ? OR a.posicion LIKE ?');
+        $sentencia->execute(array("%$loquebusco%","%$loquebusco%"));
+        $busqueda = $sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $busqueda;
+    }                 
 }    

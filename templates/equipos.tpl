@@ -2,6 +2,10 @@
 {include file="templates/nav.tpl"}
 <h2> tabla de equipos y divisiones</h2>
     <section  id="tabla"class="tabla_section">
+     <form method="POST" action="busquedaAvanzada">
+                <input type="text" name="loquebusco" placeholder="Equipo, posicion ">
+                <input type="submit" value="buscar">
+            </form>
         <div class="section-filtro">
             <form method="POST" action="filtrar">
                 <select name="division">
@@ -11,6 +15,7 @@
                 </select>
                 <input type="submit" value="FILTRAR">
             </form>
+           
             </div>
         <table>
             <thead>

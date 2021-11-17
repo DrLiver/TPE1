@@ -80,6 +80,9 @@ if (!empty($_GET['operacion'])) {
         case "actualizarDivision":
             $DivisionController->actualizarDivision();
             break;
+        case "busquedaAvanzada":
+            $EquipoController->busquedaAvanzada();
+            break;
         default:
             echo"page not found";
             break;

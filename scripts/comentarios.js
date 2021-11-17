@@ -70,24 +70,25 @@ let app = new Vue({
 });
 
 //funcion que asigna el puntaje total a la variable puntos y los comentarios a la variable comentarios de la clase Vue
+
 async function showComments() {
-    try{
+    try {
         let id = document.querySelector("#id_equipo").value;
-        let respuesta = await fetch(url+"/"+id);
-        if(respuesta.ok){
-            let comentarios = await respuesta.json();
+        let resp = await fetch(url + "/" + id);
+        if (resp.ok) {
+            let comentarios = await resp.json();
             app.comentarios = comentarios;
-            app.puntos= totalPoints();
-        }
-        else{
+            app.puntos = totalPoints();
+        }else{
             app.comentarios = [];
             app.puntos= 0.0;
         }
     }
-    catch(error){
+    catch (error) {
         console.log("error" + error);
     }
 }
+
 showComments();
 
 //funcion para calcular el puntaje total de los comentarios, por cada comentario se suma su puntaje

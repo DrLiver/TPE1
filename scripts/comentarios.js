@@ -61,12 +61,19 @@ let app = new Vue({
         puntos: 0.0,
     },
     methods: {
-        Evento: function (id) {
+        eliminarCommets: function (id) {
             id = id.currentTarget.id;
             deleteComments(id);
+        },
+        filtrar: function (e) {
+            filterCommentsByScore(e);
+        },
+        mostrarTodos: function (e) {
+            e.preventDefault();
+            showComments();
         }
     }, 
-    
+
 });
 
 //funcion que asigna el puntaje total a la variable puntos y los comentarios a la variable comentarios de la clase Vue
@@ -107,7 +114,7 @@ async function paginacion(cantComentarios) {
     let cantPaginas = Math.ceil(cantComentarios / 5);
     for (let i = 0; i < cantPaginas; i++) {
         let btn = document.createElement("button");
-        btn.setAttribute("class", "btn btn-primary");
+        btn.setAttribute("class", "btn-primary");
         btn.setAttribute("id", "page" + i);
         btn.setAttribute("type", "button");
         btn.innerHTML = i + 1;
@@ -119,5 +126,21 @@ async function paginacion(cantComentarios) {
 
 }
 
+async function filterCommentsByScore(e) {
+    e.preventDefault();
+    let puntaje = document.querySelector("#estrellas").value;
+    let id = document.querySelector("#id_equipo").value;
+    try{
+        let estrellas = await fetch(url + "/" + id + "/" + puntaje);
+        if (estrellas.ok) {
+            let comentarios = await estrellas.json();
+            app.comentarios = comentarios;
+            app.puntos = totalPoints();
+        }
+    }
+    catch (error) {
+        console.log("error" + error);
+    }
+}
 
 

@@ -45,8 +45,12 @@
         $this->view->response("usuario $id borrado con exito", 200);
     }
 
-
-
-       
+    public function flitrarPorEstrellas($operacion = null) {
+        $id = $operacion[":ID"];
+        $estrellas = $operacion[":ESTRELLAS"];
+        $comentarios = $this->comentariomodel->getByStars($id,$estrellas);
+        $this->view->response($comentarios, 200);
     }
+
+}
 

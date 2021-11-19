@@ -15,7 +15,7 @@
     $router->addRoute('comentarios/:ID', 'GET', 'ApiComentController', 'getComents');
     $router->addRoute('comentarios/', 'POST', 'ApiComentController', 'addComent');
     $router->addRoute('comentarios/:ID', 'DELETE', 'ApiComentController', 'deleteComents');
-
+    $router->addRoute('comentarios/:ID/:ESTRELLAS', 'GET', 'ApiComentController', 'flitrarPorEstrellas');
    
 
     $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);

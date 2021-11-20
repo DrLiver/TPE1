@@ -85,9 +85,7 @@ async function showComments(inicio = 0) {
             let totalComentarios = await comments.json();
             app.comentarios = totalComentarios;
             app.puntos= totalPoints();
-            let cantComentarios = await getCommentsCount();
-            console.log(totalComentarios[totalComentarios.length - 1].id_comentario);
-            paginacion(totalComentarios[totalComentarios.length - 1].id_comentario);
+            paginacion(parseInt(totalComentarios[0].id_comentario));
         }
         else{
             app.comentarios = [];
@@ -98,7 +96,6 @@ async function showComments(inicio = 0) {
         console.log("ERROR CATCH " + error);
     }
 }
-
 showComments();
 
 
@@ -144,12 +141,12 @@ async function paginacion(pos) {
     contenedor.appendChild(btnAnt);
     document.getElementById("atrasBtn").addEventListener("click", function (e) {
         e.preventDefault();
-        showComments(pos - 10);
+        showComments(pos - 5);
     });
     contenedor.appendChild(btnSig);
     document.getElementById("adelanteBtn").addEventListener("click", function (e) {
         e.preventDefault();
-        showComments(pos);
+        showComments(pos + 5);
     });
 }
 

@@ -25,7 +25,7 @@ class ComentariosModel {
         return $sentencia->fetchColumn();
     }
     public function getLimitedComents($id, $inicio) {
-        $sentencia = $this->basededatos->prepare("SELECT * FROM comentarios WHERE id_equipo=? AND id_comentario>? LIMIT 5;");
+        $sentencia = $this->basededatos->prepare("SELECT * FROM comentarios WHERE id_equipo=? AND id_comentario>=? LIMIT 5;");
         $sentencia->execute(array($id, $inicio));
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }

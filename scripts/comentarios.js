@@ -139,6 +139,7 @@ async function paginacion(pos) {
     btnSig.setAttribute("type", "button");
     btnSig.innerHTML = "siguiente >";
     contenedor.appendChild(btnAnt);
+   
     document.getElementById("atrasBtn").addEventListener("click", function (e) {
         e.preventDefault();
         showComments(pos - 5);
@@ -146,25 +147,12 @@ async function paginacion(pos) {
     contenedor.appendChild(btnSig);
     document.getElementById("adelanteBtn").addEventListener("click", function (e) {
         e.preventDefault();
+      
+          
         showComments(pos + 5);
+        
     });
 }
 
-async function filterCommentsByScore(e) {
-    e.preventDefault();
-    let puntaje = document.querySelector("#estrellas").value;
-    let id = document.querySelector("#id_equipo").value;
-    try{
-        let estrellas = await fetch(url + "/" + id + "/" + puntaje);
-        if (estrellas.ok) {
-            let comentarios = await estrellas.json();
-            app.comentarios = comentarios;
-            app.puntos = totalPoints();
-        }
-    }
-    catch (error) {
-        console.log("error" + error);
-    }
-}
 
 

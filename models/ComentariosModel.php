@@ -47,9 +47,9 @@ class ComentariosModel {
         $sentencia->execute(array($id));
     }
 
-    public function getByStars($id,$stars){
-        $sentencia = $this->basededatos->prepare('SELECT * FROM comentarios WHERE id_equipo=? AND puntaje=?');
-        $sentencia->execute(array($id,$stars));
+    public function getByStars($id,$inicio,$stars){
+        $sentencia = $this->basededatos->prepare('SELECT * FROM comentarios WHERE id_equipo=? AND id_comentario >=? AND puntaje=?');
+        $sentencia->execute(array($id,$inicio,$stars));
         $equipos = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $equipos;
        

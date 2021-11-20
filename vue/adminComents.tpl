@@ -1,12 +1,6 @@
 {if ($SESSION != '') && ($admin == 1)}
 {literal} 
     <section id="comentarios-detalle">
-            <form >
-                <input type="number" id="estrellas" placeholder="Estrellas ">
-                <input type="submit" @click= "filtrar"value="Filtrar por Estrellas">
-                <input type="submit" @click="mostrarTodos"value="Todos">
-            </form>
-    
         <h4 class="h4-puntaje"> <i class="far fa-star"></i>| {{puntos}}</h4>
         <div v-for="comentario in comentarios">
             <div class="comentarios-detalle">
@@ -20,11 +14,6 @@
     {else}
         {literal}      
             <section id="comentarios-detalle">
-             <form >
-                <input type="number" id="estrellas" placeholder="Estrellas ">
-                <input type="submit" @click= "filtrar"value="Filtrar por Estrellas">
-                <input type="submit" @click="mostrarTodos"value="Todos">
-            </form>
             <h4 class="h4-puntaje"> <i class="far fa-star"></i>| {{puntos}}</h4>
                 <div v-for="comentario in comentarios">
                     <div class="comentarios-detalle">

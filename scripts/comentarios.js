@@ -77,15 +77,17 @@ let app = new Vue({
 });
 
 //funcion que asigna el puntaje total a la variable puntos y los comentarios a la variable comentarios de la clase Vue
-async function showComments(inicio = 0, limite = 5) {
+async function showComments(inicio = 0) {
     try{
         let id = document.querySelector("#id_equipo").value;
-        let respuesta = await fetch(url+"/"+id);
-        if(respuesta.ok){
-            let comentarios = await respuesta.json();
-            app.comentarios = comentarios.slice(inicio,limite);
+        let comments = await fetch(url+"/"+id+"/"+inicio);
+        if(comments.ok) {
+            let totalComentarios = await comments.json();
+            app.comentarios = totalComentarios;
             app.puntos= totalPoints();
-            paginacion(comentarios.length);
+            let cantComentarios = await getCommentsCount();
+            console.log(totalComentarios[totalComentarios.length - 1].id_comentario);
+            paginacion(totalComentarios[totalComentarios.length - 1].id_comentario);
         }
         else{
             app.comentarios = [];
@@ -93,11 +95,28 @@ async function showComments(inicio = 0, limite = 5) {
         }
     }
     catch (error) {
-        console.log("error" + error);
+        console.log("ERROR CATCH " + error);
     }
 }
 
 showComments();
+
+
+async function getCommentsCount (id) {
+    try {
+        let count = await fetch(url+"/"+id+"/COUNT");
+        if (count.ok) {
+            let cantidad = await count.json();
+            return cantidad;
+        }
+        else {
+            return 0;
+        }
+    } 
+    catch (error) {
+        console.log("error" + error);
+    }
+}
 
 //funcion para calcular el puntaje total de los comentarios, por cada comentario se suma su puntaje
 function totalPoints(){
@@ -108,22 +127,30 @@ function totalPoints(){
     return puntos;
 }
 
-async function paginacion(cantComentarios) {
+async function paginacion(pos) {
     let contenedor = document.getElementById("btn-toolbar");
     contenedor.innerHTML = "";
-    let cantPaginas = Math.ceil(cantComentarios / 5);
-    for (let i = 0; i < cantPaginas; i++) {
-        let btn = document.createElement("button");
-        btn.setAttribute("class", "btn-primary");
-        btn.setAttribute("id", "page" + i);
-        btn.setAttribute("type", "button");
-        btn.innerHTML = i + 1;
-        contenedor.appendChild(btn);
-        document.getElementById("page" + i).addEventListener("click", function(e) {
-            showComments(i*5, (i+1)*5);
-        })
-    }
-
+    
+    let btnAnt = document.createElement("button");
+    btnAnt.setAttribute("class", "btn-primary");
+    btnAnt.setAttribute("id", "atrasBtn");
+    btnAnt.setAttribute("type", "button");
+    btnAnt.innerHTML = "< anterior";
+    let btnSig = document.createElement("button");
+    btnSig.setAttribute("class", "btn-primary");
+    btnSig.setAttribute("id", "adelanteBtn");
+    btnSig.setAttribute("type", "button");
+    btnSig.innerHTML = "siguiente >";
+    contenedor.appendChild(btnAnt);
+    document.getElementById("atrasBtn").addEventListener("click", function (e) {
+        e.preventDefault();
+        showComments(pos - 10);
+    });
+    contenedor.appendChild(btnSig);
+    document.getElementById("adelanteBtn").addEventListener("click", function (e) {
+        e.preventDefault();
+        showComments(pos);
+    });
 }
 
 async function filterCommentsByScore(e) {

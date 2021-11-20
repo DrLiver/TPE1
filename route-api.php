@@ -13,6 +13,8 @@
     $router->addRoute('users/:ID', 'UPDATE', 'ApiUsersController', 'quitAdmin');
     $router->addRoute('comentarios', 'GET', 'ApiComentController', 'getComents');
     $router->addRoute('comentarios/:ID', 'GET', 'ApiComentController', 'getComents');
+    $router->addRoute('comentarios/:ID/COUNT', 'GET', 'ApiComentController', 'getComentsCount');
+    $router->addRoute('comentarios/:ID/:INIT', 'GET', 'ApiComentController', 'getLimitedComents');
     $router->addRoute('comentarios/', 'POST', 'ApiComentController', 'addComent');
     $router->addRoute('comentarios/:ID', 'DELETE', 'ApiComentController', 'deleteComents');
     $router->addRoute('comentarios/:ID/:ESTRELLAS', 'GET', 'ApiComentController', 'flitrarPorEstrellas');

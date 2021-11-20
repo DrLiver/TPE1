@@ -19,6 +19,16 @@ class ComentariosModel {
         $sentencia->execute(array($id));
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
+    public function getCount() {
+        $sentencia = $this->basededatos->prepare("SELECT COUNT(*) FROM comentarios");
+        $sentencia->execute();
+        return $sentencia->fetchColumn();
+    }
+    public function getLimitedComents($id, $inicio) {
+        $sentencia = $this->basededatos->prepare("SELECT * FROM comentarios WHERE id_equipo=? AND id_comentario>? LIMIT 5;");
+        $sentencia->execute(array($id, $inicio));
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    }
     // trae los comentarios de un equipo ordenado descendente
     public function traeruserComent($id){
         $sentencia = $this->basededatos->prepare('SELECT * FROM comentarios  WHERE id_equipo=? ORDER BY id_comentario DESC ');

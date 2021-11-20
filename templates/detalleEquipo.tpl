@@ -60,9 +60,10 @@
                 <button class="enviar" hidden></button>
                 <input type="number" id="id_equipo"  value="{$equipo->id_equipo}" hidden >  
         {/if}        
-        </section>    
-        {include "vue/adminComents.tpl"} 
+        </section>
         <div id="btn-toolbar">
+        </div>    
+        {include "vue/adminComents.tpl"} 
         
     </div>
     </div>

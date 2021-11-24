@@ -24,7 +24,7 @@ class LoginController {
     }
     // 
   
-    // se loguea el usuario y se guarda en la sesion y el nombre del usuario 
+    // se loguea el usuario y se guarda en la sesion el nombre del usuario 
     public function login ($username="", $password="") {
         if (!empty($_POST['username']) && !empty($_POST['password'])) {
             $username = $_POST['username'];
@@ -68,6 +68,7 @@ class LoginController {
     public function showRegister ($error="",$exito="") {
         $this->view->showRegister($error,$exito);
     }
+    
     // se registra el usuario sin permiso de adminstrador y se redirige a la pagina de de usuario normal
     public function completeRegister () {
         if (!empty($_POST['registerUsername'])&&!empty( $_POST['registerPassword'])) {

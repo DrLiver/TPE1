@@ -22,11 +22,6 @@
         }
     }
 
-    public function getComentsCount () {
-        $users = $this->comentariomodel->getCount();
-            $this->view->response($users, 200); // 200 OK
-    }
-
     public function getLimitedComents ($operacion = []) {
         if (empty($operacion)) {
             $users = $this->comentariomodel->getComentarios();

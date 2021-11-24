@@ -51,4 +51,10 @@ class EquipoView {
         $this->smarty->assign('exito',$exito);
         $this->smarty->display("templates/adminEquipos.tpl");
     }
+
+    public function pageNotFound(){
+        $this->smarty->assign('loginError');
+        $this->session('Página no encontrada');
+        $this->smarty->display("templates/404.tpl");
+    }
 }

@@ -84,6 +84,6 @@ if (!empty($_GET['operacion'])) {
             $EquipoController->busquedaAvanzada();
             break;
         default:
-            echo"page not found";
+            $EquipoController->pageNoteFound();
             break;
     }

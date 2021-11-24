@@ -119,6 +119,9 @@ class EquipoController{
         }else{
             $this->equipos();
         }
-        
+    }
+
+    public function pageNoteFound(){
+        $this->view->pageNotFound();
     }
 }

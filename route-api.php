@@ -17,6 +17,4 @@
     $router->addRoute('comentarios/:ID/firstAndLast', 'GET', 'ApiComentController', 'getFirstAndLast');
     $router->addRoute('comentarios/', 'POST', 'ApiComentController', 'addComent');
     $router->addRoute('comentarios/:ID', 'DELETE', 'ApiComentController', 'deleteComents');
-   
-
     $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);

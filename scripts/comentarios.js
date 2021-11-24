@@ -1,6 +1,6 @@
 "use strict"
 const url = 'api/comentarios';
-
+let id_equipo = document.querySelector("#id_equipo").value;
 
 // funcion para agregar un comentario al hacer click en el boton de enviar
 let btn = document.querySelector(".enviar").addEventListener("click", addComments);
@@ -9,7 +9,7 @@ let btn = document.querySelector(".enviar").addEventListener("click", addComment
     e.preventDefault();
     let comentario = document.querySelector("#comentario").value;
     let username = document.querySelector("#username").value;
-    let equipo_id = document.querySelector("#id_equipo").value;
+    let equipo_id = id_equipo;
     let puntaje = document.querySelector("#puntuacion").value;
     let hoy = new Date();
    
@@ -46,6 +46,7 @@ async function deleteComments(id) {
         });
         if (resp.ok) {
             showComments();
+           await totalPoints();
             console.log("comentario eliminado");
         }
     }
@@ -80,38 +81,53 @@ let app = new Vue({
 let auxMAX = 0;
 let auxMIN = 0;
 async function showComments(inicio = 0) {
+    totalPoints();
     try{
-        let id = document.querySelector("#id_equipo").value;
+        let id = id_equipo;
         let comments = await fetch(url+"/"+id+"/"+inicio);
         let getFirstAndLast = await fetch(url+"/"+id+"/firstAndLast");
         if(comments.ok && getFirstAndLast.ok) {
             let totalComentarios = await comments.json();
             let primeroSegundo = await getFirstAndLast.json();
             app.comentarios = totalComentarios;
-            app.puntos= totalPoints();
-
-            auxMIN = parseInt(primeroSegundo[0].id_comentario);
-            auxMAX = parseInt(primeroSegundo[1].id_comentario);
-            paginacion(parseInt(totalComentarios[0].id_comentario));
+         
+          if(primeroSegundo.length > 0){
+                auxMIN = parseInt(primeroSegundo[0].id_comentario);
+                auxMAX = parseInt(primeroSegundo[1].id_comentario);
+                paginacion(parseInt(totalComentarios[0].id_comentario));
+            } 
         }
         else{
-            app.comentarios = [];
-            app.puntos= 0.0;
+            app.comentarios = []; 
         }
     }
     catch (error) {
         console.log(error);
     }
+  
 }
 showComments();
 
 //funcion para calcular el puntaje total de los comentarios, por cada comentario se suma su puntaje
-function totalPoints(){
-    let puntos = 0.0;
-    for (let i = 0; i < app.comentarios.length; i++) {
-        puntos += Number(app.comentarios[i].puntaje);
+async function totalPoints(){
+    let puntos =0.0;
+    let id =id_equipo;
+    try{
+        let total = await fetch(url+"/"+id);
+        if(total.ok){
+            let totalComentarios = await total.json();
+            for(let i = 0; i < totalComentarios.length; i++){
+                puntos += parseFloat(totalComentarios[i].puntaje);
+            }
+            app.puntos = puntos;
+        }
+        else{
+            app.puntos = 0.0;
+        }
     }
-    return puntos;
+    catch (error) {
+        console.log(error);
+    }
 }
 
 async function paginacion(pos) {

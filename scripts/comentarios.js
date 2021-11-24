@@ -85,6 +85,7 @@ async function showComments(inicio = 0) {
             let totalComentarios = await comments.json();
             app.comentarios = totalComentarios;
             app.puntos= totalPoints();
+            console.log(totalComentarios[0].id_comentario);
             paginacion(parseInt(totalComentarios[0].id_comentario));
         }
         else{

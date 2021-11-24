@@ -77,15 +77,21 @@ let app = new Vue({
 });
 
 //funcion que asigna el puntaje total a la variable puntos y los comentarios a la variable comentarios de la clase Vue
+let auxMAX = 0;
+let auxMIN = 0;
 async function showComments(inicio = 0) {
     try{
         let id = document.querySelector("#id_equipo").value;
         let comments = await fetch(url+"/"+id+"/"+inicio);
-        if(comments.ok) {
+        let getFirstAndLast = await fetch(url+"/"+id+"/firstAndLast");
+        if(comments.ok && getFirstAndLast.ok) {
             let totalComentarios = await comments.json();
+            let primeroSegundo = await getFirstAndLast.json();
             app.comentarios = totalComentarios;
             app.puntos= totalPoints();
-            console.log(totalComentarios[0].id_comentario);
+
+            auxMIN = parseInt(primeroSegundo[0].id_comentario);
+            auxMAX = parseInt(primeroSegundo[1].id_comentario);
             paginacion(parseInt(totalComentarios[0].id_comentario));
         }
         else{
@@ -94,7 +100,7 @@ async function showComments(inicio = 0) {
         }
     }
     catch (error) {
-        console.log("ERROR CATCH " + error);
+        console.log(error);
     }
 }
 showComments();
@@ -111,29 +117,35 @@ function totalPoints(){
 async function paginacion(pos) {
     let contenedor = document.getElementById("btn-toolbar");
     contenedor.innerHTML = "";
-    
-    let btnAnt = document.createElement("button");
-    btnAnt.setAttribute("class", "btn-primary");
-    btnAnt.setAttribute("id", "atrasBtn");
-    btnAnt.setAttribute("type", "button");
-    btnAnt.innerHTML = "< anterior";
-    let btnSig = document.createElement("button");
-    btnSig.setAttribute("class", "btn-primary");
-    btnSig.setAttribute("id", "adelanteBtn");
-    btnSig.setAttribute("type", "button");
-    btnSig.innerHTML = "siguiente >";
-    contenedor.appendChild(btnAnt);
-   
-    document.getElementById("atrasBtn").addEventListener("click", function (e) {
-        e.preventDefault();
-        showComments(pos - 5);
-    });
-    contenedor.appendChild(btnSig);
-    document.getElementById("adelanteBtn").addEventListener("click", function (e) {
-        e.preventDefault();  
-        showComments(pos + 5);
-        
-    });
+
+    if (!(auxMIN == pos)) {
+        let btnAnt = document.createElement("button");
+        btnAnt.setAttribute("class", "btn-primary");
+        btnAnt.setAttribute("id", "atrasBtn");
+        btnAnt.setAttribute("type", "button");
+        btnAnt.innerHTML = "< anterior";
+        contenedor.appendChild(btnAnt);
+ 
+        document.getElementById("atrasBtn").addEventListener("click", function (e) {
+            e.preventDefault();
+            showComments(pos - 5);
+        });
+    } 
+
+    if (!(auxMAX < pos + 5)) {
+        let btnSig = document.createElement("button");
+        btnSig.setAttribute("class", "btn-primary");
+        btnSig.setAttribute("id", "adelanteBtn");
+        btnSig.setAttribute("type", "button");
+        btnSig.innerHTML = "siguiente >";
+        contenedor.appendChild(btnSig);
+       
+        contenedor.appendChild(btnSig);
+        document.getElementById("adelanteBtn").addEventListener("click", function (e) {
+            e.preventDefault();  
+            showComments(pos + 5);
+        });
+    }
 }
 
 

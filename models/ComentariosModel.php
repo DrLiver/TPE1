@@ -25,12 +25,20 @@ class ComentariosModel {
         $sentencia->execute(array($id, $inicio));
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public function getFirstAndLast ($id) {
+        $sentencia = $this->basededatos->prepare("(SELECT id_comentario FROM comentarios WHERE id_equipo=? ORDER BY id_comentario ASC LIMIT 1) UNION ALL (SELECT id_comentario FROM comentarios WHERE id_equipo=? ORDER BY id_comentario DESC LIMIT 1)");
+        $sentencia->execute(array($id, $id));
+        $comentarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $comentarios;
+    }
+
     // trae los comentarios de un equipo ordenado descendente
     public function traeruserComent($id){
         $sentencia = $this->basededatos->prepare('SELECT * FROM comentarios  WHERE id_equipo=? ORDER BY id_comentario DESC ');
         $sentencia->execute(array($id));
-        $equipos = $sentencia->fetchAll(PDO::FETCH_OBJ);
-        return $equipos;
+        $comentarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $comentarios;
     }
 
     // inserta un comentario

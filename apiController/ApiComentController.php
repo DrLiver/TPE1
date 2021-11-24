@@ -21,20 +21,26 @@
             }
         }
     }
-
+    
     public function getLimitedComents ($operacion = []) {
         if (empty($operacion)) {
             $users = $this->comentariomodel->getComentarios();
             $this->view->response($users, 200); // 200 OK
         }
         else {
-            $id = $operacion[":ID"];
-            $inicio = $operacion[":INIT"];
-            $users = $this->comentariomodel->getLimitedComents($id, $inicio);
-            $this->view->response($users, 200); // 200 OK
+            if ($operacion[":INIT"] == "firstAndLast") {
+                $id = $operacion[":ID"];
+                $elements = $this->comentariomodel->getFirstAndLast($id);
+                $this->view->response($elements, 200); // 200 OK
+            }
+            else {
+                $id = $operacion[":ID"];
+                $inicio = $operacion[":INIT"];
+                $users = $this->comentariomodel->getLimitedComents($id, $inicio);
+                $this->view->response($users, 200); // 200 OK
+            }
         }
     }
-
 
     public function addComent() {   
         $coments = $this->getBody(); // la obtengo del body

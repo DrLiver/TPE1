@@ -14,6 +14,7 @@
     $router->addRoute('comentarios', 'GET', 'ApiComentController', 'getComents');
     $router->addRoute('comentarios/:ID', 'GET', 'ApiComentController', 'getComents');
     $router->addRoute('comentarios/:ID/:INIT', 'GET', 'ApiComentController', 'getLimitedComents');
+    $router->addRoute('comentarios/:ID/firstAndLast', 'GET', 'ApiComentController', 'getFirstAndLast');
     $router->addRoute('comentarios/', 'POST', 'ApiComentController', 'addComent');
     $router->addRoute('comentarios/:ID', 'DELETE', 'ApiComentController', 'deleteComents');
    

@@ -41,8 +41,6 @@ function mostrarUsuarios() {
 }
 mostrarUsuarios();
 
-
-
 async function eliminarUsuario(id) {
     try {
         let respuesta = await fetch(url + "/" + id, {

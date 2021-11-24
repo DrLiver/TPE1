@@ -98,23 +98,6 @@ async function showComments(inicio = 0) {
 }
 showComments();
 
-
-async function getCommentsCount (id) {
-    try {
-        let count = await fetch(url+"/"+id+"/COUNT");
-        if (count.ok) {
-            let cantidad = await count.json();
-            return cantidad;
-        }
-        else {
-            return 0;
-        }
-    } 
-    catch (error) {
-        console.log("error" + error);
-    }
-}
-
 //funcion para calcular el puntaje total de los comentarios, por cada comentario se suma su puntaje
 function totalPoints(){
     let puntos = 0.0;
@@ -146,9 +129,7 @@ async function paginacion(pos) {
     });
     contenedor.appendChild(btnSig);
     document.getElementById("adelanteBtn").addEventListener("click", function (e) {
-        e.preventDefault();
-      
-          
+        e.preventDefault();  
         showComments(pos + 5);
         
     });

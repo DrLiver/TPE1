@@ -12,7 +12,4 @@ class LoginModel {
         $sentencia = $this->basededatos->prepare("INSERT INTO usuarios(username, password) VALUES(?, ?)");
         $sentencia->execute([$username,$password]);
     }
-   
-
-    
 }

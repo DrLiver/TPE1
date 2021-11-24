@@ -19,13 +19,9 @@ class ComentariosModel {
         $sentencia->execute(array($id));
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
-    public function getCount() {
-        $sentencia = $this->basededatos->prepare("SELECT COUNT(*) FROM comentarios");
-        $sentencia->execute();
-        return $sentencia->fetchColumn();
-    }
+   
     public function getLimitedComents($id, $inicio) {
-        $sentencia = $this->basededatos->prepare("SELECT * FROM comentarios WHERE id_equipo=? AND id_comentario>=? LIMIT 5;");
+        $sentencia = $this->basededatos->prepare("SELECT * FROM comentarios WHERE id_equipo=? AND id_comentario>=? LIMIT 5");
         $sentencia->execute(array($id, $inicio));
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
@@ -36,6 +32,7 @@ class ComentariosModel {
         $equipos = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $equipos;
     }
+
     // inserta un comentario
     public function insertComent($username,$id_equipo,$comentario,$puntaje,$fecha){
         $sentencia = $this->basededatos->prepare('INSERT INTO comentarios(username,id_equipo,comentario,puntaje,fecha) VALUES(?,?,?,?,?)');
@@ -45,14 +42,6 @@ class ComentariosModel {
     public function deleteComent($id){
         $sentencia = $this->basededatos->prepare('DELETE FROM comentarios WHERE id_comentario = ?');
         $sentencia->execute(array($id));
-    }
-
-    public function getByStars($id,$inicio,$stars){
-        $sentencia = $this->basededatos->prepare('SELECT * FROM comentarios WHERE id_equipo=? AND id_comentario >=? AND puntaje=?');
-        $sentencia->execute(array($id,$inicio,$stars));
-        $equipos = $sentencia->fetchAll(PDO::FETCH_OBJ);
-        return $equipos;
-       
     }
 
 }

@@ -19,4 +19,6 @@ class UserView{
         $this->smarty->display('templates/usersList.tpl');
     }
 
+    
+
 }

@@ -10,6 +10,7 @@ class AuthHelper{
             session_start();
         }
     }
+
     // comprueba si el usuario esta logueado
     public function checkLoggedIn(){
         $this->islogin();
@@ -17,11 +18,8 @@ class AuthHelper{
             header("Location: ".BASE_URL."home");
             die();
         }
-        if(isset($_SESSION["username"]) && $this->isAdmin() != 1) {
-            header("Location: ".BASE_URL."home");
-            die();
-        }
     }
+
     // devuelve el nombre del usuario
     public function session() {
         $this->islogin();
@@ -31,6 +29,7 @@ class AuthHelper{
         }
         return $session;
     }
+
     // comprueba si el usuario es admin, devuelve 1 si es admin, 0 si no
     public function isAdmin() {
         $this->islogin();
@@ -40,10 +39,9 @@ class AuthHelper{
         }
         return $admin;
     }
+
     // redirige a la pagina a un ubicacion dada
     public function location($where){
         header("Location:".BASE_URL."$where");
     }
-
-
 }

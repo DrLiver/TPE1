@@ -3,7 +3,8 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-    background:  #1e1e1e;
+    background:  #181818;
+  
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 125px 40px auto;
@@ -19,6 +20,10 @@ textarea::-webkit-scrollbar,body::-webkit-scrollbar {
 textarea::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb {
     background: rgb(20, 133, 26);
     border-radius: 4px;
+}
+
+img {
+   margin: auto;
 }
 
 
@@ -398,7 +403,7 @@ a.transform:hover {
 
 .comentarios-detalle{
     width: 100%;
-    background: #181818;
+    background: #0e0e0e;
     color: #ffffff;
     border: 2px solid rgb(0, 0, 0);
     margin-bottom: 5px;
@@ -411,7 +416,7 @@ a.transform:hover {
 }
 .form_comentarios{
     width: 100%;
-    background: rgb(85, 81, 81);
+    background: #0e0e0e;
     border: 2px solid rgb(0, 0, 0);
 }
 .input_coment{
@@ -431,7 +436,7 @@ a.transform:hover {
    
 }
 .input_coment:focus{
-    background: #181818;
+    background:#0e0e0e;
 }
 
 .hora{
